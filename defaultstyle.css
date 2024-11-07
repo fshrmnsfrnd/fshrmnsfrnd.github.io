@@ -4,26 +4,30 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
-    color: #b2f0e5; /* Grundfarbe in Türkis */
+    color: #b0c7d1; /* Grundfarbe in Türkis */
 }
 
 body {
-    background: linear-gradient(180deg, #001f3f, #3a3a3a); /* Dunkelblau bis Dunkelgrau */
+    background-color: #1c262e;
     line-height: 1.6;
     padding: 20px;
 }
 
 /* Überschriften */
 h1, h2, h3, h4, h5, h6 {
-    color: #33cccc; /* Helleres Türkis für Überschriften */
+    font-weight: bold;
+    background: linear-gradient(to bottom, #11ffff, #2affb8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-h1 { font-size: 2.5em; }
-h2 { font-size: 2em; }
-h3 { font-size: 1.75em; }
-h4 { font-size: 1.5em; }
-h5 { font-size: 1.25em; }
-h6 { font-size: 1em; }
+h1 { font-size: 3em; }
+h2 { font-size: 2.5em; }
+h3 { font-size: 2em; }
+h4 { font-size: 1.75em; }
+h5 { font-size: 1.5em; }
+h6 { font-size: 1.25em; }
 
 /* Links */
 a {
