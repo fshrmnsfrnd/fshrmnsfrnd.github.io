@@ -8,15 +8,72 @@
 }
 
 body {
-    background-color: #1c262e;
+    background-color: #0d1317;
     line-height: 1.6;
     padding: 20px;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #b0c7d1;
+}
+
+/* Styling für den Seitenkopf */
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #2a3b4726;
+    border-radius: 8px; /* Abrundung der Ecken */
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2em;
+    background: linear-gradient(to right, #1feeee, #17ff9a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header a {
+    font-size: 1.25em;
+    background-color: #002b36;
+    color: #66ffcc;
+    text-decoration: none;
+    padding: 8px 12px;
+    transition: background-color 0.3s, transform 0.2s;
+    border-radius: 6px;
+}
+
+/* Navigation */
+
+.headnav {
+    display: flex;
+    flex-direction: row;
+    gap: 13px;
+}
+
+.headnav a {
+    color: #66ffcc;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 8px 12px; /* Innenabstand für besseres Aussehen */
+    transition: color 0.3s;
+    border-radius: 6px; /* Abrundung der Ecken für Links */
+}
+
+.headnav a:hover {
+    color: #99e6d1;
+    background-color: #1c262e; /* Etwas dunklere Hintergrundfarbe */
+    transform: scale(1.2); /* Vergrößert das Kästchen leicht */
 }
 
 /* Überschriften */
 h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
-    background: linear-gradient(to bottom, #11ffff, #2affb8);
+    background: linear-gradient(to right, #1feeee, #17ff9a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -51,24 +108,36 @@ li {
 
 /* Zitate */
 blockquote {
-    color: #99e6d1; /* Hellere Türkisfarbe */
+    color: #99e6d1;
     font-style: italic;
     border-left: 4px solid #33cccc;
     padding-left: 15px;
     margin: 20px 0;
+    background-color: #1c262e;
 }
 
 /* Tabellen */
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     margin-bottom: 20px;
+    border-radius: 8px; /* Abrundung für gesamte Tabelle */
+    overflow: hidden; /* Für abgerundete Kanten */
 }
 
 th, td {
     padding: 10px;
     border: 1px solid #66ffcc;
     text-align: left;
+}
+
+td:first-child, th:first-child {
+    border-radius: 8px 0 0 8px; /* Linke obere und untere Ecke abrunden */
+}
+
+td:last-child, th:last-child {
+    border-radius: 0 8px 8px 0; /* Rechte obere und untere Ecke abrunden */
 }
 
 th {
@@ -83,12 +152,14 @@ input, textarea, select, button {
     border: 1px solid #66ffcc;
     background-color: #1a1a1a;
     color: #b2f0e5;
+    border-radius: 6px; /* Abrundung der Ecken für Formularelemente */
 }
 
 button {
     background-color: #33cccc;
     color: #1a1a1a;
     cursor: pointer;
+    border-radius: 6px; /* Abrundung für Buttons */
 }
 
 button:hover {
@@ -96,11 +167,11 @@ button:hover {
 }
 
 /* Code */
-code, pre {
-    background-color: #002b36; /* Sehr dunkles Blau für Code-Hintergrund */
+pre, code {
+    background-color: #002b36;
     color: #b2f0e5;
-    padding: 5px;
-    border-radius: 3px;
+    padding: 10px;
+    border-radius: 8px; /* Abrundung für Code-Blöcke */
     font-family: monospace;
 }
 
