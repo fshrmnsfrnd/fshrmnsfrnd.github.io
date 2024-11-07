@@ -1,0 +1,114 @@
+/* Allgemeiner Seitenstil */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    color: #b2f0e5; /* Grundfarbe in Türkis */
+}
+
+body {
+    background: linear-gradient(180deg, #001f3f, #3a3a3a); /* Dunkelblau bis Dunkelgrau */
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Überschriften */
+h1, h2, h3, h4, h5, h6 {
+    color: #33cccc; /* Helleres Türkis für Überschriften */
+}
+
+h1 { font-size: 2.5em; }
+h2 { font-size: 2em; }
+h3 { font-size: 1.75em; }
+h4 { font-size: 1.5em; }
+h5 { font-size: 1.25em; }
+h6 { font-size: 1em; }
+
+/* Links */
+a {
+    color: #66ffcc; /* Leuchtendes Türkis für Links */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #99e6d1; /* Helleres Türkis bei Hover */
+    text-decoration: underline;
+}
+
+/* Listen */
+ul, ol {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* Zitate */
+blockquote {
+    color: #99e6d1; /* Hellere Türkisfarbe */
+    font-style: italic;
+    border-left: 4px solid #33cccc;
+    padding-left: 15px;
+    margin: 20px 0;
+}
+
+/* Tabellen */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #66ffcc;
+    text-align: left;
+}
+
+th {
+    background-color: #2a3d45; /* Dunkler Hintergrund für Tabellenüberschriften */
+    color: #b2f0e5; /* Heller Text */
+}
+
+/* Formularelemente */
+input, textarea, select, button {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #66ffcc;
+    background-color: #1a1a1a;
+    color: #b2f0e5;
+}
+
+button {
+    background-color: #33cccc;
+    color: #1a1a1a;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #66ffcc;
+}
+
+/* Code */
+code, pre {
+    background-color: #002b36; /* Sehr dunkles Blau für Code-Hintergrund */
+    color: #b2f0e5;
+    padding: 5px;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+pre {
+    padding: 10px;
+    overflow-x: auto;
+}
+
+/* Fußzeile */
+footer {
+    text-align: center;
+    padding: 10px;
+    color: #99e6d1;
+    font-size: 0.9em;
+}
