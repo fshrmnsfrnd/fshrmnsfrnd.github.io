@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/defaultstyle.css">
+    <title>fshrmnsfrnd</title>
+    <link rel="shortcut icon" href="../src/ff_favicon.png" type="image/x-icon">
+    <script src="./promillerechner.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <a href="https://fshrmnsfrnd.github.io/"><h1>fshrmnsfrnd</h1></a>
+            <nav class="headnav">
+                <a href="https://fshrmnsfrnd.github.io/">Home</a>
+                <a href="https://github.com/fshrmnsfrnd">Github</a>
+                <a href="https://fshrmnsfrnd.github.io/Luna/">Luna</a>
+                <a href="https://fshrmnsfrnd.github.io/Promillerechner/">Promillerechner</a>
+                <!-- Neue Seitenlinks können hier hinzugefügt werden -->
+            </nav>
+    </header>  
+    <div id="promillerechner">
+        <h1>Promillerechner</h1>
+
+        <h4>Geschlecht</h4>
+        <select name="geschlecht" id="geschlecht">
+            <option value="m">Männlich</option>
+            <option value="w">Weiblich</option>
+        </select>
+
+        <h4>Gewicht</h4>
+        <input type="number" name="gewicht" id="gewicht"><b> kg</b>
+
+        <div>
+            <br><table id="timetable">
+                <tr>
+                    <th>Uhrzeit</th>
+                    <th>Drink</th>
+                </tr>
+                <tr>
+                    <td><input type="time" name="" id="time1"></td>
+                    <td>
+                        <select id="drink1">
+                            <option value="bier">Bier</option>
+                            <option value="wein">Wein</option>
+                        </select>
+                        <b style="float: right;">12%</b>
+                        <b id="promille1"></b>
+                    </td>
+                </tr>
+                
+            </table>
+            <button id="adddrink" style="width: 100%;">Add Drink</button>
+        </div>
+
+
+
+
+        <br><button id="promillejetzt">Restpromille</button>
+        <br><button id="nuchternum">Promille um</button>
+        <input type="datetime-local" id="promilleum">
+
+    </div>
+    <footer>
+        <p>Fuß</p>
+    </footer>
+
+</body>
+</html>
