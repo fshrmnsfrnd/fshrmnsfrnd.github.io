@@ -1,0 +1,33 @@
+/* Popup-Stil */
+.popup {
+    display: none;
+    /* Startet versteckt */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Transparenter Hintergrund */
+    z-index: 1000;
+    /* Popup über anderen Inhalten */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 400px;
+}
+
+.popup-close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}

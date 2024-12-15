@@ -7,6 +7,8 @@
     <title>fshrmnsfrnd</title>
     <link rel="shortcut icon" href="../src/ff_favicon.png" type="image/x-icon">
     <link rel="manifest" href="../src/manifest.json">
+    <script src="./promille.js"></script>
+    <link rel="stylesheet" href="../src/popup.css">
 </head>
 <body>
     <header>
@@ -24,10 +26,12 @@
         <h4>Gewicht</h4>
         <input type="number" name="gewicht" id="gewicht"><b> kg</b>
 
+        <h4>Vor wieviel Stunden ging es los</h4>
+        <input type="number" name="dauer" id="dauer"><b> Stunden</b>
+
         <div>
             <br><table id="timetable">
                 <tr>
-                    <th>Uhrzeit</th>
                     <th>Drink</th>
                     <th>Prozent</th>
                     <th>Menge</th>
@@ -37,13 +41,16 @@
         </div>
 
         <br><button id="promillejetzt">Restpromille</button>
-        <br><button id="nuchternum">Promille um</button>
-        <input type="datetime-local" id="promilleum">
+        <br><button id="nuchternum">Nüchtern um</button>
 
     </div>
-    <footer>
-        <p>Fuß</p>
-    </footer>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span id="popup-close" class="popup-close">&times;</span>
+            <p id="popup-message"></p>
+        </div>
+    </div>
 
 </body>
 </html>
