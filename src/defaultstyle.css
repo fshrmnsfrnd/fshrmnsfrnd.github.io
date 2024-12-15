@@ -27,21 +27,24 @@ header h1 {
     -webkit-text-fill-color: transparent;
 }
 
-/* Navigation */
+header>a:hover {
+    text-decoration: none;
+}
 
 .headnav a {
     display:inline-block;
     background-color: #002b36;
     color: #66ffcc;
-    padding: 8px 8px; /* Innenabstand für besseres Aussehen */
-    border-radius: 8px; /* Abrundung der Ecken für Links */
+    padding: 8px 8px;
+    border-radius: 8px;
     margin: 5px 10px;
 }
 
 .headnav a:hover {
     color: #99e6d1;
-    background-color: #1c262e; /* Etwas dunklere Hintergrundfarbe */
-    transform: scale(1.2); /* Vergrößert das Kästchen leicht */
+    background-color: #1c262e;
+    transform: scale(1.2);
+    text-decoration: none;
 }
 
 /* Überschriften */
