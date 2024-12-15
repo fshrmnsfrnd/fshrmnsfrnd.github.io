@@ -2,66 +2,40 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: Arial, sans-serif;
-    color: #b0c7d1; /* Grundfarbe in Türkis */
 }
 
 body {
     background-color: #0d1317;
-    line-height: 1.6;
-    padding: 20px;
-    margin: 0;
-    font-family: Arial, sans-serif;
     color: #b0c7d1;
+    line-height: 1.6;
+    margin: 20px auto;
+    width: calc(100% - 20px);
 }
 
 /* Styling für den Seitenkopf */
-.header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+header {
     padding: 20px;
     background-color: #2a3b4726;
     border-radius: 8px; /* Abrundung der Ecken */
-    gap: 20px;
-    flex-wrap: wrap;
 }
 
-.header h1 {
-    margin: 0;
+header h1 {
     font-size: 2em;
     background: linear-gradient(to right, #1feeee, #17ff9a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.header a {
-    font-size: 1.25em;
-    background-color: #002b36;
-    color: #66ffcc;
-    text-decoration: none;
-    padding: 8px 12px;
-    transition: background-color 0.3s, transform 0.2s;
-    border-radius: 6px;
-}
-
 /* Navigation */
 
-.headnav {
-    display: flex;
-    flex-direction: row;
-    gap: 13px;
-}
-
 .headnav a {
+    display:inline-block;
+    background-color: #002b36;
     color: #66ffcc;
-    text-decoration: none;
-    font-size: 1em;
-    padding: 8px 12px; /* Innenabstand für besseres Aussehen */
-    transition: color 0.3s;
-    border-radius: 6px; /* Abrundung der Ecken für Links */
+    padding: 8px 8px; /* Innenabstand für besseres Aussehen */
+    border-radius: 8px; /* Abrundung der Ecken für Links */
+    margin: 5px 10px;
 }
 
 .headnav a:hover {
