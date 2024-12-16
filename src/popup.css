@@ -1,5 +1,5 @@
 /* Popup-Stil */
-.popup {
+#popup {
     display: none;
     /* Startet versteckt */
     position: fixed;
@@ -17,14 +17,15 @@
 }
 
 .popup-content {
-    background-color: white;
+    color: #66ffcc;
+    background-color: #2a3d45;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 8px;
     width: 80%;
     max-width: 400px;
 }
 
-.popup-close {
+#close-symbol {
     position: absolute;
     top: 5px;
     right: 10px;

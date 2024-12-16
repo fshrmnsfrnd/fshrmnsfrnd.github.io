@@ -6,6 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const geschlechtSelect = document.getElementById("geschlecht");
   const gewichtInput = document.getElementById("gewicht");
   const beginnvor = document.getElementById("dauer");
+  // Popup und Inhalt
+  const popup = document.getElementById("popup");
+  const popupMessage = document.getElementById("popup-message");
+  const popupClose = document.getElementById("popup");
 
   // Standardwerte für Getränke: {Getränkname: {Alkoholgehalt, Menge in ml}}
   const standardMengen = {
@@ -22,13 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Liste der Getränke für das Dropdown-Menü
   const drinks = Object.keys(standardMengen);
 
-  // Popup und Inhalt
-  const popup = document.getElementById("popup");
-  const popupMessage = document.getElementById("popup-message");
-  const popupClose = document.getElementById("popup-close");
-
   // Popup schließen
-  popupClose.addEventListener("click", () => {
+  popup.addEventListener("click", () => {
     popup.style.display = "none";
   });
 
@@ -62,9 +61,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Menge Input
     const amountCell = document.createElement("td");
     const amountInput = document.createElement("input");
+    const amounteinheit = document.createElement("p");
     amountInput.type = "number";
     amountInput.value = standardMengen[drinkSelect.value].menge; // Standard Menge
     amountCell.appendChild(amountInput);
+    amounteinheit.innerHTML = "ml";
+    amountCell.appendChild(amounteinheit);
 
     // Event Listener für Änderungen im Dropdown
     drinkSelect.addEventListener("change", () => {
@@ -82,8 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
   promilleButton.addEventListener("click", () => {
     const geschlecht = geschlechtSelect.value;
     const gewicht = parseFloat(gewichtInput.value);
-    if (!gewicht || !geschlecht) {
-      alert("Bitte geben Sie Ihr Gewicht und Geschlecht ein.");
+    if (!gewicht) {
+      showPopup("Gewicht eingeben");
       return;
     }
 
@@ -110,14 +112,14 @@ document.addEventListener("DOMContentLoaded", () => {
     let promille = (totalAlcohol * 0.8) / (gewicht * r) - dauer * a; // Widmark
     promille = promille >= 0 ? promille : 0.0;
 
-    showPopup("Ihr aktuelles Promille: " + promille.toFixed(2));
+    showPopup("Aktuelle Promille: \n" + promille.toFixed(2));
   });
 
   nuchternButton.addEventListener("click", () => {
     const geschlecht = geschlechtSelect.value;
     const gewicht = parseFloat(gewichtInput.value);
-    if (!gewicht || !geschlecht) {
-      showPopup("Bitte geben Sie Ihr Gewicht und Geschlecht ein.");
+    if (!gewicht) {
+      showPopup("Gewicht eingeben");
       return;
     }
 
@@ -141,9 +143,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const r = geschlecht === "m" ? 0.7 : 0.6;
     const dauer = beginnvor.value;
     const promillePerHour = geschlecht === "m" ? 0.15 : 0.1; // Promilleabbau pro Stunde
-    const timeToSober = (totalAlcohol * 0.8) / (gewicht * r) / promillePerHour - dauer;
+    const timeToSober =
+      (totalAlcohol * 0.8) / (gewicht * r) / promillePerHour - dauer;
 
     showPopup(
-      "Sie sind nach ca. " + timeToSober.toFixed(2) + " Stunden nüchtern.");
+      "Sie sind in " + timeToSober.toFixed(2) + " Stunden nüchtern."
+    );
   });
 });
