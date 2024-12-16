@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Popup und Inhalt
   const popup = document.getElementById("popup");
   const popupMessage = document.getElementById("popup-message");
-  const popupClose = document.getElementById("popup");
+  const popupClose = document.getElementById("close-symbol");
+  const popupContent = document.getElementById("popup-content")
 
   // Standardwerte für Getränke: {Getränkname: {Alkoholgehalt, Menge in ml}}
   const standardMengen = {
@@ -29,12 +30,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // Popup schließen
   popup.addEventListener("click", () => {
     popup.style.display = "none";
+    popupClose.style.display = "none";
+    popupContent.style.display = "none";
   });
 
   // Funktion zur Anzeige des Popups
   const showPopup = (message) => {
     popupMessage.textContent = message;
-    popup.style.display = "flex"; // Popup anzeigen
+    popup.style.display = "flex"; 
+    popupClose.style.display = "flex";
+    popupContent.style.display = "flex";
   };
 
   addDrinkButton.addEventListener("click", () => {

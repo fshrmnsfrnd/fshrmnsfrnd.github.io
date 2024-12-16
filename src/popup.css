@@ -16,7 +16,8 @@
     text-align: center;
 }
 
-.popup-content {
+#popup-content {
+    display: none;
     color: #66ffcc;
     background-color: #2a3d45;
     padding: 20px;
@@ -26,6 +27,7 @@
 }
 
 #close-symbol {
+    display: none;
     position: absolute;
     top: 5px;
     right: 10px;
