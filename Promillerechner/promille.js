@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const popup = document.getElementById("popup");
   const popupMessage = document.getElementById("popup-message");
   const popupClose = document.getElementById("close-symbol");
-  const popupContent = document.getElementById("popup-content")
+  const popupContent = document.getElementById("popup-content");
 
   // Standardwerte für Getränke: {Getränkname: {Alkoholgehalt, Menge in ml}}
   const standardMengen = {
