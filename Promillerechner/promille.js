@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const popupClose = document.getElementById("close-symbol");
   const popupContent = document.getElementById("popup-content");
 
+  var rows = 0;
+
   // Standardwerte für Getränke: {Getränkname: {Alkoholgehalt, Menge in ml}}
   const standardMengen = {
     bier: { alkoholgehalt: 5, menge: 500 },
@@ -43,47 +45,60 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   addDrinkButton.addEventListener("click", () => {
-    const newRow = document.createElement("tr");
+      const newRow = document.createElement("tr");
+      newRow.id = `drink${rows}`;
 
-    // Drink Dropdown
-    const drinkCell = document.createElement("td");
-    const drinkSelect = document.createElement("select");
-    drinks.forEach((drink) => {
-      const option = document.createElement("option");
-      option.value = drink;
-      option.textContent = drink.charAt(0).toUpperCase() + drink.slice(1);
-      drinkSelect.appendChild(option);
-    });
-    drinkCell.appendChild(drinkSelect);
+      // Drink Dropdown
+      const drinkCell = document.createElement("td");
+      const drinkSelect = document.createElement("select");
+      drinks.forEach((drink) => {
+          const option = document.createElement("option");
+          option.value = drink;
+          option.textContent = drink.charAt(0).toUpperCase() + drink.slice(1);
+          drinkSelect.appendChild(option);
+      });
+      drinkCell.appendChild(drinkSelect);
 
-    // Prozent Input
-    const percentCell = document.createElement("td");
-    const percentInput = document.createElement("input");
-    percentInput.type = "number";
-    percentInput.value = standardMengen[drinkSelect.value].alkoholgehalt; // Standard Alkoholgehalt
-    percentCell.appendChild(percentInput);
+      // Prozent Input
+      const percentCell = document.createElement("td");
+      const percentInput = document.createElement("input");
+      percentInput.type = "number";
+      percentInput.value = standardMengen[drinkSelect.value].alkoholgehalt; // Standard Alkoholgehalt
+      percentCell.appendChild(percentInput);
 
-    // Menge Input
-    const amountCell = document.createElement("td");
-    const amountInput = document.createElement("input");
-    const amounteinheit = document.createElement("p");
-    amountInput.type = "number";
-    amountInput.value = standardMengen[drinkSelect.value].menge; // Standard Menge
-    amountCell.appendChild(amountInput);
-    amounteinheit.innerHTML = "ml";
-    amountCell.appendChild(amounteinheit);
+      // Menge Input
+      const amountCell = document.createElement("td");
+      const amountInput = document.createElement("input");
+      const amounteinheit = document.createElement("p");
+      amountInput.type = "number";
+      amountInput.value = standardMengen[drinkSelect.value].menge; // Standard Menge
+      amountCell.appendChild(amountInput);
+      amounteinheit.innerHTML = "ml";
+      amountCell.appendChild(amounteinheit);
 
-    // Event Listener für Änderungen im Dropdown
-    drinkSelect.addEventListener("change", () => {
-      const selectedDrink = drinkSelect.value;
-      percentInput.value = standardMengen[selectedDrink].alkoholgehalt;
-      amountInput.value = standardMengen[selectedDrink].menge;
-    });
+      //Getränk löschen
+      const deleteCell = document.createElement("td");
+      const deleteButton = document.createElement("button");
+      deleteButton.innerHTML = `&times;`;
+      deleteCell.appendChild(deleteButton);
+      deleteButton.id = `deletebutton${rows}`;
+      deleteButton.addEventListener("click", () => {
+          timetable.removeChild(newRow);
+      });
 
-    newRow.appendChild(drinkCell);
-    newRow.appendChild(percentCell);
-    newRow.appendChild(amountCell);
-    timetable.appendChild(newRow);
+      // Event Listener für Änderungen im Dropdown
+      drinkSelect.addEventListener("change", () => {
+          const selectedDrink = drinkSelect.value;
+          percentInput.value = standardMengen[selectedDrink].alkoholgehalt;
+          amountInput.value = standardMengen[selectedDrink].menge;
+      });
+
+      newRow.appendChild(drinkCell);
+      newRow.appendChild(percentCell);
+      newRow.appendChild(amountCell);
+      newRow.appendChild(deleteCell);
+      timetable.appendChild(newRow);
+      rows = rows + 1;
   });
 
   promilleButton.addEventListener("click", () => {
