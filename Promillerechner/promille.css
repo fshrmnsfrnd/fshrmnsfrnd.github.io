@@ -1,0 +1,16 @@
+#timetable>tr>td>*{
+    box-sizing: border-box;
+    width: 100%;
+    margin: auto auto;
+}
+
+#timetable>tr>td>input{
+    float: left;
+    width: 69%;
+}
+
+#timetable>tr>td>p{
+    float: left;
+    width: 4%;
+    margin-left: 5px;
+}

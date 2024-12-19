@@ -12,8 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const popupClose = document.getElementById("close-symbol");
   const popupContent = document.getElementById("popup-content");
 
-  var rows = 0;
-
   // Standardwerte für Getränke: {Getränkname: {Alkoholgehalt, Menge in ml}}
   const standardMengen = {
     bier: { alkoholgehalt: 5, menge: 500 },
@@ -46,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   addDrinkButton.addEventListener("click", () => {
       const newRow = document.createElement("tr");
-      newRow.id = `drink${rows}`;
 
       // Drink Dropdown
       const drinkCell = document.createElement("td");
@@ -81,7 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const deleteButton = document.createElement("button");
       deleteButton.innerHTML = `&times;`;
       deleteCell.appendChild(deleteButton);
-      deleteButton.id = `deletebutton${rows}`;
+
+      //Event Listener für Getränk löschen
       deleteButton.addEventListener("click", () => {
           timetable.removeChild(newRow);
       });
@@ -98,7 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
       newRow.appendChild(amountCell);
       newRow.appendChild(deleteCell);
       timetable.appendChild(newRow);
-      rows = rows + 1;
   });
 
   promilleButton.addEventListener("click", () => {
