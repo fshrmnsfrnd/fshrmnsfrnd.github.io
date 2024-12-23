@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const popupClose = document.getElementById("close-symbol");
   const popupContent = document.getElementById("popup-content");
 
+  var cookie;
+  var rows = 0;
+
   // Standardwerte für Getränke: {Getränkname: {Alkoholgehalt, Menge in ml}}
   const standardMengen = {
     bier: { alkoholgehalt: 5, menge: 500 },
@@ -96,6 +99,16 @@ document.addEventListener("DOMContentLoaded", () => {
       newRow.appendChild(amountCell);
       newRow.appendChild(deleteCell);
       timetable.appendChild(newRow);
+
+      //In Cookie speichern
+      cookie = "";
+      expires += new Date(a.getTime() + 1000 * 60 * 60 * 24 * 365);
+      cookie += `expires=${a.toGMTString()};`;
+      cookie += `gender=${geschlechtSelect.value};`;
+      cookie += `weight=${gewichtInput.value};`;
+      cookie += `row${rows}=${newRow};`;
+      document.cookie = cookie;
+      rows ++;
   });
 
   promilleButton.addEventListener("click", () => {
