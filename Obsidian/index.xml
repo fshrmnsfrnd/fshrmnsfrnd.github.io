@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>Quartz 4</title>
+      <link>https://quartz.jzhao.xyz</link>
+      <description>Last 10 notes on Quartz 4</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>NAND und NOR</title>
+    <link>https://quartz.jzhao.xyz/Nico/Schule/TI/Logische-Schaltungen/NAND-und-NOR</link>
+    <guid>https://quartz.jzhao.xyz/Nico/Schule/TI/Logische-Schaltungen/NAND-und-NOR</guid>
+    <description>Gegeben sind die Grundglieder UND, ODER und NICHT diese sind nur mit NAND - Elementen NOR - Elementen zu realisieren 1) NAND z = \overline{a \land a} NAND → NICHT UND realisiert mit NAND ...</description>
+    <pubDate>Tue, 11 Mar 2025 08:27:18 GMT</pubDate>
+  </item><item>
+    <title>Entscheidungen SoMe und Web</title>
+    <link>https://quartz.jzhao.xyz/Nico/Feuerwehr/Entscheidungen-SoMe-und-Web</link>
+    <guid>https://quartz.jzhao.xyz/Nico/Feuerwehr/Entscheidungen-SoMe-und-Web</guid>
+    <description>Einsätze auf Website anzeigen? Muss im Agent gepflegt werden Einsatzposts auf Social Media? Wenn ja, als Monatsrückblick, oder jeden Einsatz mit Symbolbild posten? Große Einsätze ...</description>
+    <pubDate>Tue, 11 Mar 2025 07:27:49 GMT</pubDate>
+  </item><item>
+    <title>Grundgesetz</title>
+    <link>https://quartz.jzhao.xyz/Nico/Schule/WPUG/Grundgesetz</link>
+    <guid>https://quartz.jzhao.xyz/Nico/Schule/WPUG/Grundgesetz</guid>
+    <description>Wichtige Artikel Versammlungs- und Vereinigungsfreiheit (Art 8 und 9 GG) Versammlungsfreiheit alle Deutschen haben das Recht sich jederzeit ohne Anmeldung und Erlaubnis friedlich ...</description>
+    <pubDate>Mon, 10 Mar 2025 09:52:49 GMT</pubDate>
+  </item><item>
+    <title>Knoten &amp; Stiche</title>
+    <link>https://quartz.jzhao.xyz/Nico/Feuerwehr/Knoten--and--Stiche</link>
+    <guid>https://quartz.jzhao.xyz/Nico/Feuerwehr/Knoten--and--Stiche</guid>
+    <description>Station 1 Material Leine Knoten Rettungsknoten (Pfahlstich, Spierenstich) Zimmermannschlag Station 2 Material Gurte mit Karabiner Leine Knoten Halbmastwurf (Gelegt und Gestochen) ...</description>
+    <pubDate>Mon, 10 Mar 2025 09:10:27 GMT</pubDate>
+  </item><item>
+    <title>Übung_Prozesse</title>
+    <link>https://quartz.jzhao.xyz/Nico/Schule/BA/%C3%9Cbung_Prozesse</link>
+    <guid>https://quartz.jzhao.xyz/Nico/Schule/BA/%C3%9Cbung_Prozesse</guid>
+    <description>⚠ Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠ You can decompress Drawing data with the command palette: ‘Decompress current Excalidraw file’.</description>
+    <pubDate>Thu, 27 Feb 2025 07:51:21 GMT</pubDate>
+  </item><item>
+    <title>Abstrakte Klassen</title>
+    <link>https://quartz.jzhao.xyz/Nico/Schule/Prog/%C3%9Cbungen/Abstrakte-Klassen</link>
+    <guid>https://quartz.jzhao.xyz/Nico/Schule/Prog/%C3%9Cbungen/Abstrakte-Klassen</guid>
+    <description>⚠ Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠ You can decompress Drawing data with the command palette: ‘Decompress current Excalidraw file’.</description>
+    <pubDate>Fri, 21 Feb 2025 12:37:09 GMT</pubDate>
+  </item><item>
+    <title>Gesetze 18-02-25 12.11.05.excalidraw</title>
+    <link>https://quartz.jzhao.xyz/Nico/src/Gesetze-18-02-25-12.11.05.excalidraw</link>
+    <guid>https://quartz.jzhao.xyz/Nico/src/Gesetze-18-02-25-12.11.05.excalidraw</guid>
+    <description>⚠ Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠ You can decompress Drawing data with the command palette: ‘Decompress current Excalidraw file’.</description>
+    <pubDate>Tue, 18 Feb 2025 11:11:05 GMT</pubDate>
+  </item><item>
+    <title>Aufgaben Vererbung</title>
+    <link>https://quartz.jzhao.xyz/Nico/Schule/Prog/%C3%9Cbungen/Aufgaben-Vererbung</link>
+    <guid>https://quartz.jzhao.xyz/Nico/Schule/Prog/%C3%9Cbungen/Aufgaben-Vererbung</guid>
+    <description>Aufgabe 1 a) classDiagram Person &lt;|-- Student Person &lt;|-- Dozent Student &lt;|-- PromotionsStudent class Person{ vorname: String nachname: String getVorname(): String ...</description>
+    <pubDate>Fri, 14 Feb 2025 08:28:05 GMT</pubDate>
+  </item><item>
+    <title>Kommutativgesetz (Vertauschungsgesetz) 13-02-25 13.06.01.excalidraw</title>
+    <link>https://quartz.jzhao.xyz/Nico/src/Kommutativgesetz-(Vertauschungsgesetz)-13-02-25-13.06.01.excalidraw</link>
+    <guid>https://quartz.jzhao.xyz/Nico/src/Kommutativgesetz-(Vertauschungsgesetz)-13-02-25-13.06.01.excalidraw</guid>
+    <description>⚠ Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠ You can decompress Drawing data with the command palette: ‘Decompress current Excalidraw file’.</description>
+    <pubDate>Thu, 13 Feb 2025 12:06:01 GMT</pubDate>
+  </item><item>
+    <title>Gesetze</title>
+    <link>https://quartz.jzhao.xyz/Nico/Schule/TI/Logische-Schaltungen/Gesetze</link>
+    <guid>https://quartz.jzhao.xyz/Nico/Schule/TI/Logische-Schaltungen/Gesetze</guid>
+    <description>Kommutativgesetz (Vertauschungsgesetz) Vertauschung von Variablen innerhalb einer Verknüpfungsart Transclude of Kommutativgesetz-(Vertauschungsgesetz)-13-02-25-13.06.01.excalidraw ...</description>
+    <pubDate>Thu, 13 Feb 2025 12:05:15 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>
