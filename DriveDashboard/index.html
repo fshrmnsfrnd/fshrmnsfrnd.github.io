@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/defaultstyle.css">
+    <link rel="stylesheet" href="./promille.css">
+    <title>fshrmnsfrnd</title>
+    <link rel="shortcut icon" href="../src/ff_favicon.png" type="image/x-icon">
+    <link rel="manifest" href="../src/manifest.json">
+    <script src="./promille.js"></script>
+    <link rel="stylesheet" href="../src/popup.css">
+</head>
+
+<body>
+    <header>
+        <script src="../src/header.js" defer></script>
+    </header>
+    <label for="xangle">X-Angle</label>
+    <span id="xangle"></span>
+    <script>
+        window.addEventListener('deviceorientation', function(event) {
+            var xAngle = event.beta; // X-Axis rotation in degrees
+            document.getElementById('xangle').textContent = xAngle.toFixed(2) + '°';
+        });
+    </script>
+
+</body>
+</html>
