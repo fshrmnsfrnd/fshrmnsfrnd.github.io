@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,12 +19,52 @@
     </header>
     <label for="xangle">X-Angle</label>
     <span id="xangle"></span>
+    <span id="accelerometer"></span>
+    <span id="Gyroscope"></span>
+    <span id="LinearAccelerationSensor"></span>
+    <span id="AbsoluteOrientationSensor"></span>
+    <span id="RelativeOrientationSensor"></span>
+    <span id="GravitySensor"></span>
     <script>
-        window.addEventListener('deviceorientation', function(event) {
+        window.addEventListener('deviceorientation', function (event) {
             var xAngle = event.beta; // X-Axis rotation in degrees
             document.getElementById('xangle').textContent = xAngle.toFixed(2) + '°';
         });
+
+
+        if ('Accelerometer' in window) {
+            // The `Accelerometer` interface is supported by the browser.
+            // Does the device have an accelerometer, though?
+            document.getElementById('accelerometer').innerHTML = "Accelerometer vorhanden"
+        }
+
+        if ('Gyroscope' in window) {
+            // The `Accelerometer` interface is supported by the browser.
+            // Does the device have an accelerometer, though?
+            document.getElementById('Gyroscope').innerHTML = "Gyroscope vorhanden"
+        }
+
+        if ('LinearAccelerationSensor' in window) {
+            // The `Accelerometer` interface is supported by the browser.
+            // Does the device have an accelerometer, though?
+            document.getElementById('LinearAccelerationSensor').innerHTML = "LinearAccelerationSensor vorhanden"
+        }
+
+        if ('AbsoluteOrientationSensor' in window) {
+            // The `Accelerometer` interface is supported by the browser.
+            // Does the device have an accelerometer, though?
+            document.getElementById('AbsoluteOrientationSensor').innerHTML = "AbsoluteOrientationSensor vorhanden"
+        }
+
+        if ('GravitySensor' in window) {
+            // The `Accelerometer` interface is supported by the browser.
+            // Does the device have an accelerometer, though?
+            document.getElementById('GravitySensor').innerHTML = "GravitySensor vorhanden"
+        }
+
+
     </script>
 
 </body>
+
 </html>
