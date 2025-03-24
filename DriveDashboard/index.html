@@ -17,8 +17,10 @@
     <header>
         <script src="../src/header.js" defer></script>
     </header>
-    <label for="xangle">X-Angle</label>
+    <label for="xangle">X-Angle withoutfunc</label>
     <span id="xangle"></span>
+    <label for="xanglef">X-Angle withfunc</label>
+    <span id="xanglef"></span>
     <span id="Gyroscope"></span>
     <span id="LinearAccelerationSensor"></span>
     <span id="AbsoluteOrientationSensor"></span>
@@ -63,7 +65,13 @@
             }
 
         initSensor()
-        
+
+        sensor = new AbsoluteOrientationSensor({ frequency: 60 })
+        sensor.start()
+        document.getElementById('xangle').innerHTML = sensor.x
+        document.getElementById('xanglef').innerHTML = sensor.x()
+
+
 
 
     </script>
