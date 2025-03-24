@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <a href="https://github.com/fshrmnsfrnd">Github</a>
         <a href="https://fshrmnsfrnd.github.io/Promillerechner/">Promillerechner</a>
         <a href="https://fshrmnsfrnd.github.io/Snake/">Snake</a>
+        <a href="https://fshrmnsfrnd.github.io/DriveDashboard/">DriveDashboard</a>
     </nav>
   `;
   document.querySelector("header").innerHTML = headerHTML;
