@@ -13,66 +13,45 @@
     <link rel="stylesheet" href="../src/popup.css">
 </head>
 
+<header>
+    <script src="../src/header.js" defer></script>
+</header>
+
 <body>
-    <header>
-        <script src="../src/header.js" defer></script>
-    </header>
-    <label for="xangle">X-Angle withoutfunc</label>
-    <span id="xangle"></span>
-    <label for="xanglef">X-Angle withfunc</label>
-    <span id="xanglef"></span>
-    <span id="Gyroscope"></span>
-    <span id="LinearAccelerationSensor"></span>
-    <span id="AbsoluteOrientationSensor"></span>
-    <span id="RelativeOrientationSensor"></span>
-    <span id="GravitySensor"></span>
+    <h1>Neigungsmesser</h1>
+    <p>Alpha: <span id="alpha">0</span>°</p>
+    <p>Beta: <span id="beta">0</span>°</p>
+    <p>Gamma: <span id="gamma">0</span>°</p>
+
     <script>
+        const displayAlpha = document.getElementById("alpha");
+        const displayBeta = document.getElementById("beta");
+        const displayGamma = document.getElementById("gamma");
 
-        if ('Gyroscope' in window) {
-            // The `Accelerometer` interface is supported by the browser.
-            // Does the device have an accelerometer, though?
-            document.getElementById('Gyroscope').innerHTML = "Gyroscope vorhanden"
-        }
-
-        if ('LinearAccelerationSensor' in window) {
-            // The `Accelerometer` interface is supported by the browser.
-            // Does the device have an accelerometer, though?
-            document.getElementById('LinearAccelerationSensor').innerHTML = "LinearAccelerationSensor vorhanden"
-        }
-
-        if ('AbsoluteOrientationSensor' in window) {
-            // The `Accelerometer` interface is supported by the browser.
-            // Does the device have an accelerometer, though?
-            document.getElementById('AbsoluteOrientationSensor').innerHTML = "AbsoluteOrientationSensor vorhanden"
-        }
-
-        if ('GravitySensor' in window) {
-            // The `Accelerometer` interface is supported by the browser.
-            // Does the device have an accelerometer, though?
-            document.getElementById('GravitySensor').innerHTML = "GravitySensor vorhanden"
-        }
-
-        function initSensor() {
-                sensor = new AbsoluteOrientationSensor({ frequency: 60 });
-                sensor.onreading = () => model.quaternion.fromArray(sensor.quaternion);
-                sensor.onerror = (event) => {
-                    if (event.error.name == 'NotReadableError') {
-                        console.log('Sensor is not available.');
-                    }
-                };
-                sensor.start();
-                
+        async function requestPermission() {
+            if (typeof DeviceOrientationEvent.requestPermission === "function") {
+                const permissionState = await DeviceOrientationEvent.requestPermission();
+                if (permissionState === "granted") {
+                    window.addEventListener("deviceorientation", updateAngle);
+                    permissionButton.style.display = "none";
+                } else {
+                    alert("Berechtigung abgelehnt");
+                }
+            } else {
+                // Falls keine Berechtigung benötigt wird (Android)
+                window.addEventListener("deviceorientation", updateAngle);
             }
+        }
+        requestPermission();
 
-        initSensor()
-
-        sensor = new AbsoluteOrientationSensor({ frequency: 60 })
-        sensor.start()
-        document.getElementById('xangle').innerHTML = sensor.x
-        document.getElementById('xanglef').innerHTML = sensor.x()
-
-
-
+        function updateAngle(event) {
+            let alpha = event.alpha;
+            let beta = event.beta;
+            let gamma = event.gamma; // Neigung nach links/rechts
+            displayAlpha.textContent = alpha.toFixed(1);
+            displayBeta.textContent = beta.toFixed(1);
+            displayGamma.textContent = gamma.toFixed(1);
+        }
 
     </script>
 
