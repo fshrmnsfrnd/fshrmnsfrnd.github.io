@@ -1,6 +1,33 @@
 const displayBeta = document.getElementById("beta");
+const displayMaxAngle = document.getElementById("maxbeta");
 const permissionButton = document.getElementById("requestPermission");
+const calibrateButton = document.getElementById("calibrate")
 let verschiebung = 90.0;
+let maxAngle = 0.0;
+let screenorientation;
+
+function calibrate() {
+    maxAngle = 0.0;
+    displayMaxAngle.innerText = maxAngle.toFixed(0);
+
+    if (screen.height < screen.width){ //if landscape
+        screenorientation = "landscape";
+    }else{
+        screenorientation = "portrait";
+    }
+}
+
+function updateMax(angle){
+    if(angle < 0){
+        angle = angle * (-1);
+    }
+
+    if(angle > maxAngle){
+        maxAngle = angle;
+    }
+
+    displayMaxAngle.innerText = maxAngle.toFixed(0);
+}
 
 async function requestPermission() {
   if (typeof DeviceOrientationEvent.requestPermission === "function") {
@@ -15,20 +42,24 @@ async function requestPermission() {
     window.addEventListener("deviceorientation", updateAngle);
     permissionButton.style.display = "none";
   }
-}
-
-function updateGauge(beta) {
-    let angle = beta + verschiebung;
-    displayBeta.textContent = angle;
-    gauge.set(angle);
+  calibrate;
 }
 
 function updateAngle(event) {
-  let beta = event.beta;
-  //gauge.set(beta.toFixed(0))
-  updateGauge(beta);
+    let angle;
+    if(screenorientation == "landscape"){
+        angle = event.beta;
+    }else if (screenorientation == "portrait"){
+        angle = event.gamma;
+    }
+    
+    displayBeta.textContent = event.beta.toFixed(0);
+    gauge.set(angle + verschiebung);
+    updateMax(event.beta);
 }
+
 permissionButton.addEventListener("click", requestPermission);
+calibrateButton.addEventListener("click", calibrate);
 
 var opts = {
   angle: 0, // The span of the gauge arc
@@ -65,4 +96,3 @@ var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
 gauge.maxValue = 180; // set max gauge value
 gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 gauge.animationSpeed = 30; // set animation speed (32 is default value)
-//gauge.setOptions(opts);

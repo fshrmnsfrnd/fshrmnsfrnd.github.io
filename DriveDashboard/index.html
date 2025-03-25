@@ -18,19 +18,20 @@
 </header>
 
 <body>
+    <div id="neigungsmesser">
     <h1>Neigungsmesser</h1>
     <!--
     <p>Alpha: <span id="alpha">0</span>°</p>
     <p>Gamma: <span id="gamma">0</span>°</p>
     -->
     <p>Beta: <span id="beta">0</span>°</p>
-    <button id="requestPermission">Sensor aktivieren</button>
-    <div id="display">
+    <p>Max: <span id="maxbeta">0</span>°</p>
+    <button id="requestPermission">Activate Sensor</button>
+    <button id="calibrate">Calibrate</button>
         <canvas id="neigungdisplay"></canvas>
-    </div>
     <script src="./gauge.min.js"></script>
     <script src="./dDashboard.js"></script>
-
+    </div>
 </body>
 
 </html>
