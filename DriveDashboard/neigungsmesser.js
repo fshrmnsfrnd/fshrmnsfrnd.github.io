@@ -1,4 +1,4 @@
-const displayBeta = document.getElementById("beta");
+const displayAngle = document.getElementById("angle");
 const displayMaxAngle = document.getElementById("maxbeta");
 const permissionButton = document.getElementById("requestPermission");
 const calibrateButton = document.getElementById("calibrate")
@@ -8,13 +8,14 @@ let screenorientation;
 
 function calibrate() {
     maxAngle = 0.0;
-    displayMaxAngle.innerText = maxAngle.toFixed(0);
 
     if (screen.height < screen.width){ //if landscape
         screenorientation = "landscape";
     }else{
         screenorientation = "portrait";
     }
+    displayMaxAngle.innerText = maxAngle.toFixed(0);
+    gauge.set(verschiebung);
 }
 
 function updateMax(angle){
@@ -42,7 +43,7 @@ async function requestPermission() {
     window.addEventListener("deviceorientation", updateAngle);
     permissionButton.style.display = "none";
   }
-  calibrate;
+  calibrate();
 }
 
 function updateAngle(event) {
@@ -53,9 +54,8 @@ function updateAngle(event) {
         angle = event.gamma;
     }
     
-    displayBeta.textContent = event.beta.toFixed(0);
     gauge.set(angle + verschiebung);
-    updateMax(event.beta);
+    updateMax(angle);
 }
 
 permissionButton.addEventListener("click", requestPermission);
