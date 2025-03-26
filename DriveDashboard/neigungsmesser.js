@@ -14,9 +14,9 @@ addEventListener("DOMContentLoaded", (event) => {
 
   function calibrate() {
     maxAngle = 0.0;
-    if (screen.height < screen.width) {
+    if (screen.orientation.type.startsWith("landscape")) {
       screenorientation = "landscape";
-    } else {
+    } else if (screen.orientation.type.startsWith("portrait")) {
       screenorientation = "portrait";
     }
     displayMaxAngle.innerText = maxAngle.toFixed(0);
