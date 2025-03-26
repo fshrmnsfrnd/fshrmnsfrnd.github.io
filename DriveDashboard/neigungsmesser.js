@@ -103,4 +103,5 @@ addEventListener("DOMContentLoaded", (event) => {
   gauge.setMinValue(0); // Prefer setter over gauge.minValue = 0
   gauge.animationSpeed = 30; // set animation speed (32 is default value)
 });
+calibrate();
 
