@@ -21,7 +21,6 @@ addEventListener("DOMContentLoaded", (event) => {
     }
     displayMaxAngle.innerText = maxAngle.toFixed(0);
     gauge.set(verschiebung);
-    displayTest.innerText = screen.orientation.type;
   }
 
   function updateMax(angle) {
@@ -55,8 +54,10 @@ addEventListener("DOMContentLoaded", (event) => {
     let angle;
     if (screenorientation == "landscape") {
       angle = event.beta;
+      displayTest.innerText = beta;
     } else if (screenorientation == "portrait") {
       angle = event.gamma;
+      displayTest.innerText = gamma;
     }
     gauge.set(angle + verschiebung);
     updateMax(angle);

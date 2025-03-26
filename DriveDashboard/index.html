@@ -11,17 +11,16 @@
     <link rel="manifest" href="../src/manifest.json">
     <script src="./promille.js"></script>
     <link rel="stylesheet" href="../src/popup.css">
+    <link rel="stylesheet" href="./dashboardstyle.css">
 </head>
 
-<header>
-    <script src="../src/header.js" defer></script>
-</header>
-
 <body>
+    <a href="https://fshrmnsfrnd.github.io/">
+        <h3>&#8962</h3>
+    </a>
     <div id="neigungsmesser">
-        <h1 style="overflow:scale;">Neigungsmesser</h1>
-        <p>Angle: <span id="angle">0</span>°</p>
-        <p>Max: <span id="maxbeta">0</span>°</p>
+        <p id="anglep">Angle: <span id="angle">0</span>°</p>
+        <p id="maxp">Max: <span id="maxbeta">0</span>°</p>
         <button id="requestPermission">Activate Sensor</button>
         <canvas id="neigungdisplay"></canvas>
         <script src="./gauge.min.js"></script>

@@ -1,0 +1,30 @@
+body{
+    height: 99%;
+    width: 99%;
+    margin: 1%;
+}
+
+#neigungsmesser {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#calibrate {
+    margin-top: 5px;
+}
+
+@media screen and (orientation: portrait) {
+    #neigungsmesser {
+        height: calc(50% - 1em);
+        width: 100%;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    #neigungsmesser {
+            height: calc(100% - 1em);
+            width: 50%;
+        }
+}
