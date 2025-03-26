@@ -3,32 +3,35 @@ addEventListener("DOMContentLoaded", (event) => {
   const displayMaxAngle = document.getElementById("maxbeta");
   const permissionButton = document.getElementById("requestPermission");
   const calibrateButton = document.getElementById("calibrate");
+  const displayTest = document.getElementById("test");
   let verschiebung = 90.0;
   let maxAngle = 0.0;
   let screenorientation;
 
+  function rotateScreen() {
+    
+  }
+
   function calibrate() {
     maxAngle = 0.0;
-
     if (screen.height < screen.width) {
-      //if landscape
       screenorientation = "landscape";
     } else {
       screenorientation = "portrait";
     }
     displayMaxAngle.innerText = maxAngle.toFixed(0);
     gauge.set(verschiebung);
+    displayTest.innerText = screen.orientation.type;
   }
 
   function updateMax(angle) {
+
     if (angle < 0) {
       angle = angle * -1;
     }
-
     if (angle > maxAngle) {
       maxAngle = angle;
     }
-
     displayMaxAngle.innerText = maxAngle.toFixed(0);
   }
 
@@ -55,9 +58,9 @@ addEventListener("DOMContentLoaded", (event) => {
     } else if (screenorientation == "portrait") {
       angle = event.gamma;
     }
-
     gauge.set(angle + verschiebung);
     updateMax(angle);
+    displayAngle.innerText = angle.toFixed(0);
   }
 
   permissionButton.addEventListener("click", requestPermission);
@@ -99,3 +102,4 @@ addEventListener("DOMContentLoaded", (event) => {
   gauge.setMinValue(0); // Prefer setter over gauge.minValue = 0
   gauge.animationSpeed = 30; // set animation speed (32 is default value)
 });
+
