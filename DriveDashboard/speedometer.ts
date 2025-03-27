@@ -1,11 +1,13 @@
-let lastPosition = null;
-let lastTimestamp = null;
+const speedDisplay: HTMLElement|null = document.getElementById("speedDisplay");
+let lastPosition: { latitude: number; longitude: number } | null = null;
+let lastTimestamp = 0;
 
-function getSpeed() {
+function getSpeed(fspeedDisplay: HTMLElement|null) {
   if ("geolocation" in navigator) {
     navigator.geolocation.watchPosition(
       (position) => {
-        const { latitude, longitude, timestamp } = position.coords;
+        const { latitude, longitude } = position.coords;
+        const { timestamp } = position;
 
         if (lastPosition && lastTimestamp) {
           const distance = getDistanceFromLatLon(
@@ -18,16 +20,19 @@ function getSpeed() {
           const timeDiff = (timestamp - lastTimestamp) / 1000; // Sekunden
           const speedKmh = timeDiff > 0 ? (distance / timeDiff) * 3.6 : 0; // m/s → km/h
 
-          document.getElementById(
-            "speedDisplay"
-          ).innerText = `Geschwindigkeit: ${speedKmh.toFixed(2)} km/h`;
-        }
+          if (fspeedDisplay) {
+           fspeedDisplay.innerText = `Geschwindigkeit: ${speedKmh.toFixed(2)} km/h`; 
+          }
 
         lastPosition = { latitude, longitude };
         lastTimestamp = timestamp;
+        }
       },
       (error) => {
-        alert("Fehler beim Abrufen der Geschwindigkeit:", error);
+        alert("Fehler beim Abrufen der Geschwindigkeit:" + error.message);
+        if (fspeedDisplay) {
+          fspeedDisplay.innerText = error.message;
+        }
       },
       { enableHighAccuracy: true }
     );
@@ -37,7 +42,7 @@ function getSpeed() {
 }
 
 // Haversine-Formel zur Berechnung der Distanz zwischen zwei GPS-Punkten
-function getDistanceFromLatLon(lat1, lon1, lat2, lon2) {
+function getDistanceFromLatLon(lat1:number, lon1:number, lat2:number, lon2:number) {
   const R = 6371e3; // Erdradius in Metern
   const φ1 = (lat1 * Math.PI) / 180;
   const φ2 = (lat2 * Math.PI) / 180;
@@ -52,6 +57,6 @@ function getDistanceFromLatLon(lat1, lon1, lat2, lon2) {
   return R * c; // Entfernung in Metern
 }
 
-document.addEventListener("DOMContentLoaded", getSpeed);
+document.addEventListener("DOMContentLoaded", () => getSpeed(speedDisplay));
 
 console.log(navigator.permissions)
