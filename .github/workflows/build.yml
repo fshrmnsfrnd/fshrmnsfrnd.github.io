@@ -1,9 +1,9 @@
-name: Build Node
+name: Build TypeScript
 
 on:
   push:
     branches:
-      - main  # Passe den Branch ggf. an
+      - main
 
 jobs:
   build:
@@ -13,19 +13,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+      #- name: Set up Node.js
+      #  uses: actions/setup-node@v4
+      #  with:
+      #    node-version: 20
 
-     # - name: Install dependencies
-      #  run: npm install
+      #- name: Install TypeScript
+      #  run: npm install typescript
 
       - name: Compile TypeScript
         run: npx tsc
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./  # Falls dein Output-Ordner anders heißt, anpassen
+      - name: Commit compiled files
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git diff --quiet && git diff --staged --quiet || git commit -m "Compile TypeScript files"
+          git push
