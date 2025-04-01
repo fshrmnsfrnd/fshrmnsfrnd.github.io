@@ -6,65 +6,65 @@
       <description>Last 10 notes on Quartz 4</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>Schaltsynthese 18-03-25 09.10.33.excalidraw</title>
-    <link>https://quartz.jzhao.xyz/Nico/src/Schaltsynthese-18-03-25-09.10.33.excalidraw</link>
-    <guid>https://quartz.jzhao.xyz/Nico/src/Schaltsynthese-18-03-25-09.10.33.excalidraw</guid>
-    <description>⚠ Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠ You can decompress Drawing data with the command palette: ‘Decompress current Excalidraw file’.</description>
-    <pubDate>Tue, 18 Mar 2025 08:10:33 GMT</pubDate>
+    <title>Typumwandlung</title>
+    <link>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Typumwandlung</link>
+    <guid>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Typumwandlung</guid>
+    <description></description>
+    <pubDate>Mon, 31 Mar 2025 16:30:23 GMT</pubDate>
   </item><item>
-    <title>Schaltsynthese</title>
-    <link>https://quartz.jzhao.xyz/Nico/Schule/TI/Logische-Schaltungen/Schaltsynthese</link>
-    <guid>https://quartz.jzhao.xyz/Nico/Schule/TI/Logische-Schaltungen/Schaltsynthese</guid>
-    <description>Beispiel: ein Förderkorb darf nur auffahren, wenn folgende Bedingungen erfüllt sind. Die Ladeluke/Ladetüre muss geschlossen sein max. zulässige Traglast darf nicht überschritten werden Hebel zur Anfahrt muss betätigt werden 1.</description>
-    <pubDate>Tue, 18 Mar 2025 07:34:21 GMT</pubDate>
+    <title>Konstruktor</title>
+    <link>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Konstruktor</link>
+    <guid>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Konstruktor</guid>
+    <description>Der Konstruktor heißt immer genau wie die Klasse, ist public und hat keinen Rückgabewert. Er baut die Klasse, wenn daraus ein Objekt erzeugt wird. Ist der Konstruktor nicht eigens definiert, gibt es den Standardkonstruktor, er hat keine Übergabeparameter.</description>
+    <pubDate>Mon, 31 Mar 2025 14:41:31 GMT</pubDate>
   </item><item>
-    <title>index</title>
-    <link>https://quartz.jzhao.xyz/Nico/</link>
-    <guid>https://quartz.jzhao.xyz/Nico/</guid>
-    <description>Meine Notizen Keine Garantie, dass hier irgendwas stimmt. Das sind meine Notizen aus Obsidian und mit Quartz über mein GitHub Pages gehostet.</description>
-    <pubDate>Sat, 15 Mar 2025 13:11:51 GMT</pubDate>
+    <title>Objekte</title>
+    <link>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Objekte</link>
+    <guid>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Objekte</guid>
+    <description>Um eine Klasse zu verwenden muss daraus ein Objekt erzeugt werden Objekt erzeugen Klasse objekt = new Klasse(); Attribute public Attribute der Klasse können folgendermaßen gelesen ...</description>
+    <pubDate>Mon, 31 Mar 2025 14:14:01 GMT</pubDate>
   </item><item>
-    <title>NAND und NOR 13-03-25 12.35.41.excalidraw</title>
-    <link>https://quartz.jzhao.xyz/Nico/src/NAND-und-NOR-13-03-25-12.35.41.excalidraw</link>
-    <guid>https://quartz.jzhao.xyz/Nico/src/NAND-und-NOR-13-03-25-12.35.41.excalidraw</guid>
-    <description>⚠ Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠ You can decompress Drawing data with the command palette: ‘Decompress current Excalidraw file’.</description>
-    <pubDate>Thu, 13 Mar 2025 11:35:41 GMT</pubDate>
+    <title>Interfaces</title>
+    <link>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Interfaces</link>
+    <guid>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Interfaces</guid>
+    <description>Ein Interface ist wie eine Abstrakte Klasse, die keine Attribute hat, und ausschließlich abstrakte Methoden hat. Ein Interface kann Konstanten haben. Von einem Interface können keine Objekte erzeugt werden.</description>
+    <pubDate>Mon, 31 Mar 2025 13:58:40 GMT</pubDate>
   </item><item>
-    <title>NAND und NOR 13-03-25 12.27.22.excalidraw</title>
-    <link>https://quartz.jzhao.xyz/Nico/src/NAND-und-NOR-13-03-25-12.27.22.excalidraw</link>
-    <guid>https://quartz.jzhao.xyz/Nico/src/NAND-und-NOR-13-03-25-12.27.22.excalidraw</guid>
-    <description>⚠ Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠ You can decompress Drawing data with the command palette: ‘Decompress current Excalidraw file’.</description>
-    <pubDate>Thu, 13 Mar 2025 11:27:22 GMT</pubDate>
+    <title>Abstrakte Klassen</title>
+    <link>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Abstrakte-Klassen</link>
+    <guid>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Abstrakte-Klassen</guid>
+    <description>Der Hauptgrund für abstrakte Klassen ist, dass von ihnen kein Objekt erzeugt werden kann. Sie dienen als Superklassen für andere Klassen. Abstrakte Klasse definieren public abstract class Klasse{} Abstrakte Klassen verwenden public class SubKlasse extends Klasse{} Abstrakte Methoden Ist eine Methode abstrakt muss diese in der Subklasse definiert werden.</description>
+    <pubDate>Mon, 31 Mar 2025 13:46:34 GMT</pubDate>
   </item><item>
-    <title>NAND und NOR 13-03-25 12.21.53.excalidraw</title>
-    <link>https://quartz.jzhao.xyz/Nico/src/NAND-und-NOR-13-03-25-12.21.53.excalidraw</link>
-    <guid>https://quartz.jzhao.xyz/Nico/src/NAND-und-NOR-13-03-25-12.21.53.excalidraw</guid>
-    <description>⚠ Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠ You can decompress Drawing data with the command palette: ‘Decompress current Excalidraw file’.</description>
-    <pubDate>Thu, 13 Mar 2025 11:21:53 GMT</pubDate>
+    <title>Vererbung</title>
+    <link>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Vererbung</link>
+    <guid>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Vererbung</guid>
+    <description>public class Angestellter extends Mitarbeiter{ //Erbt von Mitarbeiter private double gehalt; public Angestellter(String n, double g){ //Konstruktor super(g); //Konstruktor ...</description>
+    <pubDate>Mon, 31 Mar 2025 13:41:09 GMT</pubDate>
   </item><item>
-    <title>13-03-25 12.14.01.excalidraw</title>
-    <link>https://quartz.jzhao.xyz/Nico/Excalidraw/13-03-25-12.14.01.excalidraw</link>
-    <guid>https://quartz.jzhao.xyz/Nico/Excalidraw/13-03-25-12.14.01.excalidraw</guid>
-    <description>⚠ Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠ You can decompress Drawing data with the command palette: ‘Decompress current Excalidraw file’.</description>
-    <pubDate>Thu, 13 Mar 2025 11:14:01 GMT</pubDate>
+    <title>UML Klassendiagramm</title>
+    <link>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/UML-Klassendiagramm</link>
+    <guid>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/UML-Klassendiagramm</guid>
+    <description>Übersicht Mermaid classDiagram Classname &lt;|-- OtherClass class Classname{ -variable: int = 0 +method(parameter: int) void } class OtherClass{ +otherVariable: String -variable: ...</description>
+    <pubDate>Mon, 31 Mar 2025 13:29:13 GMT</pubDate>
   </item><item>
-    <title>NAND und NOR</title>
-    <link>https://quartz.jzhao.xyz/Nico/Schule/TI/Logische-Schaltungen/NAND-und-NOR</link>
-    <guid>https://quartz.jzhao.xyz/Nico/Schule/TI/Logische-Schaltungen/NAND-und-NOR</guid>
-    <description>Gegeben sind die Grundglieder UND, ODER und NICHT diese sind nur mit NAND - Elementen NOR - Elementen zu realisieren 1) NAND NICHT realisiert mit NAND aaz001110 z = \overline{a \land ...</description>
-    <pubDate>Tue, 11 Mar 2025 08:27:18 GMT</pubDate>
+    <title>Klassen</title>
+    <link>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Klassen</link>
+    <guid>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Klassen</guid>
+    <description>Felder / Attribute / Eigenschaften / Membervariablen Dies sind Werte, bzw. Variablen, die mit einer Klasse gespeichert werden können. Attribute und Methoden können genau definiert werden public Klassen definieren public class Klasse{} Methoden Methoden sind Funktionen, die innerhalb einer Klasse, bzw.</description>
+    <pubDate>Mon, 31 Mar 2025 09:26:21 GMT</pubDate>
   </item><item>
-    <title>Grundgesetz</title>
-    <link>https://quartz.jzhao.xyz/Nico/Schule/WPUG/Grundgesetz</link>
-    <guid>https://quartz.jzhao.xyz/Nico/Schule/WPUG/Grundgesetz</guid>
-    <description>Wichtige Artikel Versammlungs- und Vereinigungsfreiheit (Art 8 und 9 GG) Versammlungsfreiheit alle Deutschen haben das Recht sich jederzeit ohne Anmeldung und Erlaubnis friedlich ...</description>
-    <pubDate>Mon, 10 Mar 2025 09:52:49 GMT</pubDate>
+    <title>Konsole Ein-Aus-gabe</title>
+    <link>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Konsole-Ein-Aus-gabe</link>
+    <guid>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Konsole-Ein-Aus-gabe</guid>
+    <description>Ausgabe String a = &quot;!&quot;; System.out.println(&quot;Hello World&quot; + a); Eingabe Package einbinden: import java.util.Scanner; Beispiel import java.util.Scanner; ...</description>
+    <pubDate>Mon, 31 Mar 2025 09:19:31 GMT</pubDate>
   </item><item>
-    <title>Übung_Prozesse</title>
-    <link>https://quartz.jzhao.xyz/Nico/Schule/BA/%C3%9Cbung_Prozesse</link>
-    <guid>https://quartz.jzhao.xyz/Nico/Schule/BA/%C3%9Cbung_Prozesse</guid>
-    <description>⚠ Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠ You can decompress Drawing data with the command palette: ‘Decompress current Excalidraw file’.</description>
-    <pubDate>Thu, 27 Feb 2025 07:51:21 GMT</pubDate>
+    <title>Mathematische Funktionen</title>
+    <link>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Mathematische-Funktionen</link>
+    <guid>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Mathematische-Funktionen</guid>
+    <description> Im package Java.Math Beispiel: double sinus = Math.sin(x).</description>
+    <pubDate>Mon, 31 Mar 2025 09:05:01 GMT</pubDate>
   </item>
     </channel>
   </rss>

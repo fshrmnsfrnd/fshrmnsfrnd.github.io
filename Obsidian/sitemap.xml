@@ -35,6 +35,9 @@
     <loc>https://quartz.jzhao.xyz/Nico/Kochbuch/Kochen/Asianudeln</loc>
     <lastmod>2025-02-03T10:53:40.117Z</lastmod>
   </url><url>
+    <loc>https://quartz.jzhao.xyz/Nico/Kochbuch/Kochen/Auflauf</loc>
+    <lastmod>2024-10-18T06:11:10.401Z</lastmod>
+  </url><url>
     <loc>https://quartz.jzhao.xyz/Nico/Kochbuch/Kochen/Bl%C3%A4tterteigschnecken</loc>
     <lastmod>2024-10-11T06:39:38.921Z</lastmod>
   </url><url>
@@ -44,8 +47,11 @@
     <loc>https://quartz.jzhao.xyz/Nico/Kochbuch/Kochen/Chilli-con-Carne</loc>
     <lastmod>2024-10-18T12:08:32.593Z</lastmod>
   </url><url>
-    <loc>https://quartz.jzhao.xyz/Nico/Kochbuch/Kochen/Gnocciauflauf</loc>
-    <lastmod>2024-10-18T06:11:10.401Z</lastmod>
+    <loc>https://quartz.jzhao.xyz/Nico/Kochbuch/Kochen/Eier</loc>
+    <lastmod>2025-03-24T21:05:41.019Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/Nico/Kochbuch/Kochen/Kaiserschmarrn</loc>
+    <lastmod>2025-03-24T13:51:02.876Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/Nico/Kochbuch/Kochen/Kartoffel-R%C3%B6sti</loc>
     <lastmod>2025-01-01T16:16:26.264Z</lastmod>
@@ -58,9 +64,6 @@
   </url><url>
     <loc>https://quartz.jzhao.xyz/Nico/Kochbuch/Kochen/Maultaschen</loc>
     <lastmod>2024-10-11T11:43:58.070Z</lastmod>
-  </url><url>
-    <loc>https://quartz.jzhao.xyz/Nico/Kochbuch/Kochen/Nude-lauf-lauf</loc>
-    <lastmod>2024-10-14T16:18:38.111Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/Nico/Kochbuch/Kochen/Pfannkuchen</loc>
     <lastmod>2024-12-11T19:45:17.846Z</lastmod>
@@ -365,6 +368,39 @@
     <loc>https://quartz.jzhao.xyz/Nico/Schule/Prog/Header-und-Quellcode</loc>
     <lastmod>2024-11-15T09:05:13.443Z</lastmod>
   </url><url>
+    <loc>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Abstrakte-Klassen</loc>
+    <lastmod>2025-03-31T13:46:34.889Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Interfaces</loc>
+    <lastmod>2025-03-31T13:58:40.823Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Klassen</loc>
+    <lastmod>2025-03-31T09:26:21.540Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Konsole-Ein-Aus-gabe</loc>
+    <lastmod>2025-03-31T09:19:31.622Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Konstruktor</loc>
+    <lastmod>2025-03-31T14:41:31.612Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Mathematische-Funktionen</loc>
+    <lastmod>2025-03-31T09:05:01.715Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Objekte</loc>
+    <lastmod>2025-03-31T14:14:01.556Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Typumwandlung</loc>
+    <lastmod>2025-03-31T16:30:23.537Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/UML-Klassendiagramm</loc>
+    <lastmod>2025-03-31T13:29:13.044Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Variablen</loc>
+    <lastmod>2025-03-31T09:00:03.470Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/Nico/Schule/Prog/Java/Vererbung</loc>
+    <lastmod>2025-03-31T13:41:09.945Z</lastmod>
+  </url><url>
     <loc>https://quartz.jzhao.xyz/Nico/Schule/Prog/Programmieren</loc>
     <lastmod>2024-11-10T20:14:47.480Z</lastmod>
   </url><url>
@@ -400,6 +436,9 @@
   </url><url>
     <loc>https://quartz.jzhao.xyz/Nico/Schule/TI/Logische-Schaltungen/Gesetze</loc>
     <lastmod>2025-02-13T12:05:15.360Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/Nico/Schule/TI/Logische-Schaltungen/KV---Diagramme</loc>
+    <lastmod>2025-03-25T07:42:19.705Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/Nico/Schule/TI/Logische-Schaltungen/Logikgatter-Symbole</loc>
     <lastmod>2025-01-28T08:42:02.334Z</lastmod>
