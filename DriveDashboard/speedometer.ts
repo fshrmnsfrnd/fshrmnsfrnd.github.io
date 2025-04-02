@@ -54,11 +54,16 @@ if ("geolocation" in navigator) {
       }
 
       //Testoutputs
+      let testout: String = "";
       if(speedElement && speed){
-        speedElement.innerText = "Speed: " + speed.toString();
+        testout += "Speed: " + speed.toString();
       }else if(speedElement){
-        speedElement.innerText = "No Speed"
+        testout += " No Speed"
       }
+      if(position.coords){
+        testout += position.coords.toString();
+      }
+
     },
     (error) => {
       alert("Fehler bei der Standortbestimmung:" + error);
