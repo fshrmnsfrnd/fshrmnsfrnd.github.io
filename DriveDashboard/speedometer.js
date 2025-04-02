@@ -29,13 +29,14 @@ if ("geolocation" in navigator) {
         lastTimestamp = timestamp;
         if (speedValue) {
             //speedElement!.textContent = `${(speedValue * 3.6).toFixed(1)} km/h`;
-            speedElement.textContent = (Math.round(speedValue * 100) / 100).toString();
+            let rounded = Math.round(speedValue * 100) / 100;
+            speedElement.textContent = rounded.toString();
         }
         else {
             speedElement.textContent = "Berechnung läuft...";
         }
     }, (error) => {
-        alert("Fehler bei der Standortbestimmung:");
+        alert("Fehler bei der Standortbestimmung:" + error);
     }, { enableHighAccuracy: true });
 }
 else {
