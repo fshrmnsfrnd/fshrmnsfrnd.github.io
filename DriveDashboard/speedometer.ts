@@ -1,4 +1,5 @@
 const speedElement = document.getElementById("speedDisplay");
+const testspeed = document.getElementById("Speed");
 
 // Haversine-Formel zur Berechnung der Distanz zwischen zwei Koordinaten
 function getDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
@@ -24,7 +25,6 @@ if ("geolocation" in navigator) {
       let speedValue: number | null = null;
       
       if (speedElement && speed) {
-        speedElement
         speedElement.innerText = (speed * 3.6).toString() + "KMH";
       }
         
@@ -51,17 +51,21 @@ if ("geolocation" in navigator) {
 
       if (speedValue) {
         speedElement!.textContent = `${(speedValue * 3.6).toFixed(0)} km/h`;
-      } else {
-        speedElement!.textContent = "Geschwindigkeit: Berechnung läuft...";
+      }
+
+      //Testoutputs
+      if(speedElement && speed){
+        speedElement.innerText = "Speed: " + speed.toString();
+      }else if(speedElement){
+        speedElement.innerText = "No Speed"
       }
     },
     (error) => {
-      console.error("Fehler bei der Standortbestimmung:", error);
-      speedElement!.textContent = "Standortzugriff fehlgeschlagen.";
+      alert("Fehler bei der Standortbestimmung:" + error);
     },
     { enableHighAccuracy: true }
   );
 } else {
-  speedElement!.textContent = "Geolocation wird nicht unterstützt.";
+  alert("Geolocation wird nicht unterstützt.");
 }
 
