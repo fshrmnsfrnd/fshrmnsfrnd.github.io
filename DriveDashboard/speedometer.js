@@ -1,5 +1,5 @@
 "use strict";
-const testoutput = document.getElementById("test");
+//const testoutput: HTMLElement | null = document.getElementById("test");
 const speedElement = document.getElementById("speedDisplay");
 if ("geolocation" in navigator) {
     let lastPosition = null;
@@ -8,10 +8,11 @@ if ("geolocation" in navigator) {
         const { speed, latitude, longitude } = position.coords;
         const timestamp = position.timestamp;
         let speedValue = null;
-        let speedy = speed;
-        if (testoutput && speedy) {
-            testoutput.innerText = speedy.toString();
+        //let speedy: number | null = speed; 
+        /*if (testoutput && speedy) {
+          testoutput.innerText = speedy.toString();
         }
+          */
         if (speed !== null) {
             // Falls die Geschwindigkeit vom Gerät geliefert wird (m/s)
             speedValue = speed;
