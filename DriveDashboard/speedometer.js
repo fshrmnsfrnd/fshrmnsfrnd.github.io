@@ -1,15 +1,14 @@
 "use strict";
-const testoutput = document.getElementById("test");
 const speedElement = document.getElementById("speedDisplay");
 if ("geolocation" in navigator) {
     navigator.geolocation.watchPosition((position) => {
         const { speed, latitude, longitude } = position.coords;
         const timestamp = position.timestamp;
-        if (testoutput && speed && speedElement) {
-            speedElement.innerText = (speed * 3.6).toString();
+        if (speed && speedElement) {
+            speedElement.innerText = (speed * 3.6).toString() + "km/h";
         }
-        else if (testoutput) {
-            testoutput.innerText = "0";
+        else if (speedElement) {
+            speedElement.innerText = "0 km/h";
         }
     }, (error) => {
         console.error("Fehler bei der Standortbestimmung:", error);
