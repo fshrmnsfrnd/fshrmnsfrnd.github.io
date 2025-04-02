@@ -39,21 +39,18 @@ if ("geolocation" in navigator) {
       lastTimestamp = timestamp;
 
       if (speedValue) {
-        speedElement!.textContent = `Geschwindigkeit: ${(
-          speedValue * 3.6
-        ).toFixed(2)} km/h`;
+        speedElement!.textContent = `${(speedValue * 3.6).toFixed(1)} km/h`;
       } else {
-        speedElement!.textContent = "Geschwindigkeit: Berechnung läuft...";
+        speedElement!.textContent = "Berechnung läuft...";
       }
     },
     (error) => {
-      console.error("Fehler bei der Standortbestimmung:", error);
-      speedElement!.textContent = "Standortzugriff fehlgeschlagen.";
+      alert("Fehler bei der Standortbestimmung:");
     },
     { enableHighAccuracy: true }
   );
 } else {
-  speedElement!.textContent = "Geolocation wird nicht unterstützt.";
+  alert("Geolocation wird nicht unterstützt.");
 }
 
 // Haversine-Formel zur Berechnung der Distanz zwischen zwei Koordinaten
