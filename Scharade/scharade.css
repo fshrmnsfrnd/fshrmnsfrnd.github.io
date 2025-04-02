@@ -1,0 +1,115 @@
+/* Allgemeine Stile */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0d1317;
+    color: #b0c7d1;
+    margin-top: auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+}
+
+/* Link zum Hauptmenü */
+a {
+    text-decoration: none;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+a:hover {
+    transform: scale(1.1);
+    text-decoration: none;
+}
+
+/* Kategorienauswahl */
+#chooseCategories {
+    text-align: center;
+    padding: 20px;
+    width: 80%;
+}
+
+#categories {
+    margin: 10px 20%;
+    text-align: left;
+}
+
+#categories input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+#categories label {
+    margin-right: 20px;
+    color: #b0c7d1;
+}
+
+/* Spielbereich */
+#game {
+    text-align: center;
+    padding: 20px;
+    width: 100%; /* Setze die Breite auf 100% */
+    box-sizing: border-box; /* Stelle sicher, dass Padding in der Breite enthalten ist */
+    
+
+    height: calc(100vh - 60px);/* Gesamte Höhe des Bildschirms minus Platz für den a-Tag */
+    margin-top: 20px;/* Abstand nach oben für den a-Tag */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;/* Inhalte vertikal zentrieren */
+    align-items: center;/* Inhalte horizontal zentrieren */
+}
+
+#word {
+    box-sizing: border-box;
+    font-size: 2em;
+    font-weight: bold;
+    color: #66ffcc;
+    margin-bottom: 0px;
+    padding: 20px;
+    background-color: #1c262e;
+    border-radius: 10px;
+}
+
+/* Buttons */
+input[type="button"] {
+    background-color: #33cccc;
+    color: #0d1317;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+input[type="button"]:hover {
+    background-color: #66ffcc;
+    transform: scale(1.1);
+}
+
+input[type="button"]:active {
+    transform: scale(1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #chooseCategories, #game {
+        width: 90%;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    #word {
+        font-size: 1.5em;
+    }
+
+    input[type="button"] {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+}
