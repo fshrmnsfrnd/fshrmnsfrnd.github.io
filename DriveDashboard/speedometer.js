@@ -28,7 +28,8 @@ if ("geolocation" in navigator) {
         lastPosition = position;
         lastTimestamp = timestamp;
         if (speedValue) {
-            speedElement.textContent = `${(speedValue * 3.6).toFixed(1)} km/h`;
+            //speedElement!.textContent = `${(speedValue * 3.6).toFixed(1)} km/h`;
+            speedElement.textContent = (Math.round(speedValue * 100) / 100).toString();
         }
         else {
             speedElement.textContent = "Berechnung läuft...";
