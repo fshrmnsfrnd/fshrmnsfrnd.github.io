@@ -1,4 +1,4 @@
-const testoutput: HTMLElement | null = document.getElementById("test");
+//const testoutput: HTMLElement | null = document.getElementById("test");
 const speedElement = document.getElementById("speedDisplay");
 
 if ("geolocation" in navigator) {
@@ -11,10 +11,12 @@ if ("geolocation" in navigator) {
       const timestamp = position.timestamp;
 
       let speedValue: number | null = null;
-      let speedy: number | null = speed; 
-      if (testoutput && speedy) {
+      //let speedy: number | null = speed; 
+      /*if (testoutput && speedy) {
         testoutput.innerText = speedy.toString();
-      }
+      } 
+        */
+
       if (speed !== null) {
         // Falls die Geschwindigkeit vom Gerät geliefert wird (m/s)
         speedValue = speed;
