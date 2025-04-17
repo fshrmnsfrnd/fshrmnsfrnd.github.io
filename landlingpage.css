@@ -8,7 +8,7 @@
     margin: 1% 1%;
     padding: 2px 2px;
     width: 22%;
-    min-height: 280px;
+    min-height: 300px;
     border: 2px solid white;
     border-radius: 10px;
 }
@@ -29,4 +29,10 @@
 
 .box a{
     text-decoration: none;
+}
+
+@media (max-width: 830px) {
+    .box{
+        width: 98%;
+    }
 }
