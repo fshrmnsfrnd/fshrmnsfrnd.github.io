@@ -1,0 +1,32 @@
+.Boxes{
+    display: flex;
+}
+
+.box{
+    box-sizing: border-box;
+    float: left;
+    margin: 1% 1%;
+    padding: 2px 2px;
+    width: 22%;
+    min-height: 280px;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.box *{
+    width: 100%;
+    height: 100%;
+}
+
+.box h2{
+    font-size: 2em;
+}
+
+.box p{
+    color: white;
+    padding-bottom: 4px;
+}
+
+.box a{
+    text-decoration: none;
+}
