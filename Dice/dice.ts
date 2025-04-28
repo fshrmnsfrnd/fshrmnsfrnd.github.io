@@ -1,27 +1,47 @@
 addEventListener("DOMContentLoaded", (event) => {
     let dices: HTMLElement[] = [];
+    const addDiceButton = document.getElementById("addDice");
+    const diceContainer = document.getElementById("dicecontainer");
+    let anzahlDices:number = 0;
 
-    const dice1 = document.getElementById("dice1");
-    if (dice1) {
-        dices.push(dice1);
+    async function sleep(time:number): Promise<void> {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve()
+            }, time)
+        })
     }
 
-    function rollDice(diceID: number) {
-        const imgElement = dices[diceID].querySelector("img");
-        //Würfel animieren
+    async function rollDice(diceID: number) {
+        const imgElement = document.getElementById(diceID.toString())?.querySelector("img");
+        //Wurfel animieren
         for (let j = 1; j <= 3; j++) {
             for (let i = 1; i <= 6; i++) {
-                setTimeout(() => {
-                    imgElement?.setAttribute("src", "./Pictures/" + i + ".png");
-                }, 5000);
+                await sleep(100);
+                imgElement?.setAttribute("src", "./Pictures/" + i + ".png");
             }
         }
-        //Würfel enden
-        const diceValue = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
-        imgElement?.setAttribute("src", "./Pictures/" + diceValue + ".png")
+        //Wurfel enden
+        const diceValue = Math.floor(Math.random() * (6)) + 1;
+        imgElement?.setAttribute("src", "./Pictures/" + diceValue + ".png");
     }
 
-    if (dices[0]) {
-        dices[0].addEventListener("click", () => {rollDice(1)});
-    }
+    addDiceButton?.addEventListener("click", () => {
+        anzahlDices++;
+        //Nachsten Wurfel erstellen
+        const nextDice = document.createElement("div");
+        //Bildelement für Wurfel erstellen
+        const img = document.createElement("img");
+        img.setAttribute("src", "./Pictures/1.png")
+        nextDice.appendChild(img);
+        nextDice.innerHTML = '<img src="./Pictures/1.png">';
+        nextDice.setAttribute("class", "dice");
+        nextDice.setAttribute("id", anzahlDices.toString());
+        const diceID = parseInt(nextDice.getAttribute("id") as string);        
+        diceContainer?.appendChild(nextDice);
+
+        nextDice.addEventListener("click", () => {rollDice(diceID)}) ;
+    })
+
+    addDiceButton?.click();
 })
