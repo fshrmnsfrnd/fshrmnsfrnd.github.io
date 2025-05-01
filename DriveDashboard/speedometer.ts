@@ -1,4 +1,4 @@
-//const testoutput: HTMLElement | null = document.getElementById("test");
+
 const speedElement = document.getElementById("speedDisplay");
 
 if ("geolocation" in navigator) {
@@ -11,11 +11,6 @@ if ("geolocation" in navigator) {
       const timestamp = position.timestamp;
 
       let speedValue: number | null = null;
-      //let speedy: number | null = speed; 
-      /*if (testoutput && speedy) {
-        testoutput.innerText = speedy.toString();
-      } 
-        */
 
       if (speed !== null) {
         // Falls die Geschwindigkeit vom Gerät geliefert wird (m/s)
@@ -40,10 +35,11 @@ if ("geolocation" in navigator) {
 
       if (speedValue) {
         let kmh = speedValue * 3.6;
-        let rounded = Math.round(kmh * 100) / 100;
+        //let rounded = Math.round(kmh * 100) / 100; Mit Nachkomma
+        let rounded = Math.round(kmh); //Ohne Nachkomma
         speedElement!.textContent = rounded.toString();
       } else {
-        speedElement!.textContent = "Berechnung läuft...";
+        speedElement!.textContent = "0";
       }
     },
     (error) => {
