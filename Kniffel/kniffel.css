@@ -1,10 +1,16 @@
-input[type=number]{
+/* Standard-Stile für Eingabefelder */
+input[type=number] {
     appearance: textfield;
     -moz-appearance: textfield;
-    width: 3ch;
-    height: 2ch;
+    width: 92%;
+    height: 100%;
     margin: 1px;
     padding: 3px;
+}
+
+input[type=checkbox] {
+    height: 2ch;
+    color: black;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -14,17 +20,27 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-input[type=checkbox] {
-    height: 2ch;
-    color: black;
-}
-
-td{
-    padding: 3px;
+/* Tabellenzellen */
+td {
+    padding: 1px;
     vertical-align: middle;
 }
 
+/* Checkbox-Stile */
 table td input[type="checkbox"] {
     margin: 0;
     vertical-align: middle;
+}
+
+/* Dynamische Anpassung für mobile Geräte */
+@media (max-width: 768px) {
+    input[type=number],
+    input[type=checkbox] {
+        height: 3ch; /* Größere Höhe für mobile Geräte */
+        padding: 5px; /* Mehr Innenabstand */
+    }
+
+    td {
+        padding: 2px; /* Etwas mehr Abstand innerhalb der Zellen */
+    }
 }

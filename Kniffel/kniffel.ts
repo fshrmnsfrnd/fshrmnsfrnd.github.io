@@ -12,7 +12,7 @@ addEventListener("DOMContentLoaded", (event) => {
     const cellValues: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 30, 40, 50, 0, 0];
 
     //HTML Elements
-    const headerElement = document.createElement("h4");
+    const headerElement = document.createElement("h6");
     const inputElement = document.createElement("input");
     inputElement.setAttribute("type", "number");
     const checkboxElement = document.createElement("input");
