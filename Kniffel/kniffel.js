@@ -1,7 +1,7 @@
 addEventListener("DOMContentLoaded", function (event) {
     var table = document.getElementById("mainTable");
     var addPlayerBtn = document.getElementById("addPlayer");
-    //Spieler hinzufügen   
+    //Add Player
     //Variables
     var playerCounter = 1;
     var colCounter = 2;
@@ -24,25 +24,20 @@ addEventListener("DOMContentLoaded", function (event) {
                     row.insertCell();
                     row.cells[playerCounter].setAttribute("value", cellValues[rowCounter].toString());
                     if (rowCounter == 0) { //Header Cell
-                        //row.cells[colCounter].innerHTML = firstCell1 + playerCounter.toString() + firstCell2;
                         var newHeaderElement = headerElement.cloneNode();
                         newHeaderElement.innerText = "Spieler " + playerCounter;
                         row.cells[colCounter].appendChild(newHeaderElement);
                     }
                     else if ((rowCounter >= 1 && rowCounter <= 8) || rowCounter == 13) { //Number Input Cells
-                        //row.cells[colCounter].innerHTML = inputCell;
                         var newInputElement = inputElement.cloneNode();
-                        //newInputElement.setAttribute("value", cellValues[rowCounter].toString());
                         row.cells[colCounter].appendChild(newInputElement);
                     }
-                    else if (rowCounter >= 9 && rowCounter <= 12) { //Checkbox Zeilen
-                        //row.cells[colCounter].innerHTML = checkboxCell;
+                    else if (rowCounter >= 9 && rowCounter <= 12) { //Checkbox Cells
                         var newCheckboxElement = checkboxElement.cloneNode();
                         newCheckboxElement.setAttribute("value", cellValues[rowCounter].toString());
                         row.cells[colCounter].appendChild(newCheckboxElement);
                     }
-                    else if (rowCounter == 14) { //Letzte Zeile
-                        //row.cells[colCounter].innerHTML = resultCell;
+                    else if (rowCounter == 14) { //Last Row
                         var newResultElement = resultElement.cloneNode();
                         row.cells[colCounter].appendChild(newResultElement);
                     }
@@ -57,7 +52,7 @@ addEventListener("DOMContentLoaded", function (event) {
             }
         });
     }
-    //Auswertung
+    //Calculate Results
     if (table) {
         table.addEventListener("click", function () {
             var rows = table.querySelectorAll("tr");

@@ -24,6 +24,7 @@ header h1 {
     font-size: 2em;
     background: linear-gradient(to right, #1feeee, #17ff9a);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -127,9 +128,9 @@ input, textarea, select, button {
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #66ffcc;
+    border-radius: 6px;
     background-color: #1a1a1a;
     color: #b2f0e5;
-    border-radius: 6px; /* Abrundung der Ecken für Formularelemente */
 }
 
 button {
@@ -141,6 +142,39 @@ button {
 
 button:hover {
     background-color: #66ffcc;
+}
+
+/* Stil für Checkbox */
+input[type="checkbox"] {
+    appearance: none; /* Entfernt das Standard-Checkbox-Design */
+    width: 20px;
+    height: 20px;
+    border: 1px solid #66ffcc; /* Türkisfarbener Rand */
+    border-radius: 6px; /* Leichte Abrundung */
+    background-color: #1a1a1a; /* Dunkler Hintergrund */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Weiche Übergänge */
+}
+
+input[type="checkbox"]:checked {
+    background-color: #33cccc; /* Türkisfarbener Hintergrund bei Aktivierung */
+    border-color: #99e6d1; /* Hellerer Rand bei Aktivierung */
+    position: relative;
+}
+
+input[type="checkbox"]:checked::after {
+    content: "✔"; /* Häkchen-Symbol */
+    color: #1a1a1a; /* Dunkle Farbe für das Häkchen */
+    font-size: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+input[type="checkbox"]:hover {
+    border-color: #99e6d1; /* Hellerer Rand bei Hover */
+    transform: scale(1.1); /* Leichte Vergrößerung bei Hover */
 }
 
 /* Code */

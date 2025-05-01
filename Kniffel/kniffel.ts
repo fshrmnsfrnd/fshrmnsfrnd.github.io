@@ -2,7 +2,7 @@ addEventListener("DOMContentLoaded", (event) => {
     const table = document.getElementById("mainTable") as HTMLTableElement;
     const addPlayerBtn = document.getElementById("addPlayer");
 
-    //Spieler hinzufügen   
+    //Add Player
       
     //Variables
     let playerCounter = 1;
@@ -29,25 +29,20 @@ addEventListener("DOMContentLoaded", (event) => {
                     row.cells[playerCounter].setAttribute("value", cellValues[rowCounter].toString());
 
                     if (rowCounter == 0) {//Header Cell
-                        //row.cells[colCounter].innerHTML = firstCell1 + playerCounter.toString() + firstCell2;
                         const newHeaderElement = headerElement.cloneNode() as HTMLElement;
                         newHeaderElement.innerText = "Spieler " + playerCounter;
                         row.cells[colCounter].appendChild(newHeaderElement);
 
                     } else if ((rowCounter >= 1 && rowCounter <= 8) || rowCounter == 13){//Number Input Cells
-                        //row.cells[colCounter].innerHTML = inputCell;
                         const newInputElement = inputElement.cloneNode() as HTMLInputElement;
-                        //newInputElement.setAttribute("value", cellValues[rowCounter].toString());
                         row.cells[colCounter].appendChild(newInputElement);
 
-                    } else if (rowCounter >= 9 && rowCounter <= 12) {//Checkbox Zeilen
-                        //row.cells[colCounter].innerHTML = checkboxCell;
+                    } else if (rowCounter >= 9 && rowCounter <= 12) {//Checkbox Cells
                         const newCheckboxElement = checkboxElement.cloneNode() as HTMLInputElement;
                         newCheckboxElement.setAttribute("value", cellValues[rowCounter].toString());
                         row.cells[colCounter].appendChild(newCheckboxElement);
 
-                    } else if (rowCounter == 14) {//Letzte Zeile
-                        //row.cells[colCounter].innerHTML = resultCell;
+                    } else if (rowCounter == 14) {//Last Row
                         const newResultElement = resultElement.cloneNode() as HTMLInputElement;
                         row.cells[colCounter].appendChild(newResultElement);
                     }
@@ -64,7 +59,7 @@ addEventListener("DOMContentLoaded", (event) => {
         })
     }
 
-    //Auswertung
+    //Calculate Results
     if (table) {
         table.addEventListener("click", () => {
             const rows = table.querySelectorAll("tr");
