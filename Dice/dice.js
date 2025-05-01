@@ -87,8 +87,9 @@ addEventListener("DOMContentLoaded", function (event) {
     }
     addDiceButton === null || addDiceButton === void 0 ? void 0 : addDiceButton.addEventListener("click", function () {
         anzahlDices++;
-        //Naechsten Wurfel erstellen
+        //Nachsten Wurfel erstellen
         var nextDice = document.createElement("div");
+        //Bildelement für Wurfel erstellen
         var img = document.createElement("img");
         img.setAttribute("src", "./Pictures/1.png");
         nextDice.appendChild(img);
