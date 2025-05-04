@@ -35,7 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var selectedCats = [];
-var standardCats = ["Stadt", "Land", "Fluss", "Marke", "Tier", "Lied", "Sexstellung", "Promi", "Schimpfwort"];
+var standardCats = ["Stadt", "Land", "Fluss", "Marke", "Tier", "Lied", "Sexstellung", "Promi", "Schimpfwort", "Ikea", "Dumme Art zu sterben"];
 function createCatElement(name) {
     var checkbox = document.createElement("input");
     checkbox.setAttribute("type", "checkbox");

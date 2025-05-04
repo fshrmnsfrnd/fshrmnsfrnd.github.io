@@ -1,5 +1,5 @@
 let selectedCats: string[] = []
-const standardCats: string[] = ["Stadt", "Land", "Fluss", "Marke", "Tier", "Lied", "Sexstellung", "Promi", "Schimpfwort"]
+const standardCats: string[] = ["Stadt", "Land", "Fluss", "Marke", "Tier", "Lied", "Sexstellung", "Promi", "Schimpfwort", "Ikea", "Dumme Art zu sterben"]
 
 function createCatElement(name: string): HTMLElement {
     const checkbox = document.createElement("input")
