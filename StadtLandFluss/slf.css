@@ -23,3 +23,14 @@
 #newGame{
     width: 100%;
 }
+
+#letter{
+    text-align: center;
+    border: 1px solid #66ffcc;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+input.points{
+    width: 4ch;
+}

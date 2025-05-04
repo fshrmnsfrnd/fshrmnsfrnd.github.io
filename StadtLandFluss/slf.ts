@@ -23,17 +23,17 @@ function createGameTable(gamebox: HTMLElement, categories: string[]): void {
     const resultText = document.createElement("p")
     resultText.setAttribute("class", "resultBox")
     resultText.innerHTML = "0"
-    const resultCell = document.createElement("td")
+    const resultCell = document.createElement("th")
     resultCell.appendChild(resultText)
 
     const wordElement = document.createElement("h6")
     wordElement.innerText = "Wort"
-    const wordDescriptionCell = document.createElement("td")
+    const wordDescriptionCell = document.createElement("th")
     wordDescriptionCell.appendChild(wordElement)
 
     const valueElement = document.createElement("h6")
     valueElement.innerText = "Punkte"
-    const valueDescriptionCell = document.createElement("td")
+    const valueDescriptionCell = document.createElement("th")
     valueDescriptionCell.appendChild(valueElement)
 
     const descriptionRow = document.createElement("tr")
@@ -52,6 +52,7 @@ function createGameTable(gamebox: HTMLElement, categories: string[]): void {
         //Input
         const inputBox = document.createElement("input")
         inputBox.setAttribute("type", "text")
+        inputBox.setAttribute("class", "wordInput")
         const inputCell = document.createElement("td")
         inputCell.appendChild(inputBox)
         //Result
@@ -72,6 +73,39 @@ function createGameTable(gamebox: HTMLElement, categories: string[]): void {
     gamebox.appendChild(table)
 }
 
+async function sleep(time: number): Promise<void> {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve()
+        }, time)
+    })
+}
+
+async function rollLetters():Promise<String> {
+    const textElement = document.getElementById("letter")
+    let letter
+    //Animation
+    for (let i = 65; i <= 90; i++) {
+        await sleep(50);
+        letter = String.fromCharCode(i)
+        if (textElement) {
+            textElement.innerText = letter
+        }
+    }
+    //Random letter
+    const letterValue = Math.floor(Math.random() * (90 - 65 + 1)) + 65
+    let i
+    for (i = 65; i <= letterValue; i++) {
+        await sleep(50);
+        letter = String.fromCharCode(i)
+        if (textElement) {
+            textElement.innerText = letter
+        }
+    }
+
+    return letter
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     //HTML Elements
     const catsDiv = document.getElementById("categories")
@@ -83,6 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const body = document.getElementById("body")
     const newGameBtn = document.getElementById("newGame")
     const overallResult = document.getElementById("overallResult")
+    const letterChoice = document.getElementById("letter")
 
     //Begin
     //Add all Categorys to List
@@ -115,10 +150,11 @@ document.addEventListener("DOMContentLoaded", () => {
             })
 
             //Build Game
-            if (overallResult && newGameBtn && bigCatsDiv && selectedCats.length != 0 && game) {
+            if (letterChoice && overallResult && newGameBtn && bigCatsDiv && selectedCats.length != 0 && game) {
                 bigCatsDiv.style.display = "none"
                 newGameBtn.style.display = "block"
                 overallResult.style.display = "block"
+                letterChoice.style.display = "block"
 
                 createGameTable(game, selectedCats)
             }
@@ -155,9 +191,21 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })
 
+    //Add Table / Game
     newGameBtn?.addEventListener("click", () => {
         if (game) {
             createGameTable(game, selectedCats)
         }
+    })
+
+    //Generate random Letter and animate it
+    letterChoice?.addEventListener("click", () => {
+        const wordFields = document.querySelectorAll(".wordInput")
+
+        rollLetters().then((letter) => {
+            wordFields.forEach(wordField => {
+                wordField.setAttribute("value", letter.toString())
+            })
+        })
     })
 })

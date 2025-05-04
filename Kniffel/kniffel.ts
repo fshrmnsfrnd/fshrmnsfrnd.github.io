@@ -81,8 +81,12 @@ addEventListener("DOMContentLoaded", (event) => {
             });
             
             //Write Results
-            const resultCells = document.querySelectorAll(".resultCell")
+            const tables = document.querySelectorAll("table")
+            const currTable = tables[tables.length - 1]
+            const resultCells = currTable.querySelectorAll(".resultCell")
+
             let resultCellCounter = 0;
+            
             resultCells.forEach((output) => {
                 output.innerHTML = playersResults[resultCellCounter].toString();
                 resultCellCounter++;

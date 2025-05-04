@@ -100,7 +100,7 @@ table {
     border-collapse: separate;
     border-spacing: 0;
     margin-bottom: 20px;
-    border-radius: 8px; /* Abrundung für gesamte Tabelle */
+    border-radius: 6px; /* Abrundung für gesamte Tabelle */
     overflow: hidden; /* Für abgerundete Kanten */
 }
 
