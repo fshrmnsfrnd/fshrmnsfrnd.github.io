@@ -1,0 +1,21 @@
+#selectCategories{
+    display: flex;
+    flex-direction: column;
+        align-items: center;
+        justify-content: center;
+}
+
+.category {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 5px;
+}
+
+.category input{
+    margin: auto 0;
+}
+
+#game{
+    width: 100%;
+}

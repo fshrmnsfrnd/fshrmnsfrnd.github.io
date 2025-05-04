@@ -2,7 +2,7 @@
 input[type=number] {
     appearance: textfield;
     -moz-appearance: textfield;
-    width: 92%;
+    width: calc(95% - 1px - 3px);
     height: 100%;
     margin: 1px;
     padding: 3px;
