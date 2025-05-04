@@ -14,6 +14,53 @@ function createCatElement(name) {
     catDiv.appendChild(text);
     return catDiv;
 }
+function createGameTable(gamebox, categories) {
+    var table = document.createElement("table");
+    //Description Row
+    var resultText = document.createElement("p");
+    resultText.setAttribute("class", "resultBox");
+    resultText.innerHTML = "0";
+    var resultCell = document.createElement("td");
+    resultCell.appendChild(resultText);
+    var wordElement = document.createElement("h6");
+    wordElement.innerText = "Wort";
+    var wordDescriptionCell = document.createElement("td");
+    wordDescriptionCell.appendChild(wordElement);
+    var valueElement = document.createElement("h6");
+    valueElement.innerText = "Punkte";
+    var valueDescriptionCell = document.createElement("td");
+    valueDescriptionCell.appendChild(valueElement);
+    var descriptionRow = document.createElement("tr");
+    descriptionRow.appendChild(resultCell);
+    descriptionRow.appendChild(wordDescriptionCell);
+    descriptionRow.appendChild(valueDescriptionCell);
+    table === null || table === void 0 ? void 0 : table.appendChild(descriptionRow);
+    //Append Categories
+    categories.forEach(function (cat) {
+        //CategorieName
+        var catNameText = document.createTextNode(cat);
+        var catNameCell = document.createElement("td");
+        catNameCell.appendChild(catNameText);
+        //Input
+        var inputBox = document.createElement("input");
+        inputBox.setAttribute("type", "text");
+        var inputCell = document.createElement("td");
+        inputCell.appendChild(inputBox);
+        //Result
+        var pointsBox = document.createElement("input");
+        pointsBox.setAttribute("class", "points");
+        pointsBox.setAttribute("type", "number");
+        var valueCell = document.createElement("td");
+        valueCell.appendChild(pointsBox);
+        //Append Row
+        var row = document.createElement("tr");
+        row.appendChild(catNameCell);
+        row.appendChild(inputCell);
+        row.appendChild(valueCell);
+        table === null || table === void 0 ? void 0 : table.appendChild(row);
+    });
+    gamebox.appendChild(table);
+}
 document.addEventListener("DOMContentLoaded", function () {
     //HTML Elements
     var catsDiv = document.getElementById("categories");
@@ -21,7 +68,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var ownCatField = document.getElementById("ownCategory");
     var startGameBtn = document.getElementById("startGame");
     var bigCatsDiv = document.getElementById("selectCategories");
-    var table = document.getElementById("game");
+    var game = document.getElementById("game");
+    var body = document.getElementById("body");
+    var newGameBtn = document.getElementById("newGame");
+    var overallResult = document.getElementById("overallResult");
     //Begin
     //Add all Categorys to List
     standardCats.forEach(function (catName) {
@@ -30,60 +80,61 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
     //Add an own Category
-    if (addCatBtn && catsDiv) {
-        addCatBtn.addEventListener("click", function () {
-            var ownCatName = ownCatField.value;
-            //New Category Element
-            if (ownCatField && ownCatName !== "") {
-                catsDiv.appendChild(createCatElement(ownCatName));
-            }
-        });
-    }
+    addCatBtn === null || addCatBtn === void 0 ? void 0 : addCatBtn.addEventListener("click", function () {
+        var ownCatName = ownCatField.value;
+        //New Category Element
+        if (ownCatField && ownCatName !== "") {
+            catsDiv === null || catsDiv === void 0 ? void 0 : catsDiv.appendChild(createCatElement(ownCatName));
+        }
+    });
     //Start Game
-    if (startGameBtn) {
-        startGameBtn.addEventListener("click", function () {
-            if (catsDiv) {
-                var allCats = catsDiv.querySelectorAll("div input");
-                allCats.forEach(function (checkbox) {
-                    var catName = checkbox.value;
-                    if (catName && catName !== "" && checkbox instanceof HTMLInputElement && checkbox.checked) {
-                        selectedCats.push(catName);
-                    }
-                });
-                if (bigCatsDiv && selectedCats.length != 0) {
-                    bigCatsDiv.style.display = "none";
-                    //After Categories select 
-                    //While playing the Game
-                    selectedCats.forEach(function (cat) {
-                        //CategorieName
-                        var catNameText = document.createTextNode(cat);
-                        var catNameCell = document.createElement("td");
-                        catNameCell.appendChild(catNameText);
-                        //Input
-                        var inputBox = document.createElement("input");
-                        inputBox.setAttribute("type", "text");
-                        var inputCell = document.createElement("td");
-                        inputCell.appendChild(inputBox);
-                        //Result
-                        var valueBox = document.createElement("input");
-                        inputBox.setAttribute("type", "number");
-                        var valueCell = document.createElement("td");
-                        valueCell.appendChild(valueBox);
-                        //Append Row
-                        var row = document.createElement("tr");
-                        row.appendChild(catNameCell);
-                        row.appendChild(inputCell);
-                        row.appendChild(valueCell);
-                        table === null || table === void 0 ? void 0 : table.appendChild(row);
-                    });
-                    var resultText = document.createTextNode("result");
-                    var resultCell = document.createElement("td");
-                    resultCell.appendChild(resultText);
-                    var row = document.createElement("tr");
-                    row.appendChild(resultCell);
-                    table === null || table === void 0 ? void 0 : table.appendChild(row);
+    startGameBtn === null || startGameBtn === void 0 ? void 0 : startGameBtn.addEventListener("click", function () {
+        if (catsDiv) {
+            //Read selected Categories
+            var allCats = catsDiv.querySelectorAll("div input");
+            allCats.forEach(function (checkbox) {
+                var catName = checkbox.value;
+                if (catName && catName !== "" && checkbox instanceof HTMLInputElement && checkbox.checked) {
+                    selectedCats.push(catName);
+                }
+            });
+            //Build Game
+            if (overallResult && newGameBtn && bigCatsDiv && selectedCats.length != 0 && game) {
+                bigCatsDiv.style.display = "none";
+                newGameBtn.style.display = "block";
+                overallResult.style.display = "block";
+                createGameTable(game, selectedCats);
+            }
+        }
+    });
+    //Calculate Results
+    body === null || body === void 0 ? void 0 : body.addEventListener("click", function () {
+        var tables = document.querySelectorAll("table");
+        var allResult = 0;
+        tables.forEach(function (table) {
+            var pointCells = table.querySelectorAll(".points");
+            var resultBox = table.querySelector(".resultBox");
+            var result = 0;
+            pointCells.forEach(function (pointCell) {
+                var pointCellValue = Number(pointCell.value);
+                if (!isNaN(pointCellValue)) {
+                    result += pointCellValue;
+                }
+            });
+            if (resultBox) {
+                if (result) {
+                    resultBox.innerHTML = result.toString();
                 }
             }
+            allResult += result;
         });
-    }
+        if (overallResult) {
+            overallResult.innerHTML = "Gesamt: " + allResult.toString();
+        }
+    });
+    newGameBtn === null || newGameBtn === void 0 ? void 0 : newGameBtn.addEventListener("click", function () {
+        if (game) {
+            createGameTable(game, selectedCats);
+        }
+    });
 });

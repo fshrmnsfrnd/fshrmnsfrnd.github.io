@@ -4,7 +4,7 @@ const standardCats: string[] = ["Stadt", "Land", "Fluss", "Marke", "Tier", "Lied
 function createCatElement(name: string): HTMLElement {
     const checkbox = document.createElement("input")
     checkbox.setAttribute("type", "checkbox")
-    const value = name;
+    const value = name
     checkbox.setAttribute("id", value)
     checkbox.setAttribute("value", value)
     const text = document.createElement("p")
@@ -17,6 +17,61 @@ function createCatElement(name: string): HTMLElement {
     return catDiv
 }
 
+function createGameTable(gamebox: HTMLElement, categories: string[]): void {
+    const table = document.createElement("table")
+    //Description Row
+    const resultText = document.createElement("p")
+    resultText.setAttribute("class", "resultBox")
+    resultText.innerHTML = "0"
+    const resultCell = document.createElement("td")
+    resultCell.appendChild(resultText)
+
+    const wordElement = document.createElement("h6")
+    wordElement.innerText = "Wort"
+    const wordDescriptionCell = document.createElement("td")
+    wordDescriptionCell.appendChild(wordElement)
+
+    const valueElement = document.createElement("h6")
+    valueElement.innerText = "Punkte"
+    const valueDescriptionCell = document.createElement("td")
+    valueDescriptionCell.appendChild(valueElement)
+
+    const descriptionRow = document.createElement("tr")
+    descriptionRow.appendChild(resultCell)
+    descriptionRow.appendChild(wordDescriptionCell)
+    descriptionRow.appendChild(valueDescriptionCell)
+
+    table?.appendChild(descriptionRow)
+
+    //Append Categories
+    categories.forEach((cat) => {
+        //CategorieName
+        const catNameText = document.createTextNode(cat)
+        const catNameCell = document.createElement("td")
+        catNameCell.appendChild(catNameText)
+        //Input
+        const inputBox = document.createElement("input")
+        inputBox.setAttribute("type", "text")
+        const inputCell = document.createElement("td")
+        inputCell.appendChild(inputBox)
+        //Result
+        const pointsBox = document.createElement("input")
+        pointsBox.setAttribute("class", "points")
+        pointsBox.setAttribute("type", "number")
+        const valueCell = document.createElement("td")
+        valueCell.appendChild(pointsBox)
+        //Append Row
+        const row = document.createElement("tr")
+        row.appendChild(catNameCell)
+        row.appendChild(inputCell)
+        row.appendChild(valueCell)
+
+        table?.appendChild(row)
+    })
+
+    gamebox.appendChild(table)
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     //HTML Elements
     const catsDiv = document.getElementById("categories")
@@ -24,7 +79,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const ownCatField = document.getElementById("ownCategory")
     const startGameBtn = document.getElementById("startGame")
     const bigCatsDiv = document.getElementById("selectCategories")
-    const table = document.getElementById("game")
+    const game = document.getElementById("game")
+    const body = document.getElementById("body")
+    const newGameBtn = document.getElementById("newGame")
+    const overallResult = document.getElementById("overallResult")
 
     //Begin
     //Add all Categorys to List
@@ -35,67 +93,71 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     //Add an own Category
-    if (addCatBtn && catsDiv) {
-        addCatBtn.addEventListener("click", () => {
-            const ownCatName = (ownCatField as HTMLInputElement).value;
-            //New Category Element
-            if (ownCatField && ownCatName !== "") {
-                catsDiv.appendChild(createCatElement(ownCatName))
-            }
-        })
-    }
+    addCatBtn?.addEventListener("click", () => {
+        const ownCatName = (ownCatField as HTMLInputElement).value
+        //New Category Element
+        if (ownCatField && ownCatName !== "") {
+            catsDiv?.appendChild(createCatElement(ownCatName))
+        }
+    })
 
     //Start Game
-    if (startGameBtn) {
-        startGameBtn.addEventListener("click", () => {
-            if (catsDiv) {
-                const allCats = catsDiv.querySelectorAll("div input")
+    startGameBtn?.addEventListener("click", () => {
+        if (catsDiv) {
+            //Read selected Categories
+            const allCats = catsDiv.querySelectorAll("div input")
 
-                allCats.forEach((checkbox) => {
-                    const catName = (checkbox as HTMLInputElement).value
-                    if (catName && catName !== "" && checkbox instanceof HTMLInputElement && checkbox.checked) {
-                        selectedCats.push(catName)
-                    }
-                })
+            allCats.forEach((checkbox) => {
+                const catName = (checkbox as HTMLInputElement).value
+                if (catName && catName !== "" && checkbox instanceof HTMLInputElement && checkbox.checked) {
+                    selectedCats.push(catName)
+                }
+            })
 
-                if (bigCatsDiv && selectedCats.length != 0) {
-                    bigCatsDiv.style.display = "none";
+            //Build Game
+            if (overallResult && newGameBtn && bigCatsDiv && selectedCats.length != 0 && game) {
+                bigCatsDiv.style.display = "none"
+                newGameBtn.style.display = "block"
+                overallResult.style.display = "block"
 
-                    //After Categories select 
-                    //While playing the Game
+                createGameTable(game, selectedCats)
+            }
+        }
+    })
 
-                    selectedCats.forEach((cat) => {
-                        //CategorieName
-                        const catNameText = document.createTextNode(cat)
-                        const catNameCell = document.createElement("td")
-                        catNameCell.appendChild(catNameText)
-                        //Input
-                        const inputBox = document.createElement("input")
-                        inputBox.setAttribute("type", "text")
-                        const inputCell = document.createElement("td")
-                        inputCell.appendChild(inputBox)
-                        //Result
-                        const valueBox = document.createElement("input")
-                        inputBox.setAttribute("type", "number")
-                        const valueCell = document.createElement("td")
-                        valueCell.appendChild(valueBox)
-                        //Append Row
-                        const row = document.createElement("tr")
-                        row.appendChild(catNameCell)
-                        row.appendChild(inputCell)
-                        row.appendChild(valueCell)
+    //Calculate Results
+    body?.addEventListener("click", () => {
+        const tables = document.querySelectorAll("table")
+        let allResult: number = 0
 
-                        table?.appendChild(row)
-                    })
+        tables.forEach((table) => {
+            const pointCells = table.querySelectorAll(".points")
+            const resultBox = table.querySelector(".resultBox")
+            let result: number = 0
 
-                    const resultText = document.createTextNode("result")
-                    const resultCell = document.createElement("td")
-                    resultCell.appendChild(resultText)
-                    const row = document.createElement("tr")
-                    row.appendChild(resultCell)
-                    table?.appendChild(row)
+            pointCells.forEach(pointCell => {
+                let pointCellValue = Number((pointCell as HTMLInputElement).value)
+                if (!isNaN(pointCellValue)) {
+                    result += pointCellValue
+                }
+            })
+
+            if (resultBox) {
+                if (result) {
+                    resultBox.innerHTML = result.toString()
                 }
             }
+            allResult += result
         })
-    }
+
+        if (overallResult) {
+            overallResult.innerHTML = "Gesamt: " + allResult.toString()
+        }
+    })
+
+    newGameBtn?.addEventListener("click", () => {
+        if (game) {
+            createGameTable(game, selectedCats)
+        }
+    })
 })
