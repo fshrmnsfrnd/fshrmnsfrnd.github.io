@@ -234,7 +234,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     //Generate random Letter and animate it
     letterChoice === null || letterChoice === void 0 ? void 0 : letterChoice.addEventListener("click", function () {
-        var wordFields = document.querySelectorAll(".wordInput");
+        var tables = document.querySelectorAll(".wordInput");
+        var currTable = tables[tables.length - 1];
+        var wordFields = currTable.querySelectorAll(".wordInput");
         rollLetters().then(function (letter) {
             wordFields.forEach(function (wordField) {
                 wordField.setAttribute("value", letter.toString());
