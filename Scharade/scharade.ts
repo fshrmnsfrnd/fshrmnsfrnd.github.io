@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "use strict";
     const categoriesElement = document.getElementById("categories");
     const checkboxTemplate: string =
-        '<input type="checkbox" name="{category}" id="{category}" value="{category}"><label for="{category}">  {category}</label><br>';
+        '<div class="category"><input type="checkbox" name="{category}" id="{category}" value="{category}"><label for="{category}">  {category}</label></div>';
     const startButton = document.getElementById("start");
     const chooseCategories = document.getElementById("chooseCategories");
     const currentWord = document.getElementById("word");
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     )
                 ).map((checkbox) => checkbox.value);
                 getWordsFromCategories(selectedCategories)
-                nextWord();
+                nextWord()
             }
         })
     }
