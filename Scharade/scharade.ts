@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentWord = document.getElementById("word");
     const game = document.getElementById("game");
     const resetCategories = document.getElementById("resetCategories");
+    let words: string[] = []
 
     // Funktion zum Laden der JSON-Datei
     async function getCategories(): Promise<string[]> {
@@ -18,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Funktion zum Rendern der Kategorien
     function renderCategories(cats: string[]) {
-        console.log()
         if (categoriesElement) {
             categoriesElement.innerHTML = ""; // Leere den Container
             cats.forEach((category: string) => {
@@ -31,24 +31,19 @@ document.addEventListener("DOMContentLoaded", () => {
     async function main() {
         const categories = await getCategories();
         renderCategories(categories);
-        if(game){
-            game.style.display = "none";
-        }
     }
 
     main();
 
     //---------------------------------------------------------------------------------------------------
 
-    async function getWordsFromCategories(selectedCategories: string[]): Promise<string[]> {
+    async function getWordsFromCategories(selectedCategories: string[]){
         const response = await fetch("./words.json");
         const data = await response.json();
 
-        const words = selectedCategories.flatMap(
+        words = selectedCategories.flatMap(
             (category) => data[category] ?? []
         );
-
-        return words;
     }
 
     function nextWord(){
@@ -58,10 +53,11 @@ document.addEventListener("DOMContentLoaded", () => {
           )
         ).map((checkbox) => checkbox.value);
 
-    getWordsFromCategories(selectedCategories).then((words: string[]) => {
+    getWordsFromCategories(selectedCategories).then(() => {
       if (words.length > 0) {
-        const randomWord: string =
-          words[Math.floor(Math.random() * words.length)];
+        const wordNum = Math.floor(Math.random() * words.length)
+        const randomWord: string = words[wordNum]
+        words.splice(wordNum)
         if(currentWord){
             currentWord.textContent = randomWord;
         }
