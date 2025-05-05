@@ -105,29 +105,27 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
     function nextWord() {
-        var selectedCategories = Array.from(document.querySelectorAll("#categories input[type='checkbox']:checked")).map(function (checkbox) { return checkbox.value; });
-        getWordsFromCategories(selectedCategories).then(function () {
-            if (words.length > 0) {
-                var wordNum = Math.floor(Math.random() * words.length);
-                var randomWord = words[wordNum];
-                words.splice(wordNum);
-                if (currentWord) {
-                    currentWord.textContent = randomWord;
-                }
+        if (words.length > 0) {
+            var wordNum = Math.floor(Math.random() * words.length);
+            var randomWord = words[wordNum];
+            words.splice(wordNum);
+            if (currentWord) {
+                currentWord.textContent = randomWord;
             }
-            else {
-                console.log("Keine Wörter gefunden.");
-                if (currentWord) {
-                    currentWord.textContent = "Keine Wörter gefunden.";
-                }
+        }
+        else {
+            if (currentWord) {
+                currentWord.textContent = "Keine Wörter gefunden.";
             }
-        });
+        }
     }
     if (startButton) {
         startButton.addEventListener("click", function () {
             if (chooseCategories && game) {
                 chooseCategories.style.display = "none";
                 game.style.display = "block";
+                var selectedCategories = Array.from(document.querySelectorAll("#categories input[type='checkbox']:checked")).map(function (checkbox) { return checkbox.value; });
+                getWordsFromCategories(selectedCategories);
                 nextWord();
             }
         });

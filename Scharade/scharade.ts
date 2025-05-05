@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "use strict";
     const categoriesElement = document.getElementById("categories");
     const checkboxTemplate: string =
-      '<input type="checkbox" name="{category}" id="{category}" value="{category}"><label for="{category}">  {category}</label><br>';
+        '<input type="checkbox" name="{category}" id="{category}" value="{category}"><label for="{category}">  {category}</label><br>';
     const startButton = document.getElementById("start");
     const chooseCategories = document.getElementById("chooseCategories");
     const currentWord = document.getElementById("word");
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //---------------------------------------------------------------------------------------------------
 
-    async function getWordsFromCategories(selectedCategories: string[]){
+    async function getWordsFromCategories(selectedCategories: string[]) {
         const response = await fetch("./words.json");
         const data = await response.json();
 
@@ -46,34 +46,32 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     }
 
-    function nextWord(){
-        const selectedCategories: string[] = Array.from(
-          document.querySelectorAll<HTMLInputElement>(
-            "#categories input[type='checkbox']:checked"
-          )
-        ).map((checkbox) => checkbox.value);
+    function nextWord() {
+            if (words.length > 0) {
+                const wordNum = Math.floor(Math.random() * words.length)
+                const randomWord: string = words[wordNum]
+                words.splice(wordNum)
+                if (currentWord) {
+                    currentWord.textContent = randomWord;
+                }
+            } else {
+                if (currentWord) {
+                    currentWord.textContent = "Keine Wörter gefunden.";
+                }
+            }
+    }
 
-    getWordsFromCategories(selectedCategories).then(() => {
-      if (words.length > 0) {
-        const wordNum = Math.floor(Math.random() * words.length)
-        const randomWord: string = words[wordNum]
-        words.splice(wordNum)
-        if(currentWord){
-            currentWord.textContent = randomWord;
-        }
-      } else {
-        console.log("Keine Wörter gefunden.");
-        if(currentWord){
-            currentWord.textContent = "Keine Wörter gefunden.";
-        }
-      }
-    });}
-
-    if(startButton){
+    if (startButton) {
         startButton.addEventListener("click", () => {
-            if(chooseCategories && game){
+            if (chooseCategories && game) {
                 chooseCategories.style.display = "none";
                 game.style.display = "block";
+                const selectedCategories: string[] = Array.from(
+                    document.querySelectorAll<HTMLInputElement>(
+                        "#categories input[type='checkbox']:checked"
+                    )
+                ).map((checkbox) => checkbox.value);
+                getWordsFromCategories(selectedCategories)
                 nextWord();
             }
         })
