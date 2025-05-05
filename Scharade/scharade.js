@@ -106,8 +106,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     function nextWord() {
         if (words.length > 0) {
-            var wordNum = Math.floor(Math.random() * words.length);
-            var randomWord = words[wordNum];
+            const wordNum = Math.floor(Math.random() * words.length);
+            const randomWord = words[wordNum];
             words.splice(wordNum);
             if (currentWord) {
                 currentWord.textContent = randomWord;
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (chooseCategories && game) {
                 chooseCategories.style.display = "none";
                 game.style.display = "block";
-                var selectedCategories = Array.from(document.querySelectorAll("#categories input[type='checkbox']:checked")).map(function (checkbox) { return checkbox.value; });
+                const selectedCategories = Array.from(document.querySelectorAll("#categories input[type='checkbox']:checked")).map((checkbox) => checkbox.value);
                 getWordsFromCategories(selectedCategories);
                 nextWord();
             }
