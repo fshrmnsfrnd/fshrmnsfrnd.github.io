@@ -53,8 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     function nextWord() {
         if (words.length > 0) {
-            var wordNum = Math.floor(Math.random() * words.length);
-            var randomWord = words[wordNum];
+            const wordNum = Math.floor(Math.random() * words.length);
+            const randomWord = words[wordNum];
             words.splice(wordNum);
             if (currentWord) {
                 currentWord.textContent = randomWord;
@@ -65,30 +65,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 currentWord.textContent = "Keine Wörter gefunden.";
             }
         }
-        const selectedCategories = Array.from(document.querySelectorAll("#categories input[type='checkbox']:checked")).map((checkbox) => checkbox.value);
-        getWordsFromCategories(selectedCategories).then(() => {
-            if (words.length > 0) {
-                const wordNum = Math.floor(Math.random() * words.length);
-                const randomWord = words[wordNum];
-                words.splice(wordNum);
-                if (currentWord) {
-                    currentWord.textContent = randomWord;
-                }
-            }
-            else {
-                console.log("Keine Wörter gefunden.");
-                if (currentWord) {
-                    currentWord.textContent = "Keine Wörter gefunden.";
-                }
-            }
-        });
     }
     if (startButton) {
         startButton.addEventListener("click", () => {
             if (chooseCategories && game) {
                 chooseCategories.style.display = "none";
                 game.style.display = "block";
-                var selectedCategories = Array.from(document.querySelectorAll("#categories input[type='checkbox']:checked")).map(function (checkbox) { return checkbox.value; });
+                const selectedCategories = Array.from(document.querySelectorAll("#categories input[type='checkbox']:checked")).map((checkbox) => checkbox.value);
                 getWordsFromCategories(selectedCategories);
                 nextWord();
             }
