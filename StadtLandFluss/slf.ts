@@ -200,7 +200,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //Generate random Letter and animate it
     letterChoice?.addEventListener("click", () => {
-        const wordFields = document.querySelectorAll(".wordInput")
+        const tables = document.querySelectorAll(".wordInput")
+        const currTable = tables[tables.length - 1];
+        const wordFields = currTable.querySelectorAll(".wordInput")
 
         rollLetters().then((letter) => {
             wordFields.forEach(wordField => {
