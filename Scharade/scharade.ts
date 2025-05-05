@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (words.length > 0) {
                 const wordNum = Math.floor(Math.random() * words.length)
                 const randomWord: string = words[wordNum]
-                words.splice(wordNum)
+                words.splice(wordNum, 1)
                 if (currentWord) {
                     currentWord.textContent = randomWord;
                 }

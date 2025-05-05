@@ -106,9 +106,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     function nextWord() {
         if (words.length > 0) {
-            const wordNum = Math.floor(Math.random() * words.length);
-            const randomWord = words[wordNum];
-            words.splice(wordNum);
+            var wordNum = Math.floor(Math.random() * words.length);
+            var randomWord = words[wordNum];
+            words.splice(wordNum, 1);
             if (currentWord) {
                 currentWord.textContent = randomWord;
             }
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (chooseCategories && game) {
                 chooseCategories.style.display = "none";
                 game.style.display = "block";
-                const selectedCategories = Array.from(document.querySelectorAll("#categories input[type='checkbox']:checked")).map((checkbox) => checkbox.value);
+                var selectedCategories = Array.from(document.querySelectorAll("#categories input[type='checkbox']:checked")).map(function (checkbox) { return checkbox.value; });
                 getWordsFromCategories(selectedCategories);
                 nextWord();
             }
