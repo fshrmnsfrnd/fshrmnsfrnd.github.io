@@ -15,21 +15,18 @@ var roles = [
     { name: "Diebe", picture: "thief.png", description: "Die Diebe sind zwei Spieler, die in der Nacht einen anderen Spieler stehlen können." }
 ];
 var rolesOrder = [0, 2, 2, 1, 3, 1, 2, 4, 2, 1, 5, 2, 6, 2, 1, 7, 2, 1, 9, 2, 2, 2, 2, 2, 2];
-var players = [];
+var playerNames = [];
 var playersWithRoles = [];
 function assignRoles() {
-    var usedRoles = rolesOrder.slice(0, players.length);
-    console.log("usedRoles: " + usedRoles);
-    players.forEach(function (player) {
+    var usedRoles = rolesOrder.slice(0, playerNames.length);
+    playerNames.forEach(function (player) {
         var randomIndex = Math.floor(Math.random() * usedRoles.length);
-        console.log("RandomIndex: " + randomIndex);
         playersWithRoles.push({ player: player, role: roles[usedRoles[randomIndex]] });
-        console.log("Used Roles before: " + usedRoles);
-        usedRoles.splice(randomIndex, 1); // Entferne den Wert an der Position randomIndex
-        console.log("Used Roles after: " + usedRoles);
+        usedRoles.splice(randomIndex, 1);
     });
 }
 function startGame() {
+    window.location.href = "game.html";
 }
 document.addEventListener("DOMContentLoaded", function () {
     var body = document.body;
@@ -40,11 +37,11 @@ document.addEventListener("DOMContentLoaded", function () {
     var selectPlayersContainer = document.getElementById("selectPlayers");
     addPlayerBtn === null || addPlayerBtn === void 0 ? void 0 : addPlayerBtn.addEventListener("click", function () {
         if (newPlayerNameInput.value) {
-            players.push(newPlayerNameInput === null || newPlayerNameInput === void 0 ? void 0 : newPlayerNameInput.value);
+            playerNames.push(newPlayerNameInput === null || newPlayerNameInput === void 0 ? void 0 : newPlayerNameInput.value);
         }
         if (playerList) {
             playerList.innerHTML = "";
-            players.forEach(function (player) {
+            playerNames.forEach(function (player) {
                 var playerElement = document.createElement("div");
                 playerElement.setAttribute("class", "player");
                 playerElement.innerText = player;
@@ -56,13 +53,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
     startGameBtn === null || startGameBtn === void 0 ? void 0 : startGameBtn.addEventListener("click", function () {
-        if (players.length >= 4) {
-            localStorage.setItem("players", JSON.stringify(players));
-            //window.location.href = "game.html";
+        if (playerNames.length >= 4) {
+            assignRoles();
+            localStorage.setItem("players", JSON.stringify(playersWithRoles));
             if (selectPlayersContainer) {
                 selectPlayersContainer.remove();
             }
-            assignRoles();
             var displayElement_1 = document.createElement("div");
             displayElement_1.setAttribute("id", "displayRoles");
             displayElement_1.innerText = "Klicken, um den Spielern ihre Rollen zu geben";
@@ -71,8 +67,12 @@ document.addEventListener("DOMContentLoaded", function () {
             var passAlong_1 = true;
             body.addEventListener("click", function () {
                 if (showRolesIndex_1 > playersWithRoles.length - 1) {
-                    displayElement_1.innerText = "Gib das Handy an den Spielleiter";
-                    startGame();
+                    displayElement_1.innerText = "Gib das Handy an den Spielleiter\n";
+                    var start = document.createElement("input");
+                    start.setAttribute("type", "button");
+                    start.setAttribute("value", "Start");
+                    start.setAttribute("onclick", "startGame()");
+                    displayElement_1.appendChild(start);
                 }
                 else {
                     if (passAlong_1 == true) {
@@ -81,6 +81,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                     else if (passAlong_1 == false) {
                         displayElement_1.innerText = "".concat(playersWithRoles[showRolesIndex_1].player, " ist ").concat(playersWithRoles[showRolesIndex_1].role.name);
+                        displayElement_1.innerText += "\n" + playersWithRoles[showRolesIndex_1].role.picture;
+                        displayElement_1.innerText += "\n" + playersWithRoles[showRolesIndex_1].role.description;
                         showRolesIndex_1++;
                         passAlong_1 = true;
                     }
