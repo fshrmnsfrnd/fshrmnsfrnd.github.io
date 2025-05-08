@@ -32,7 +32,6 @@ function startGame(): void {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const body = document.body
     const addPlayerBtn = document.getElementById("addPlayer")
     const newPlayerNameInput = document.getElementById("playerName") as HTMLInputElement
     const playerList = document.getElementById("playerList")
@@ -66,15 +65,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 selectPlayersContainer.remove();
             }
 
+            const nextButton = document.createElement("input")
+            nextButton.setAttribute("type", "button")
+            nextButton.setAttribute("value", "Weiter")
             const displayElement = document.createElement("div");
             displayElement.setAttribute("id", "displayRoles");
             displayElement.innerText = "Klicken, um den Spielern ihre Rollen zu geben"
+            displayElement.appendChild(nextButton)
             document.body.appendChild(displayElement);
 
             let showRolesIndex: number = 0
             let passAlong: boolean = true
 
-            body.addEventListener("click", () => {
+            nextButton.addEventListener("click", () => {
                 if (showRolesIndex > playersWithRoles.length - 1) {
                     displayElement.innerText = `Gib das Handy an den Spielleiter\n`
                     const start = document.createElement("input")
@@ -84,12 +87,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     displayElement.appendChild(start)
                 } else {
                     if (passAlong == true) {
-                        displayElement.innerText = `Gib das Handy an ${playersWithRoles[showRolesIndex].player}`
+                        displayElement.innerText = `Gib das Handy an ${playersWithRoles[showRolesIndex].player} \n`
+                        displayElement.appendChild(nextButton)
                         passAlong = false
                     } else if (passAlong == false) {
                         displayElement.innerText = `${playersWithRoles[showRolesIndex].player} ist ${playersWithRoles[showRolesIndex].role.name}`
                         displayElement.innerText += `\n` + playersWithRoles[showRolesIndex].role.picture
-                        displayElement.innerText += `\n` + playersWithRoles[showRolesIndex].role.description
+                        displayElement.innerText += `\n` + playersWithRoles[showRolesIndex].role.description + `\n`
+                        displayElement.appendChild(nextButton)
                         showRolesIndex++
                         passAlong = true
                     }

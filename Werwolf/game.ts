@@ -55,11 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const gameDisplay = document.getElementById("gameDisplay")
         if (gameDisplay) {
             gameDisplay.innerText = text
-        } 
-        //console.log(text)
+        }
     }
 
-    // Erstelle den Button "Nächste Spielphase"
     const nextPhaseButton = document.createElement("button")
     nextPhaseButton.innerText = "Nächste Spielphase"
 
@@ -67,16 +65,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let phasenCounter = -1
     nextPhaseButton.addEventListener("click", () => {
-        
-        if (phasenCounter == -1 && (players.some((player: { role: { name: string } }) => player.role.name === "Armor"))){
+
+        if (phasenCounter == -1 && (players.some((player: { role: { name: string } }) => player.role.name === "Armor"))) {
             updateGameDisplay("Armor erwacht und läst mit seinen Pfeilen ein Pärchen ineinander verlieben")
-        } else if (phasenCounter == -1 && !(players.some((player: { role: { name: string } }) => player.role.name === "Armor"))){
+        } else if (phasenCounter == -1 && !(players.some((player: { role: { name: string } }) => player.role.name === "Armor"))) {
             phasenCounter += 2
-        } 
+        }
         if (phasenCounter >= 0) {
-            console.log(phasenCounter)
             updateGameDisplay(gamePhases[phasenCounter])
-            if (phasenCounter == players.length - 1) {
+            if (phasenCounter >= gamePhases.length - 1) {
                 phasenCounter = -1
             }
         }

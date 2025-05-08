@@ -48,9 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (gameDisplay) {
             gameDisplay.innerText = text;
         }
-        //console.log(text)
     }
-    // Erstelle den Button "Nächste Spielphase"
     var nextPhaseButton = document.createElement("button");
     nextPhaseButton.innerText = "Nächste Spielphase";
     updateGameDisplay("Die Nacht bricht über das Dorf herein, alle Dorfbewohner schlafen ein");
@@ -63,9 +61,8 @@ document.addEventListener("DOMContentLoaded", function () {
             phasenCounter += 2;
         }
         if (phasenCounter >= 0) {
-            console.log(phasenCounter);
             updateGameDisplay(gamePhases[phasenCounter]);
-            if (phasenCounter == players.length - 1) {
+            if (phasenCounter >= gamePhases.length - 1) {
                 phasenCounter = -1;
             }
         }
