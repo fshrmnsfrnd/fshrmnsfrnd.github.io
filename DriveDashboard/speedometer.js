@@ -23,7 +23,6 @@ if ("geolocation" in navigator) {
         lastTimestamp = timestamp;
         if (speedValue) {
             let kmh = speedValue * 3.6;
-            //let rounded = Math.round(kmh * 100) / 100; Mit Nachkomma
             let rounded = Math.round(kmh); //Ohne Nachkomma
             speedElement.textContent = rounded.toString();
         }
