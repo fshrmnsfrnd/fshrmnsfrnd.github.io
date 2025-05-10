@@ -3,14 +3,11 @@ addEventListener("DOMContentLoaded", (event) => {
   const displayMaxAngle = document.getElementById("maxbeta");
   const permissionButton = document.getElementById("requestPermission");
   const calibrateButton = document.getElementById("calibrate");
-  const displayTest = document.getElementById("test");
+  const speed = document.getElementById("speedDisplay");
+  const displayMaxAtSpeed = document.getElementById("atSpeed")
   let verschiebung = 90.0;
   let maxAngle = 0.0;
   let screenorientation;
-
-  function rotateScreen() {
-    
-  }
 
   function calibrate() {
     maxAngle = 0.0;
@@ -32,6 +29,7 @@ addEventListener("DOMContentLoaded", (event) => {
       maxAngle = angle;
     }
     displayMaxAngle.innerText = maxAngle.toFixed(0);
+    displayMaxAtSpeed.innerText = speed.innerText;
   }
 
   async function requestPermission() {
@@ -94,7 +92,7 @@ addEventListener("DOMContentLoaded", (event) => {
     strokeColor: "#E0E0E0", // to see which ones work best for you
     generateGradient: true,
     highDpiSupport: true, // High resolution support
-  };
+  }
   var target = document.getElementById("neigungdisplay"); // your canvas element
   var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
   gauge.maxValue = 180; // set max gauge value
@@ -102,4 +100,3 @@ addEventListener("DOMContentLoaded", (event) => {
   gauge.animationSpeed = 30; // set animation speed (32 is default value)
 });
 calibrate();
-

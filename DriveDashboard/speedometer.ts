@@ -35,7 +35,6 @@ if ("geolocation" in navigator) {
 
       if (speedValue) {
         let kmh = speedValue * 3.6;
-        //let rounded = Math.round(kmh * 100) / 100; Mit Nachkomma
         let rounded = Math.round(kmh); //Ohne Nachkomma
         speedElement!.textContent = rounded.toString();
       } else {
@@ -52,12 +51,7 @@ if ("geolocation" in navigator) {
 }
 
 // Haversine-Formel zur Berechnung der Distanz zwischen zwei Koordinaten
-function getDistance(
-  lat1: number,
-  lon1: number,
-  lat2: number,
-  lon2: number
-): number {
+function getDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
   const R = 6371000; // Erdradius in Metern
   const toRad = (deg: number) => (deg * Math.PI) / 180;
   const dLat = toRad(lat2 - lat1);
