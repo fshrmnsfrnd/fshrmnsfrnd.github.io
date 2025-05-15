@@ -1,44 +1,44 @@
-addEventListener("DOMContentLoaded", function (event) {
-    var table = document.getElementById("mainTable");
-    var addPlayerBtn = document.getElementById("addPlayer");
+"use strict";
+addEventListener("DOMContentLoaded", (event) => {
+    const table = document.getElementById("mainTable");
+    const addPlayerBtn = document.getElementById("addPlayer");
     //Add Player
     //Variables
-    var playerCounter = 1;
-    var colCounter = 2;
-    var rowCounter = 0;
-    var cellValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 30, 40, 50, 0, 0];
+    let playerCounter = 1;
+    let colCounter = 2;
+    let rowCounter = 0;
+    const cellValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 30, 40, 50, 0, 0];
     //HTML Elements
-    var headerElement = document.createElement("h4");
-    var inputElement = document.createElement("input");
+    const headerElement = document.createElement("h6");
+    const inputElement = document.createElement("input");
     inputElement.setAttribute("type", "number");
-    var checkboxElement = document.createElement("input");
+    const checkboxElement = document.createElement("input");
     checkboxElement.setAttribute("type", "checkbox");
-    var resultElement = document.createElement("p");
+    const resultElement = document.createElement("p");
     resultElement.setAttribute("class", "resultCell");
     if (addPlayerBtn) {
-        addPlayerBtn.addEventListener("click", function () {
+        addPlayerBtn.addEventListener("click", () => {
             if (table) {
-                for (var _i = 0, _a = Array.from(table.rows); _i < _a.length; _i++) {
-                    var row = _a[_i];
+                for (const row of Array.from(table.rows)) {
                     //Add Cells
                     row.insertCell();
                     row.cells[playerCounter].setAttribute("value", cellValues[rowCounter].toString());
                     if (rowCounter == 0) { //Header Cell
-                        var newHeaderElement = headerElement.cloneNode();
+                        const newHeaderElement = headerElement.cloneNode();
                         newHeaderElement.innerText = "Spieler " + playerCounter;
                         row.cells[colCounter].appendChild(newHeaderElement);
                     }
                     else if ((rowCounter >= 1 && rowCounter <= 8) || rowCounter == 13) { //Number Input Cells
-                        var newInputElement = inputElement.cloneNode();
+                        const newInputElement = inputElement.cloneNode();
                         row.cells[colCounter].appendChild(newInputElement);
                     }
                     else if (rowCounter >= 9 && rowCounter <= 12) { //Checkbox Cells
-                        var newCheckboxElement = checkboxElement.cloneNode();
+                        const newCheckboxElement = checkboxElement.cloneNode();
                         newCheckboxElement.setAttribute("value", cellValues[rowCounter].toString());
                         row.cells[colCounter].appendChild(newCheckboxElement);
                     }
                     else if (rowCounter == 14) { //Last Row
-                        var newResultElement = resultElement.cloneNode();
+                        const newResultElement = resultElement.cloneNode();
                         row.cells[colCounter].appendChild(newResultElement);
                     }
                     //inkrement Counters
@@ -54,13 +54,13 @@ addEventListener("DOMContentLoaded", function (event) {
     }
     //Calculate Results
     if (table) {
-        table.addEventListener("click", function () {
-            var rows = table.querySelectorAll("tr");
-            var playersResults = new Array(colCounter - 2).fill(0, 0, colCounter - 2);
+        table.addEventListener("click", () => {
+            const rows = table.querySelectorAll("tr");
+            const playersResults = new Array(colCounter - 2).fill(0, 0, colCounter - 2);
             // Get Values
-            rows.forEach(function (row) {
-                var inputElements = row.querySelectorAll("td input");
-                inputElements.forEach(function (input, col) {
+            rows.forEach((row) => {
+                const inputElements = row.querySelectorAll("td input");
+                inputElements.forEach((input, col) => {
                     if (input instanceof HTMLInputElement) {
                         if (input.type === "checkbox" && input.checked) {
                             playersResults[col] += parseInt(input.value) || 0;
@@ -72,9 +72,11 @@ addEventListener("DOMContentLoaded", function (event) {
                 });
             });
             //Write Results
-            var resultCells = document.querySelectorAll(".resultCell");
-            var resultCellCounter = 0;
-            resultCells.forEach(function (output) {
+            const tables = document.querySelectorAll("table");
+            const currTable = tables[tables.length - 1];
+            const resultCells = currTable.querySelectorAll(".resultCell");
+            let resultCellCounter = 0;
+            resultCells.forEach((output) => {
                 output.innerHTML = playersResults[resultCellCounter].toString();
                 resultCellCounter++;
             });
