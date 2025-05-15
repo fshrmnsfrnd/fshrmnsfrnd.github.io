@@ -1,7 +1,7 @@
 class role {
-    name: string;
-    picture: string;
-    description: string
+    name!: string
+    picture!: string
+    description!: string
 }
 
 const roles: role[] = [
@@ -24,7 +24,7 @@ function assignRoles(): void {
         const randomIndex = Math.floor(Math.random() * usedRoles.length);
         playersWithRoles.push({ player: player, role: roles[usedRoles[randomIndex]] });
         usedRoles.splice(randomIndex, 1);
-    });
+    })
 }
 
 function startGame(): void {

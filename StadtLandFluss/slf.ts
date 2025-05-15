@@ -83,7 +83,7 @@ async function sleep(time: number): Promise<void> {
 
 async function rollLetters():Promise<String> {
     const textElement = document.getElementById("letter")
-    let letter
+    let letter: string = ""
     //Animation
     for (let i = 65; i <= 90; i++) {
         await sleep(50);
