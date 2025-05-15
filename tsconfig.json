@@ -110,6 +110,15 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
-  "include": ["DriveDashboard/*", "src/**/*", "scripts/**/*", "Scharade",],
-  "exclude": ["node_modules", "dist", ".github"]
+  "include": ["**/*"],
+  "exclude": [  "node_modules"
+              , "dist"
+              , ".github"
+              , "Nico"
+              , "tags"
+              , "static"
+              , "package-lock.json"
+              , "package.json"
+              , "postscript.js"
+              , "prescript.js"]
 }
