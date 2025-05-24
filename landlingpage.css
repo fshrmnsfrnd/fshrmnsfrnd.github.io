@@ -6,6 +6,7 @@ body{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
     width: auto;
+    max-width: 100%;
 }
 
 .box{
@@ -15,6 +16,7 @@ body{
     border: 2px solid white;
     border-radius: 10px;
     width: auto;
+    max-width: 100%;
 }
 .box img{
     max-width: 100%;
