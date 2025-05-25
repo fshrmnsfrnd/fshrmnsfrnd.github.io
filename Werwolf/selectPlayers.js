@@ -10,7 +10,7 @@ const roles = [
     { name: "Jäger", picture: "hunter.png", description: "Du bist ein normaler Dorfbewohner, aber wenn du stirbst darfst du jemanden mit in den Tod reißen" },
     { name: "Amor", picture: "amor.png", description: "Du bist ein normaler Dorfbewohner, darfst aber in der ersten Nacht ein Liebespaar bestimmen. Wenn einer von ihnen stirbt, reißt er den anderen mit in den Tod" }
 ];
-let rolesOrder = [0, 2, 2, 1, 3, 1, 2, 4, 2, 1, 5, 2, 6, 2, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2];
+let rolesOrder = [0, 2, 2, 1, 3, 1, 2, 4, 2, 2, 5, 2, 1, 2, 6, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2];
 let playerNames = [];
 let playersWithRoles = [];
 function assignRoles() {
