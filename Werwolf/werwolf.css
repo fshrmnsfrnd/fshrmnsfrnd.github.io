@@ -1,0 +1,144 @@
+/* Grundlayout */
+/*
+body {
+    background: #181f24;
+    color: #e0e6eb;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* Tabellenstil */
+/*
+table {
+    width: 95%;
+    margin: 24px auto 16px auto;
+    border-collapse: collapse;
+    background: #232b32;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px #0004;
+}
+
+th, td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #2a3b45;
+    text-align: left;
+    font-size: 1.1em;
+}
+
+th {
+    background: #1e262c;
+    color: #1feeee;
+    font-size: 1.2em;
+    letter-spacing: 1px;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* Spielphasen-Anzeige */
+#gameDisplay {
+    margin: 32px auto 16px auto;
+    padding: 24px 16px;
+    max-width: 600px;
+    background: #232b32;
+    border-radius: 10px;
+    font-size: 1.3em;
+    text-align: center;
+    box-shadow: 0 1px 8px #0003;
+}
+
+/* Button-Stil */
+/*
+button, input[type="button"] {
+    display: block;
+    margin: 24px auto 0 auto;
+    padding: 12px 32px;
+    background: linear-gradient(90deg, #1feeee 0%, #17ff9a 100%);
+    color: #181f24;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px #0002;
+}
+
+button:hover, input[type="button"]:hover {
+    background: linear-gradient(90deg, #17ff9a 0%, #1feeee 100%);
+    transform: scale(1.05);
+}
+
+/* Spielerlistenanzeige */
+.player {
+    background: #232b32;
+    color: #1feeee;
+    margin: 8px auto;
+    padding: 10px 16px;
+    border-radius: 8px;
+    width: fit-content;
+    font-size: 1.1em;
+    box-shadow: 0 1px 4px #0002;
+}
+
+/* Rollenanzeige */
+#displayRoles {
+    margin: 32px auto 0 auto;
+    padding: 24px 16px;
+    max-width: 500px;
+    background: #232b32;
+    border-radius: 10px;
+    font-size: 1.2em;
+    text-align: center;
+    color: #1feeee;
+    box-shadow: 0 1px 8px #0003;
+}
+
+/* Kartenbilder in info.html */
+img[src*="cards/"] {
+    display: block;
+    margin: 16px auto 8px auto;
+    max-width: 120px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #0003;
+    background: #181f24;
+    padding: 8px;
+}
+
+/* Selected Players Anzeige */
+#selectPlayers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Responsive Design */
+/*
+@media (max-width: 600px) {
+    table, #gameDisplay, #displayRoles {
+        width: 98vw;
+        max-width: 98vw;
+        font-size: 1em;
+        padding: 12px 4vw;
+    }
+    th, td {
+        font-size: 1em;
+        padding: 8px 4px;
+    }
+    img[src*="cards/"] {
+        max-width: 80px;
+        padding: 4px;
+    }
+}
+*/
+
+#nextPhaseButton {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

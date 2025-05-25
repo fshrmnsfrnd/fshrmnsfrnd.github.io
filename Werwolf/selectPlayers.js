@@ -2,15 +2,15 @@
 class role {
 }
 const roles = [
-    { name: "Spielleiter", picture: "game_master.png", description: "Du leitest das Spiel. Wenn alle ihre Rollen kennen bekommst du das Handy" },
-    { name: "Werwolf", picture: "werwolf.png", description: "Du darfst mit deinen Artgenossen (ab 6 Spieler) nachts einen Dorfbewohner töten" },
-    { name: "Dorfbewohner", picture: "villager.png", description: "Du versuchst, die Werwölfe zu finden. Du schläfst Nachts und darfst Tags abstimmen" },
-    { name: "Seher", picture: "seer.png", description: "Wenn du gerufen wirst, darfst du jede Nacht die Identität einer Person erfahren" },
-    { name: "Hexe", picture: "witch.png", description: "Du hast 2 Zaubertränke. Mit dem einen kannst du einmal im Spiel jemanden töten, mit dem anderen kannst du ein Opfer der Werwölfe retten. Du darfst beide in derselben Nacht nutzen" },
-    { name: "Jäger", picture: "hunter.png", description: "Du bist ein normaler Dorfbewohner, aber wenn du stirbst darfst du jemanden mit in den Tod reißen" },
-    { name: "Amor", picture: "amor.png", description: "Du bist ein normaler Dorfbewohner, darfst aber in der ersten Nacht ein Liebespaar bestimmen. Wenn einer von ihnen stirbt, reißt er den anderen mit in den Tod" }
+    { name: "Spielleiter", picture: "cards/game_master.png", description: "Du leitest das Spiel. Wenn alle ihre Rollen kennen bekommst du das Handy" },
+    { name: "Werwolf", picture: "cards/werwolf.png", description: "Du darfst mit deinen Artgenossen (ab 6 Spieler) nachts einen Dorfbewohner töten" },
+    { name: "Dorfbewohner", picture: "cards/villager.png", description: "Du versuchst, die Werwölfe zu finden. Du schläfst Nachts und darfst Tags abstimmen" },
+    { name: "Seher", picture: "cards/seer.png", description: "Wenn du gerufen wirst, darfst du jede Nacht die Identität einer Person erfahren" },
+    { name: "Hexe", picture: "cards/witch.png", description: "Du hast 2 Zaubertränke. Mit dem einen kannst du einmal im Spiel jemanden töten, mit dem anderen kannst du ein Opfer der Werwölfe retten. Du darfst beide in derselben Nacht nutzen" },
+    { name: "Jäger", picture: "cards/hunter.png", description: "Du bist ein normaler Dorfbewohner, aber wenn du stirbst darfst du jemanden mit in den Tod reißen" },
+    { name: "Amor", picture: "cards/amor.png", description: "Du bist ein normaler Dorfbewohner, darfst aber in der ersten Nacht ein Liebespaar bestimmen. Wenn einer von ihnen stirbt, reißt er den anderen mit in den Tod" }
 ];
-let rolesOrder = [0, 2, 2, 1, 3, 1, 2, 4, 2, 1, 5, 2, 6, 2, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2];
+let rolesOrder = [0, 2, 2, 1, 3, 1, 2, 4, 2, 2, 5, 2, 1, 2, 6, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2];
 let playerNames = [];
 let playersWithRoles = [];
 function assignRoles() {
@@ -59,14 +59,14 @@ document.addEventListener("DOMContentLoaded", () => {
             nextButton.setAttribute("value", "Weiter");
             const displayElement = document.createElement("div");
             displayElement.setAttribute("id", "displayRoles");
-            displayElement.innerText = "Klicken, um den Spielern ihre Rollen zu geben";
+            displayElement.innerHTML = `Klicken, um den Spielern ihre Rollen zu geben` + "<br>";
             displayElement.appendChild(nextButton);
             document.body.appendChild(displayElement);
             let showRolesIndex = 0;
             let passAlong = true;
             nextButton.addEventListener("click", () => {
                 if (showRolesIndex > playersWithRoles.length - 1) {
-                    displayElement.innerText = `Gib das Handy an den Spielleiter\n`;
+                    displayElement.innerHTML = `Gib das Handy an den Spielleiter\n` + "<br>";
                     const start = document.createElement("input");
                     start.setAttribute("type", "button");
                     start.setAttribute("value", "Start");
@@ -75,14 +75,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 else {
                     if (passAlong == true) {
-                        displayElement.innerText = `Gib das Handy an ${playersWithRoles[showRolesIndex].player} \n`;
+                        displayElement.innerHTML = `Gib das Handy an ${playersWithRoles[showRolesIndex].player} \n` + "<br>";
                         displayElement.appendChild(nextButton);
                         passAlong = false;
                     }
                     else if (passAlong == false) {
-                        displayElement.innerText = `${playersWithRoles[showRolesIndex].player} ist ${playersWithRoles[showRolesIndex].role.name}`;
-                        displayElement.innerText += `\n` + playersWithRoles[showRolesIndex].role.picture;
-                        displayElement.innerText += `\n` + playersWithRoles[showRolesIndex].role.description + `\n`;
+                        displayElement.innerHTML = `${playersWithRoles[showRolesIndex].player} ist ${playersWithRoles[showRolesIndex].role.name}`;
+                        displayElement.innerHTML += `\n` + `<img src="` + playersWithRoles[showRolesIndex].role.picture + `">`;
+                        displayElement.innerHTML += `\n` + playersWithRoles[showRolesIndex].role.description + `\n` + "<br>";
                         displayElement.appendChild(nextButton);
                         showRolesIndex++;
                         passAlong = true;

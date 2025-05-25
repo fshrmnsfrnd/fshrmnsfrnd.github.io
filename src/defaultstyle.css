@@ -140,8 +140,9 @@ button {
     border-radius: 6px; /* Abrundung für Buttons */
 }
 
-button:hover {
+button:hover , input[type="button"]:hover{
     background-color: #66ffcc;
+    color: #1a1a1a;
 }
 
 /* Stil für Checkbox */

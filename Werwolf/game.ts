@@ -58,8 +58,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    const nextPhaseButton = document.createElement("button")
-    nextPhaseButton.innerText = "Nächste Spielphase"
+    const nextPhaseButton = document.createElement("input")
+    nextPhaseButton.setAttribute("type", "button")
+    nextPhaseButton.setAttribute("id", "nextPhaseButton")
+    nextPhaseButton.setAttribute("value", "Nächste Spielphase")
 
     updateGameDisplay("Die Nacht bricht über das Dorf herein, alle Dorfbewohner schlafen ein")
 
