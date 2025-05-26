@@ -6,65 +6,65 @@
       <description>Letzte 10 Seiten on Nicos Obsidian</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>FlipFlops</title>
-    <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/FlipFlops</link>
-    <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/FlipFlops</guid>
-    <description>Schaltzeichen Zustände des Flipflops Setzen: e_1 = 1 führt zu q = 1 Besteht bereits der Zustand q=1 am Ausgang, so bewirkt e_1=1 keine Änderung des Ausgangszustands.</description>
-    <pubDate>Fri, 23 May 2025 06:49:14 GMT</pubDate>
+    <title>Parity Check</title>
+    <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/Parity-Check</link>
+    <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/Parity-Check</guid>
+    <description> Jedem Codewort wird ein Bit so hinzugefügt, dass die Summe der im Wort vorkommenden 1er entweder auf eine gerade (even) oder eine ungerade (odd) Zahl ergänzt Beispiel: Hex Ziffern (odd Parity Check) ZahlCodePrüfbit000001100010200100300111401000501011601101701110810000910011A10101B10110C11001D11010E...</description>
+    <pubDate>Mon, 26 May 2025 09:07:49 GMT</pubDate>
   </item><item>
-    <title>Gegenüberstellung von Schaltnetzen und Schaltwerken</title>
-    <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/Gegen%C3%BCberstellung-von-Schaltnetzen-und-Schaltwerken</link>
-    <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/Gegen%C3%BCberstellung-von-Schaltnetzen-und-Schaltwerken</guid>
-    <description>Schaltnetze Alle bisher behandelten Verknüpfungsschaltungen Schaltungstechnische Umsetzung einer schaltalgebräischen Funktion mit UND, ODER und NICHT (oder NAND oder NOR) auch als “Kombinatorische Schaltung” bezeichnet Beispiele: Multiplexer, Addierer, Codierer, Decodieren Nur eine Signalflussrichtu...</description>
-    <pubDate>Fri, 23 May 2025 06:48:42 GMT</pubDate>
+    <title>Flags</title>
+    <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/Flags</link>
+    <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/Flags</guid>
+    <description>Negativ-Flag (N-Flag) signed 8-Bit: 1010 1011 Das Vorzeichen-Bit ist auf “1”, also ist die Zahl negativ.</description>
+    <pubDate>Mon, 26 May 2025 09:07:49 GMT</pubDate>
   </item><item>
-    <title>T-FlipFlop</title>
-    <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/T-FlipFlop</link>
-    <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/T-FlipFlop</guid>
-    <description> Trigger FlipFlop Transclude of Flipflops-20-05-25-09.32.36.excalidraw Schaltzeichen Transclude of Flipflops-20-05-25-09.41.37.excalidraw t^mt^{m+1}qq^{m}0110.</description>
-    <pubDate>Fri, 23 May 2025 06:48:30 GMT</pubDate>
+    <title>Excess 3 Code</title>
+    <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/Excess-3-Code</link>
+    <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/Excess-3-Code</guid>
+    <description> Auch Stibitz Code genannt Excess 3 Tetraden bilden Dezimalzahl normal zu Binär, und dann + 3 (0011) Beispiel 32 = 0011 0010 0011 0010 + 0011 0011 = 0110 0101 Zehnerkomplement bilden alle Bits flippen zur rechtesten Tetrade 1 addieren Addition Excess 3 Tetraden bilden Addieren Wenn aus der höchsten ...</description>
+    <pubDate>Mon, 26 May 2025 09:07:49 GMT</pubDate>
   </item><item>
-    <title>JK-FlipFlop</title>
-    <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/JK-FlipFlop</link>
-    <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/JK-FlipFlop</guid>
-    <description> Jump n Kill FlipFlop Einflanken gesteuertes JK-FF abgeleitet vom SR-FF Ziel: Vielseitiges FF Verhalten: Setzen/Rücksetzen, wie das RS-FF “Verbotene Fall” → Toggled, wie T-FF Transclude of Flipflops-22-05-25-12.08.39.excalidraw Schaltzeichen Transclude of Flipflops-22-05-25-12.14.01.excalidraw Wahrh...</description>
-    <pubDate>Fri, 23 May 2025 06:48:21 GMT</pubDate>
-  </item><item>
-    <title>RF-FlipFlop</title>
-    <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/RF-FlipFlop</link>
-    <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/RF-FlipFlop</guid>
-    <description>Wahrheitstabelle des RF-FF in Kurzform t^mt^{m+1}rsq^{m+1}00q^{m}01110011verboten.</description>
-    <pubDate>Fri, 23 May 2025 06:47:59 GMT</pubDate>
-  </item><item>
-    <title>SR-FlipFlop</title>
-    <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/SR-FlipFlop</link>
-    <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/SR-FlipFlop</guid>
-    <description> Setzen-Rücksetzen FlipFlop Wahrheitstabelle eines taktgesteuerten SR-Flipflop Transclude of Flipflops-13-05-25-09.11.20.excalidraw trsq\bar{q}X = Speicherfall000XX001XX010XX011XX100XXSetzen →10110Rücksetzen →11001Verboten →111// Führt man t^m als Zeitpunkt eines Taktimpulses und t^{m+1} als Zeitpun...</description>
-    <pubDate>Fri, 23 May 2025 06:47:51 GMT</pubDate>
-  </item><item>
-    <title>RS-FlipFlop</title>
-    <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/RS-FlipFlop</link>
-    <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/RS-FlipFlop</guid>
-    <description> Rücksetzen-Setzen-FlipFlop RS-FF mit dominierendem R Eingang Motivation: Verbotene Zustände s = r = 1 mit dem Ziel q = 0 Transclude of Flipflops-15-05-25-12.05.20.excalidraw Wahrheitstabelle t^mt^mt^{m+1}rsq^{m+1}00q^m011100110.</description>
-    <pubDate>Fri, 23 May 2025 06:47:34 GMT</pubDate>
+    <title>BCD Code</title>
+    <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/BCD-Code</link>
+    <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/BCD-Code</guid>
+    <description> Tetraden Codes stellen die einzelnen Dezimalen Ziffern Binär mit 4 Bit dar.</description>
+    <pubDate>Mon, 26 May 2025 09:07:49 GMT</pubDate>
   </item><item>
     <title>Zählerschaltungen</title>
     <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/Z%C3%A4hlerschaltungen</link>
     <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/Z%C3%A4hlerschaltungen</guid>
-    <description>Asynchron Zählen Transclude of Flipflops-22-05-25-12.35.45.excalidraw Taktschritte q_2q_1q_010012010301141005101611071110000.</description>
-    <pubDate>Fri, 23 May 2025 06:46:53 GMT</pubDate>
+    <description>Asynchron Zählen Taktschritte q_2q_1q_010012010301141005101611071110000.</description>
+    <pubDate>Mon, 26 May 2025 09:07:49 GMT</pubDate>
+  </item><item>
+    <title>T-FlipFlop</title>
+    <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/T-FlipFlop</link>
+    <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/T-FlipFlop</guid>
+    <description> Trigger FlipFlop Schaltzeichen t^mt^{m+1}qq^{m}0110.</description>
+    <pubDate>Mon, 26 May 2025 09:07:49 GMT</pubDate>
+  </item><item>
+    <title>SR-FlipFlop</title>
+    <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/SR-FlipFlop</link>
+    <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/SR-FlipFlop</guid>
+    <description> Setzen-Rücksetzen FlipFlop Wahrheitstabelle eines taktgesteuerten SR-Flipflop trsq\bar{q}X = Speicherfall000XX001XX010XX011XX100XXSetzen →10110Rücksetzen →11001Verboten →111// Führt man t^m als Zeitpunkt eines Taktimpulses und t^{m+1} als Zeitpunkt des nachfolgenden Taktpulses ein, so können Wahrhe...</description>
+    <pubDate>Mon, 26 May 2025 09:07:49 GMT</pubDate>
+  </item><item>
+    <title>RS-FlipFlop</title>
+    <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/RS-FlipFlop</link>
+    <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/RS-FlipFlop</guid>
+    <description> Rücksetzen-Setzen-FlipFlop RS-FF mit dominierendem R Eingang Motivation: Verbotene Zustände s = r = 1 mit dem Ziel q = 0 Wahrheitstabelle t^mt^mt^{m+1}rsq^{m+1}00q^m011100110.</description>
+    <pubDate>Mon, 26 May 2025 09:07:49 GMT</pubDate>
   </item><item>
     <title>Master-Slave-FlipFlop</title>
     <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/Master-Slave-FlipFlop</link>
     <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/Master-Slave-FlipFlop</guid>
-    <description>Transclude of Flipflops-22-05-25-12.26.04.excalidraw.</description>
-    <pubDate>Fri, 23 May 2025 06:46:10 GMT</pubDate>
+    <description></description>
+    <pubDate>Mon, 26 May 2025 09:07:49 GMT</pubDate>
   </item><item>
-    <title>D-FlipFlop</title>
-    <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/D-FlipFlop</link>
-    <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/D-FlipFlop</guid>
-    <description>D-FF Abgeleitet vom SR-FF Transclude of Flipflops-20-05-25-08.35.38.excalidraw t^mt^{m+1}dq^{m+1}0011 Bedeutung “d”: Delay, d.h.</description>
-    <pubDate>Fri, 23 May 2025 06:43:46 GMT</pubDate>
+    <title>JK-FlipFlop</title>
+    <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/JK-FlipFlop</link>
+    <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/JK-FlipFlop</guid>
+    <description> Jump n Kill FlipFlop Einflanken gesteuertes JK-FF abgeleitet vom SR-FF Ziel: Vielseitiges FF Verhalten: Setzen/Rücksetzen, wie das RS-FF “Verbotene Fall” → Toggled, wie T-FF Schaltzeichen Wahrheitstabelle t^mt^{m+1}kjq^{m+1}00q^m01110011\overline{q^m} JK-FF mit zusätzlichem Setzen / Rücksetzen (tak...</description>
+    <pubDate>Mon, 26 May 2025 09:07:49 GMT</pubDate>
   </item>
     </channel>
   </rss>
