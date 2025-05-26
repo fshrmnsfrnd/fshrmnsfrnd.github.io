@@ -54,17 +54,17 @@
     <description>Asynchron Zählen Transclude of Flipflops-22-05-25-12.35.45.excalidraw Taktschritte q_2q_1q_010012010301141005101611071110000.</description>
     <pubDate>Fri, 23 May 2025 06:46:53 GMT</pubDate>
   </item><item>
-    <title>Flipflops</title>
-    <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/Flipflops</link>
-    <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/Flipflops</guid>
-    <description></description>
-    <pubDate>Fri, 23 May 2025 06:46:39 GMT</pubDate>
-  </item><item>
     <title>Master-Slave-FlipFlop</title>
     <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/Master-Slave-FlipFlop</link>
     <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/Master-Slave-FlipFlop</guid>
     <description>Transclude of Flipflops-22-05-25-12.26.04.excalidraw.</description>
     <pubDate>Fri, 23 May 2025 06:46:10 GMT</pubDate>
+  </item><item>
+    <title>D-FlipFlop</title>
+    <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/D-FlipFlop</link>
+    <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/D-FlipFlop</guid>
+    <description>D-FF Abgeleitet vom SR-FF Transclude of Flipflops-20-05-25-08.35.38.excalidraw t^mt^{m+1}dq^{m+1}0011 Bedeutung “d”: Delay, d.h.</description>
+    <pubDate>Fri, 23 May 2025 06:43:46 GMT</pubDate>
   </item>
     </channel>
   </rss>
