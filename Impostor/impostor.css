@@ -1,0 +1,113 @@
+/* Impostor-spezifisches Styling im Stil von defaultstyle.css */
+
+#selectPlayers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 500px;
+    margin: 40px auto 0 auto;
+    padding: 24px;
+    background-color: #1c262e;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px #0006;
+    border: 1px solid #33cccc;
+}
+
+#selectPlayers p {
+    grid-column: span 2;
+    color: #b0c7d1;
+    font-size: 1.1em;
+    margin-bottom: 4px;
+}
+
+#selectPlayers input[type="number"] {
+    width: 80px;
+    background-color: #0d1317;
+    color: #b2f0e5;
+    border: 1px solid #66ffcc;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 1em;
+    margin-bottom: 8px;
+}
+
+#selectPlayers input[type="button"] {
+    grid-column: span 2;
+    background-color: #33cccc;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 0;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: background 0.2s, color 0.2s;
+}
+
+#selectPlayers input[type="button"]:hover {
+    background-color: #66ffcc;
+    color: #1a1a1a;
+}
+
+#displayRoles {
+    margin: 40px auto 0 auto;
+    max-width: 420px;
+    background-color: #1c262e;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px #0006;
+    border: 1px solid #33cccc;
+    padding: 32px 24px;
+    text-align: center;
+    color: #b0c7d1;
+    font-size: 1.2em;
+}
+
+#displayRoles input[type="button"] {
+    margin-top: 24px;
+    background-color: #33cccc;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 32px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+#displayRoles input[type="button"]:hover {
+    background-color: #66ffcc;
+    color: #1a1a1a;
+}
+
+#timer {
+    margin: 40px auto 0 auto;
+    max-width: 320px;
+    background-color: #1c262e;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px #0006;
+    border: 1px solid #33cccc;
+    padding: 24px 16px;
+    text-align: center;
+    color: #b0c7d1;
+    font-size: 2em;
+}
+
+#timer input[type="button"] {
+    margin-top: 16px;
+    background-color: #33cccc;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 28px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+#timer input[type="button"]:hover {
+    background-color: #66ffcc;
+    color: #1a1a1a;
+}

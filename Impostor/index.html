@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Spielanleitung für Impostor">
+    <title>Impostor</title>
+    <link rel="stylesheet" href="../src/defaultstyle.css">
+    <link rel="stylesheet" href="./impostor.css">
+    <script src="impostor.js"></script>
+</head>
+
+<body>
+    <h1>Impostor</h1>
+    <a href="./info.html">
+        <p>How to Play?</p>
+    </a>
+    <br>
+
+    <div id="selectPlayers">
+        <p>Anzahl Spieler (gesamt): </p>
+        <input type="number" name="numberOfPlayers" id="numberOfPlayers" min="3" max="99" value="3">
+
+        <p>Anzahl Impostor: </p>
+        <input type="number" name="numberOfImpostors" id="numberOfImpostors" min="1" max="97" value="1">
+        <input type="button" value="Spiel starten" id="startGameButton">
+    </div>
+</body>
+
+</html>
