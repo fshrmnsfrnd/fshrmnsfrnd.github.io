@@ -1,18 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const GAME_SPEED = 100
+    let GAME_SPEED = 250
     const CANVAS_BORDER_COLOUR = 'black'
-    const CANVAS_BACKGROUND_COLOUR = "white"
-    const SNAKE_COLOUR = 'lightgreen'
-    const SNAKE_BORDER_COLOUR = 'darkgreen'
+    const CANVAS_BACKGROUND_COLOUR = "grey"
+    const SNAKE_COLOUR = 'darkgreen'
+    const SNAKE_BORDER_COLOUR = 'black'
     const FOOD_COLOUR = 'red'
     const FOOD_BORDER_COLOUR = 'darkred'
 
+    // Schrittweite und Feldgröße
+    const FIELD_SIZE = 25
+
     let snake = [
-        { x: 150, y: 150 },
-        { x: 140, y: 150 },
-        { x: 130, y: 150 },
-        { x: 120, y: 150 },
-        { x: 110, y: 150 }
+        { x: 6 * FIELD_SIZE, y: 6 * FIELD_SIZE },
+        { x: 5 * FIELD_SIZE, y: 6 * FIELD_SIZE },
+        { x: 4 * FIELD_SIZE, y: 6 * FIELD_SIZE },
+        { x: 3 * FIELD_SIZE, y: 6 * FIELD_SIZE },
+        { x: 2 * FIELD_SIZE, y: 6 * FIELD_SIZE }
     ]
 
     // The user's score
@@ -23,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let foodX: number
     let foodY: number
     // Velocitys
-    let dx = 10
+    let dx = FIELD_SIZE
     let dy = 0
 
     const gameCanvas = document.getElementById("gameCanvas") as HTMLCanvasElement
@@ -36,6 +39,43 @@ document.addEventListener("DOMContentLoaded", () => {
     createFood()
     // Call changeDirection whenever a key is pressed
     document.addEventListener("keydown", changeDirection)
+
+    // Swipe-Steuerung für den gesamten Bildschirm
+    let touchStartX = 0
+    let touchStartY = 0
+
+    document.addEventListener("touchstart", function (e) {
+        if (e.touches.length === 1) {
+            touchStartX = e.touches[0].clientX
+            touchStartY = e.touches[0].clientY
+        }
+    })
+
+    document.addEventListener("touchend", function (e) {
+        if (e.changedTouches.length === 1) {
+            const dxTouch = e.changedTouches[0].clientX - touchStartX
+            const dyTouch = e.changedTouches[0].clientY - touchStartY
+
+            // Nur werten, wenn Swipe lang genug
+            if (Math.abs(dxTouch) > 30 || Math.abs(dyTouch) > 30) {
+                if (Math.abs(dxTouch) > Math.abs(dyTouch)) {
+                    // Horizontaler Swipe
+                    if (dxTouch > 0) {
+                        changeDirection({ keyCode: 39 } as KeyboardEvent) // rechts
+                    } else {
+                        changeDirection({ keyCode: 37 } as KeyboardEvent) // links
+                    }
+                } else {
+                    // Vertikaler Swipe
+                    if (dyTouch > 0) {
+                        changeDirection({ keyCode: 40 } as KeyboardEvent) // runter
+                    } else {
+                        changeDirection({ keyCode: 38 } as KeyboardEvent) // hoch
+                    }
+                }
+            }
+        }
+    })
 
     //Main function of the game called repeatedly to advance the game
     function main() {
@@ -73,11 +113,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!ctx) return
         ctx.fillStyle = FOOD_COLOUR
         ctx.strokeStyle = FOOD_BORDER_COLOUR
-        ctx.fillRect(foodX, foodY, 10, 10)
-        ctx.strokeRect(foodX, foodY, 10, 10)
+        ctx.fillRect(foodX, foodY, FIELD_SIZE, FIELD_SIZE)
+        ctx.strokeRect(foodX, foodY, FIELD_SIZE, FIELD_SIZE)
     }
 
-    //Advances the snake by changing the x-coordinates of its parts according to the horizontal velocity and the y-coordinates of its parts  according to the vertical veolocity
+    //Advances the snake by changing the x-coordinates of its parts according to the horizontal velocity and the y-coordinates of its parts according to the vertical veolocity
     function advanceSnake() {
         // Create the new Snake's head
         const head = { x: snake[0].x + dx, y: snake[0].y + dy }
@@ -86,8 +126,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const didEatFood = snake[0].x === foodX && snake[0].y === foodY
         if (didEatFood) {
-            // Increase score
-            score += 10
+            score += 1
+            // Increase speed every 5 points
+            if(score <= 10){
+                GAME_SPEED = GAME_SPEED - 5
+            } else if (score <= 25) {
+                GAME_SPEED = GAME_SPEED - 3
+            } else if (score <= 40) {
+                GAME_SPEED = GAME_SPEED - 1
+            }
+
             // Display score on screen
             const scoreElement = document.getElementById('score')
             if (scoreElement) scoreElement.innerHTML = score.toString()
@@ -107,9 +155,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const hitLeftWall = snake[0].x < 0
-        const hitRightWall = snake[0].x > gameCanvas.width - 10
+        const hitRightWall = snake[0].x > gameCanvas.width - FIELD_SIZE
         const hitToptWall = snake[0].y < 0
-        const hitBottomWall = snake[0].y > gameCanvas.height - 10
+        const hitBottomWall = snake[0].y > gameCanvas.height - FIELD_SIZE
 
         return hitLeftWall || hitRightWall || hitToptWall || hitBottomWall
     }
@@ -120,16 +168,16 @@ document.addEventListener("DOMContentLoaded", () => {
      * @param { number } min - The minimum number the random number can be
      * @param { number } max - The maximum number the random number can be
      */
-    function randomTen(min: number, max: number) {
-        return Math.round((Math.random() * (max - min) + min) / 10) * 10
+    function randomField(min: number, max: number) {
+        return Math.round((Math.random() * (max - min) + min) / FIELD_SIZE) * FIELD_SIZE
     }
 
     //Creates random set of coordinates for the snake food.
     function createFood() {
         // Generate a random number the food x-coordinate
-        foodX = randomTen(0, gameCanvas.width - 10)
+        foodX = randomField(0, gameCanvas.width - FIELD_SIZE)
         // Generate a random number for the food y-coordinate
-        foodY = randomTen(0, gameCanvas.height - 10)
+        foodY = randomField(0, gameCanvas.height - FIELD_SIZE)
 
         // if the new food location is where the snake currently is, generate a new food location
         snake.forEach(function isFoodOnSnake(part) {
@@ -158,10 +206,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Draw a "filled" rectangle to represent the snake part at the coordinates
         // the part is located
-        ctx.fillRect(snakePart.x, snakePart.y, 10, 10)
+        ctx.fillRect(snakePart.x, snakePart.y, FIELD_SIZE, FIELD_SIZE)
 
         // Draw a border around the snake part
-        ctx.strokeRect(snakePart.x, snakePart.y, 10, 10)
+        ctx.strokeRect(snakePart.x, snakePart.y, FIELD_SIZE, FIELD_SIZE)
     }
 
     /*
@@ -186,26 +234,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const keyPressed = event.keyCode
 
-        const goingUp = dy === -10
-        const goingDown = dy === 10
-        const goingRight = dx === 10
-        const goingLeft = dx === -10
+        const goingUp = dy === -FIELD_SIZE
+        const goingDown = dy === FIELD_SIZE
+        const goingRight = dx === FIELD_SIZE
+        const goingLeft = dx === -FIELD_SIZE
 
         if (keyPressed === LEFT_KEY && !goingRight) {
-            dx = -10
+            dx = -FIELD_SIZE
             dy = 0
         }
         if (keyPressed === UP_KEY && !goingDown) {
             dx = 0
-            dy = -10
+            dy = -FIELD_SIZE
         }
         if (keyPressed === RIGHT_KEY && !goingLeft) {
-            dx = 10
+            dx = FIELD_SIZE
             dy = 0
         }
         if (keyPressed === DOWN_KEY && !goingUp) {
             dx = 0
-            dy = 10
+            dy = FIELD_SIZE
         }
     }
 })

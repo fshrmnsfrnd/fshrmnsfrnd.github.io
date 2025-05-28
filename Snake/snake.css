@@ -1,12 +1,13 @@
 #gameCanvas {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 90%;
+    /*max-width: 400px;*/
+    display: block;
+    margin: 32px auto 0 auto;
 }
 
 #score {
     text-align: center;
-    font-size: 140px;
+    font-size: 60px;
     font-family: 'Antic Slab', serif;
+    margin-top: 10px;
 }
