@@ -1,9 +1,42 @@
-.dicecontainer{
+.dicecontainer {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem; 
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+    justify-items: center;
 }
 
-img{
+img {
+    width: 100%;
+    max-width: 180px;
+    aspect-ratio: 1 / 1;
+    height: auto;
     max-height: 19vh;
+    object-fit: contain;
+}
+
+/* Handy: 2 Würfel nebeneinander, 3 Reihen */
+@media (max-width: 600px) {
+    .dicecontainer {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.4rem;
+    }
+    img {
+        width: 100%;
+        max-width: 100vw;      /* Bild kann maximal so breit wie der Viewport werden */
+        aspect-ratio: 1 / 1;   /* Quadratisch */
+        height: auto;
+        max-height: calc((100vw - 0.4rem) / 2); /* 2 Bilder + 1x gap */
+        object-fit: contain;
+    }
+}
+
+/* Desktop: Mehr Würfel pro Zeile */
+@media (min-width: 601px) {
+    .dicecontainer {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    img {
+        max-width: 180px;
+        max-height: 19vh;
+    }
 }
