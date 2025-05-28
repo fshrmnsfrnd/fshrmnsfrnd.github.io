@@ -1,15 +1,37 @@
-body{
+body {
     width: 100%;
 }
 
-#Boxes{
+#Boxes {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    width: auto;
-    max-width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 16px;
+    box-sizing: border-box;
 }
 
-.box{
+@media (max-width: 900px) {
+    #Boxes {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 0 8px;
+        max-width: 98vw;
+    }
+}
+
+@media (max-width: 600px) {
+    #Boxes {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin: 20px auto;
+        padding: 0 2vw;
+        max-width: 100vw;
+    }
+}
+
+.box {
     overflow: hidden;
     margin: 1% 1%;
     padding: 2px 2px;
@@ -18,6 +40,7 @@ body{
     width: auto;
     max-width: 100%;
 }
-.box img{
+
+.box img {
     max-width: 100%;
 }
