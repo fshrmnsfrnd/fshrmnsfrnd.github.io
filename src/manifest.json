@@ -8,7 +8,7 @@
     "theme_color": "#1c262e",
     "icons": [
         {
-            "src": "./ff_favicon.png",
+            "src": "/src/ff_favicon.png",
             "sizes": "192x192",
             "type": "image/png"
         }
