@@ -1,9 +1,17 @@
-#gameCanvas {
-    max-width: 95%;
-    /*max-width: 400px;*/
-    max-height: calc(100% - 20px);
-    display: block;
-    margin: 2px auto 0 auto;
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    box-sizing: border-box;
 }
 
 #score {
@@ -11,18 +19,48 @@
     font-size: 60px;
     font-family: 'Antic Slab', serif;
     margin-top: 10px;
-
+    margin-bottom: 10px;
 }
 
-body{
-    overflow: hidden;
+#gameCanvas {
+    display: block;
+    background: #888;
+    box-sizing: border-box;
+    /* Default fallback */
+    width: 100vw;
+    height: 100vw;
+    max-width: 100vw;
+    max-height: calc(100vh - 120px); /* leave space for score and button */
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+}
+
+/* Landscape: canvas as tall as possible */
+@media (orientation: landscape) {
+    #gameCanvas {
+        width: calc(100vh - 190px);
+        height: calc(100vh - 190px);
+        max-width: 100vw;
+        max-height: calc(100vh - 120px);
+        aspect-ratio: 1 / 1;
+    }
+}
+
+/* Portrait: canvas as wide as possible */
+@media (orientation: portrait) {
+    #gameCanvas {
+        width: 100vw;
+        height: 100vw;
+        max-width: calc(100vh - 190px);
+        max-height: calc(100vh - 190px);
+        aspect-ratio: 1 / 1;
+    }
 }
 
 #reloadButtonDiv {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
 }
 
 #reloadBtn {
@@ -31,7 +69,4 @@ body{
     font-size: 1.5rem;
     margin: 0 auto;
     display: block;
-}
-#reloadBtn:hover {
-    background: #ddd;
 }
