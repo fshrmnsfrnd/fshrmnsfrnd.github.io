@@ -10,4 +10,9 @@
     font-size: 60px;
     font-family: 'Antic Slab', serif;
     margin-top: 10px;
+
+}
+
+body{
+    overflow: hidden;
 }
