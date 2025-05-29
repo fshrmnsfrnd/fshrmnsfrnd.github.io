@@ -3,6 +3,7 @@
     /*max-width: 400px;*/
     display: block;
     margin: 32px auto 0 auto;
+    height: 85vh;
 }
 
 #score {
@@ -10,6 +11,7 @@
     font-size: 60px;
     font-family: 'Antic Slab', serif;
     margin-top: 10px;
+
 }
 
 body{
