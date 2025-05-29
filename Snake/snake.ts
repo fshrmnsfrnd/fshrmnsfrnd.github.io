@@ -80,8 +80,17 @@ document.addEventListener("DOMContentLoaded", () => {
     //Main function of the game called repeatedly to advance the game
     function main() {
         // If the game ended return early to stop game
-        if (didGameEnd()) return
+        if (didGameEnd()){
+            const reloadButtonDiv = document.getElementById("reloadButtonDiv");
+            const reloadBtn = document.createElement("input")
+            reloadBtn.setAttribute("type", "button")
+            reloadBtn.setAttribute("value", "Neustart")
 
+            reloadBtn.addEventListener("click", () => location.reload())
+
+            reloadButtonDiv?.appendChild(reloadBtn)
+            return
+        }
         setTimeout(function onTick() {
             changingDirection = false
             clearCanvas()

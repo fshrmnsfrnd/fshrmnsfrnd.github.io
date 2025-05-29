@@ -1,6 +1,7 @@
 #gameCanvas {
-    width: 95%;
+    max-width: 95%;
     /*max-width: 400px;*/
+    max-height: calc(100% - 20px);
     display: block;
     margin: 2px auto 0 auto;
 }
@@ -15,4 +16,22 @@
 
 body{
     overflow: hidden;
+}
+
+#reloadButtonDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#reloadBtn {
+    width: 160px;
+    height: 48px;
+    font-size: 1.5rem;
+    margin: 0 auto;
+    display: block;
+}
+#reloadBtn:hover {
+    background: #ddd;
 }
