@@ -120,8 +120,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const startGameBtn = document.getElementById("startGameButton");
     startGameBtn === null || startGameBtn === void 0 ? void 0 : startGameBtn.addEventListener("click", () => {
         if (numberOfImpostorsInput && numberOfPlayersInput) {
-            let numberOfPlayers = Number(numberOfPlayersInput.getAttribute("value"));
-            let numberOfImpostors = Number(numberOfImpostorsInput.getAttribute("value"));
+            let numberOfPlayers = Number(numberOfPlayersInput.value);
+            let numberOfImpostors = Number(numberOfImpostorsInput.value);
             selectPlayersDiv === null || selectPlayersDiv === void 0 ? void 0 : selectPlayersDiv.remove();
             initializeRoles(numberOfImpostors, numberOfPlayers);
             showRoles();

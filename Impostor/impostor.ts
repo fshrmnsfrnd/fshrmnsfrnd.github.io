@@ -134,14 +134,14 @@ function showRoles(){
 document.addEventListener("DOMContentLoaded", () => {
     const body = document.getElementsByName("body")
     const selectPlayersDiv = document.getElementById("selectPlayers")
-    const numberOfPlayersInput = document.getElementById("numberOfPlayers")
-    const numberOfImpostorsInput = document.getElementById("numberOfImpostors")
+    const numberOfPlayersInput = document.getElementById("numberOfPlayers") as HTMLInputElement
+    const numberOfImpostorsInput = document.getElementById("numberOfImpostors") as HTMLInputElement
     const startGameBtn = document.getElementById("startGameButton")
 
     startGameBtn?.addEventListener("click", () => {
         if(numberOfImpostorsInput && numberOfPlayersInput){
-            let numberOfPlayers:number = Number(numberOfPlayersInput.getAttribute("value"))
-            let numberOfImpostors:number = Number(numberOfImpostorsInput.getAttribute("value"))
+            let numberOfPlayers:number = Number(numberOfPlayersInput.value)
+            let numberOfImpostors:number = Number(numberOfImpostorsInput.value)
         
             selectPlayersDiv?.remove()
             initializeRoles(numberOfImpostors, numberOfPlayers)
