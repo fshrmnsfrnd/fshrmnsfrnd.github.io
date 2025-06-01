@@ -10,61 +10,61 @@
     <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/Parity-Check</link>
     <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/Parity-Check</guid>
     <description> Jedem Codewort wird ein Bit so hinzugefügt, dass die Summe der im Wort vorkommenden 1er entweder auf eine gerade (even) oder eine ungerade (odd) Zahl ergänzt Beispiel: Hex Ziffern (odd Parity Check) ZahlCodePrüfbit000001100010200100300111401000501011601101701110810000910011A10101B10110C11001D11010E...</description>
-    <pubDate>Tue, 27 May 2025 15:45:37 GMT</pubDate>
+    <pubDate>Sun, 01 Jun 2025 12:53:07 GMT</pubDate>
   </item><item>
     <title>Flags</title>
     <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/Flags</link>
     <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/Flags</guid>
     <description>Negativ-Flag (N-Flag) signed 8-Bit: 1010 1011 Das Vorzeichen-Bit ist auf “1”, also ist die Zahl negativ.</description>
-    <pubDate>Tue, 27 May 2025 15:45:37 GMT</pubDate>
+    <pubDate>Sun, 01 Jun 2025 12:53:07 GMT</pubDate>
   </item><item>
     <title>Excess 3 Code</title>
     <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/Excess-3-Code</link>
     <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/Excess-3-Code</guid>
     <description> Auch Stibitz Code genannt Excess 3 Tetraden bilden Dezimalzahl normal zu Binär, und dann + 3 (0011) Beispiel 32 = 0011 0010 0011 0010 + 0011 0011 = 0110 0101 Zehnerkomplement bilden alle Bits flippen zur rechtesten Tetrade 1 addieren Addition Excess 3 Tetraden bilden Addieren Wenn aus der höchsten ...</description>
-    <pubDate>Tue, 27 May 2025 15:45:37 GMT</pubDate>
+    <pubDate>Sun, 01 Jun 2025 12:53:07 GMT</pubDate>
   </item><item>
     <title>BCD Code</title>
     <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/BCD-Code</link>
     <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/BCD-Code</guid>
     <description> Tetraden Codes stellen die einzelnen Dezimalen Ziffern Binär mit 4 Bit dar.</description>
-    <pubDate>Tue, 27 May 2025 15:45:37 GMT</pubDate>
+    <pubDate>Sun, 01 Jun 2025 12:53:07 GMT</pubDate>
   </item><item>
     <title>Zählerschaltungen</title>
     <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/Z%C3%A4hlerschaltungen</link>
     <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/Z%C3%A4hlerschaltungen</guid>
     <description>Asynchron Zählen Taktschritte q_2q_1q_010012010301141005101611071110000.</description>
-    <pubDate>Tue, 27 May 2025 15:45:37 GMT</pubDate>
+    <pubDate>Sun, 01 Jun 2025 12:53:07 GMT</pubDate>
   </item><item>
     <title>T-FlipFlop</title>
     <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/T-FlipFlop</link>
     <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/T-FlipFlop</guid>
     <description> Trigger FlipFlop Schaltzeichen t^mt^{m+1}qq^{m}0110.</description>
-    <pubDate>Tue, 27 May 2025 15:45:37 GMT</pubDate>
+    <pubDate>Sun, 01 Jun 2025 12:53:07 GMT</pubDate>
   </item><item>
     <title>SR-FlipFlop</title>
     <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/SR-FlipFlop</link>
     <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/SR-FlipFlop</guid>
     <description> Setzen-Rücksetzen FlipFlop Wahrheitstabelle eines taktgesteuerten SR-Flipflop trsq\bar{q}X = Speicherfall000XX001XX010XX011XX100XXSetzen →10110Rücksetzen →11001Verboten →111// Führt man t^m als Zeitpunkt eines Taktimpulses und t^{m+1} als Zeitpunkt des nachfolgenden Taktpulses ein, so können Wahrhe...</description>
-    <pubDate>Tue, 27 May 2025 15:45:37 GMT</pubDate>
+    <pubDate>Sun, 01 Jun 2025 12:53:07 GMT</pubDate>
   </item><item>
     <title>RS-FlipFlop</title>
     <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/RS-FlipFlop</link>
     <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/RS-FlipFlop</guid>
     <description> Rücksetzen-Setzen-FlipFlop RS-FF mit dominierendem R Eingang Motivation: Verbotene Zustände s = r = 1 mit dem Ziel q = 0 Wahrheitstabelle t^mt^mt^{m+1}rsq^{m+1}00q^m011100110.</description>
-    <pubDate>Tue, 27 May 2025 15:45:37 GMT</pubDate>
+    <pubDate>Sun, 01 Jun 2025 12:53:07 GMT</pubDate>
   </item><item>
     <title>Master-Slave-FlipFlop</title>
     <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/Master-Slave-FlipFlop</link>
     <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/Master-Slave-FlipFlop</guid>
     <description></description>
-    <pubDate>Tue, 27 May 2025 15:45:37 GMT</pubDate>
+    <pubDate>Sun, 01 Jun 2025 12:53:07 GMT</pubDate>
   </item><item>
     <title>JK-FlipFlop</title>
     <link>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/JK-FlipFlop</link>
     <guid>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/JK-FlipFlop</guid>
     <description> Jump n Kill FlipFlop Einflanken gesteuertes JK-FF abgeleitet vom SR-FF Ziel: Vielseitiges FF Verhalten: Setzen/Rücksetzen, wie das RS-FF “Verbotene Fall” → Toggled, wie T-FF Schaltzeichen Wahrheitstabelle t^mt^{m+1}kjq^{m+1}00q^m01110011\overline{q^m} JK-FF mit zusätzlichem Setzen / Rücksetzen (tak...</description>
-    <pubDate>Tue, 27 May 2025 15:45:37 GMT</pubDate>
+    <pubDate>Sun, 01 Jun 2025 12:53:07 GMT</pubDate>
   </item>
     </channel>
   </rss>
