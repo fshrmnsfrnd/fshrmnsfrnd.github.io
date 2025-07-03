@@ -28,7 +28,7 @@ header h1 {
     -webkit-text-fill-color: transparent;
 }
 
-header>a:hover {
+header>*:hover {
     text-decoration: none;
 }
 
