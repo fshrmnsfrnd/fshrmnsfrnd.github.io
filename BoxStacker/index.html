@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Box Stacker</title>
+	<link rel="stylesheet" href="boxStacker.css" />
+</head>
+<body>
+	<header class="hud">
+		<div>Punkte: <span id="score">0</span></div>
+		<div>Highscore: <span id="highscore">0</span></div>
+		<div class="status" id="status"></div>
+	</header>
+	<main>
+		<canvas id="game" width="384" height="640" aria-label="Spiel Flächen Canvas" role="img"></canvas>
+		<div id="touchControls" class="touch-controls" aria-hidden="true">
+			<button id="leftBtn" class="btn" aria-label="Links">◀</button>
+			<button id="jumpBtn" class="btn" aria-label="Springen">⤒</button>
+			<button id="rightBtn" class="btn" aria-label="Rechts">▶</button>
+		</div>
+	</main>
+	<div id="gameOver" class="overlay hidden" role="dialog" aria-modal="true">
+		<div class="panel">
+			<h1>Game Over</h1>
+			<p>Punkte: <span id="finalScore">0</span></p>
+			<p>Highscore: <span id="finalHighscore">0</span></p>
+			<button id="restartBtn" class="btn big">Nochmal</button>
+		</div>
+	</div>
+	<noscript>Bitte JavaScript aktivieren um zu spielen.</noscript>
+	<script defer src="boxStacker.js"></script>
+</body>
+</html>

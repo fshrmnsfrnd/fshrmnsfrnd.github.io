@@ -1,0 +1,30 @@
+* { box-sizing: border-box; }
+html,body { margin:0; padding:0; background:#1b1b1b; color:#eee; font-family: "Courier New", monospace; height:100vh; overflow:hidden; overscroll-behavior:none; }
+body { display:flex; flex-direction:column; align-items:center; height:100%; }
+
+.hud { width:100%; max-width:640px; display:flex; justify-content:space-between; gap:.5rem; padding:.4rem .8rem; font-size:14px; background:#111; border-bottom:2px solid #333; letter-spacing:1px; }
+.status { flex:1; text-align:center; color:#7ad9ff; }
+
+main { position:relative; width:100%; max-width:640px; display:flex; justify-content:center; padding:0 .5rem calc(env(safe-area-inset-bottom) + 0px); flex:1; }
+canvas { image-rendering:pixelated; image-rendering:crisp-edges; background:#222; border:4px solid #444; box-shadow:0 0 0 2px #000, 0 0 12px #000 inset; max-width:100%; height:auto; align-self:flex-start; }
+
+.touch-controls { position:fixed; left:0; right:0; bottom:0; display:flex; justify-content:space-around; padding:.55rem .75rem calc(.65rem + env(safe-area-inset-bottom)); gap:.5rem; background:linear-gradient(#111,#000); border-top:2px solid #333; z-index:10; }
+.touch-controls .btn { flex:1; min-height:64px; font-size:28px; }
+
+button.btn { background:#333; color:#fff; border:3px solid #666; border-radius:8px; font-family:inherit; font-weight:bold; cursor:pointer; text-shadow:1px 1px 0 #000; box-shadow:0 4px 0 #111; transition:.15s; }
+button.btn:active { transform:translateY(2px); box-shadow:0 2px 0 #111; }
+button.big { font-size:20px; padding:.75rem 1.25rem; }
+
+@media (min-width:700px) and (hover:hover) { .touch-controls { display:none; } main { padding-bottom:.5rem; } }
+
+.overlay { position:fixed; inset:0; background:rgba(0,0,0,.85); display:flex; align-items:center; justify-content:center; font-family:inherit; z-index:100; }
+.overlay.hidden { display:none; }
+.panel { background:#222; border:4px solid #555; padding:1.25rem 1.5rem 1.75rem; width: min(90%,360px); text-align:center; box-shadow:0 0 0 3px #000, 0 0 24px #000 inset; }
+.panel h1 { margin:.25rem 0 1rem; font-size:32px; letter-spacing:2px; color:#ff5555; text-shadow:2px 2px 0 #000; }
+
+/* Pixel Sprites via simple CSS classes (optional decoration) */
+.flash { animation:flash 1s linear infinite; }
+@keyframes flash { 0%,100% { opacity:1; } 50% { opacity:.3; } }
+
+/* Accessibility hidden utility */
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); border:0; }
