@@ -1,3 +1,4 @@
+"use strict";
 // Box Stacker Game (TypeScript)
 // Regeln (kurz): In Intervallen fällt eine Box (1x1 Zelle) von oben. Spieler kann links/rechts laufen, 1 Box hoch springen,
 // eine einzelne Box schieben (aber keine Kette). Wird der Spieler von einer fallenden Box getroffen => Game Over.
