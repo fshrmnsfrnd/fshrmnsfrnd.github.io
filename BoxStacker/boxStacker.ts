@@ -115,7 +115,14 @@ window.addEventListener('keyup', e => {
 // Touch Buttons (Einzelschritt)
 function singleTap(id: string, action: ()=>void) {
 	const el = document.getElementById(id)!;
-	const handler = (ev: Event) => { ev.preventDefault(); action(); };
+	let touchHandled = false;
+	const handler = (ev: Event) => {
+		if (touchHandled) return;
+		touchHandled = true;
+		ev.preventDefault();
+		action();
+		setTimeout(() => { touchHandled = false; }, 100); // debounce to prevent double firing
+	};
 	['touchstart','pointerdown','mousedown'].forEach(t => el.addEventListener(t, handler));
 }
 singleTap('leftBtn', () => attemptMove(-1));

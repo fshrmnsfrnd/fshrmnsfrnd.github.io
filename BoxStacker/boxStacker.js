@@ -1,4 +1,3 @@
-"use strict";
 // Box Stacker Game (TypeScript)
 // Regeln (kurz): In Intervallen fällt eine Box (1x1 Zelle) von oben. Spieler kann links/rechts laufen, 1 Box hoch springen,
 // eine einzelne Box schieben (aber keine Kette). Wird der Spieler von einer fallenden Box getroffen => Game Over.
@@ -121,7 +120,15 @@ window.addEventListener('keyup', e => {
 // Touch Buttons (Einzelschritt)
 function singleTap(id, action) {
     const el = document.getElementById(id);
-    const handler = (ev) => { ev.preventDefault(); action(); };
+    let touchHandled = false;
+    const handler = (ev) => {
+        if (touchHandled)
+            return;
+        touchHandled = true;
+        ev.preventDefault();
+        action();
+        setTimeout(() => { touchHandled = false; }, 100); // debounce to prevent double firing
+    };
     ['touchstart', 'pointerdown', 'mousedown'].forEach(t => el.addEventListener(t, handler));
 }
 singleTap('leftBtn', () => attemptMove(-1));
