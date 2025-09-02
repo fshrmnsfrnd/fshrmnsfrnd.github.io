@@ -361,7 +361,7 @@ function drawGround() {
 nextSpawnAt = performance.now() + 700;
 
 // Tipp Status
-statusEl.textContent = 'Tippe / Pfeile: Einzelschritte ← →, ↑ springt, Boxen (auch fallend) seitlich schieben.';
+//statusEl.textContent = 'Tippe / Pfeile: Einzelschritte ← →, ↑ springt, Boxen (auch fallend) seitlich schieben.';
 
 // Expose reset for console (optional)
 (window as any).resetBoxStacker = resetGame;

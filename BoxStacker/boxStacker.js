@@ -1,4 +1,3 @@
-"use strict";
 // Box Stacker Game (TypeScript)
 // Regeln (kurz): In Intervallen fällt eine Box (1x1 Zelle) von oben. Spieler kann links/rechts laufen, 1 Box hoch springen,
 // eine einzelne Box schieben (aber keine Kette). Wird der Spieler von einer fallenden Box getroffen => Game Over.
@@ -386,7 +385,7 @@ function drawGround() {
 // Start erster Spawn etwas später
 nextSpawnAt = performance.now() + 700;
 // Tipp Status
-statusEl.textContent = 'Tippe / Pfeile: Einzelschritte ← →, ↑ springt, Boxen (auch fallend) seitlich schieben.';
+//statusEl.textContent = 'Tippe / Pfeile: Einzelschritte ← →, ↑ springt, Boxen (auch fallend) seitlich schieben.';
 // Expose reset for console (optional)
 window.resetBoxStacker = resetGame;
 // --- Diskrete Bewegungslogik ---
