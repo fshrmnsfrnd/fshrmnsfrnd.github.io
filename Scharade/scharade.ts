@@ -85,9 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    if (game) {
-        game.addEventListener("click", () => {
-            nextWord();
-        });
-    }
+    document.addEventListener("click", () => {
+        nextWord();
+    });
 });
