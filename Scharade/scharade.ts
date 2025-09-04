@@ -71,8 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         "#categories input[type='checkbox']:checked"
                     )
                 ).map((checkbox) => checkbox.value);
-                getWordsFromCategories(selectedCategories)
-                nextWord()
+                getWordsFromCategories(selectedCategories).then(() => {
+                    nextWord();
+                });
             }
         })
     }
