@@ -1,4 +1,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url>
+    <loc>https://fshrmnsfrnd.github.io/Nico/Nico/HomeNet/FritzBox</loc>
+    <lastmod>2025-08-18T12:57:14.834Z</lastmod>
+  </url><url>
+    <loc>https://fshrmnsfrnd.github.io/Nico/Nico/HomeNet/Raspberry4</loc>
+    <lastmod>2025-08-18T13:01:28.513Z</lastmod>
+  </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Kochbuch/Backen/Brot</loc>
     <lastmod>2025-05-17T10:05:57.606Z</lastmod>
   </url><url>
@@ -18,13 +24,16 @@
     <lastmod>2025-05-26T09:17:23.635Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Kochbuch/Backen/Waffeln</loc>
-    <lastmod>2025-02-03T10:44:16.985Z</lastmod>
+    <lastmod>2025-08-20T19:52:13.473Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Kochbuch/Kochen/Armer-Ritter</loc>
     <lastmod>2025-01-28T08:35:10.867Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Kochbuch/Kochen/Asianudeln</loc>
     <lastmod>2025-03-17T17:16:49.375Z</lastmod>
+  </url><url>
+    <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Kochbuch/Kochen/Asiatische-Sesam-Knoblauch-Nudeln</loc>
+    <lastmod>2025-08-16T17:09:57.496Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Kochbuch/Kochen/Auflauf</loc>
     <lastmod>2025-03-24T21:15:53.783Z</lastmod>
@@ -65,14 +74,20 @@
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Kochbuch/Kochen/Reis</loc>
     <lastmod>2025-02-03T10:51:20.260Z</lastmod>
   </url><url>
+    <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Kochbuch/Kochen/Reispapiertaschen</loc>
+    <lastmod>2025-08-15T18:44:53.517Z</lastmod>
+  </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Kochbuch/Kochen/Sauerkraut-mit-Kassler</loc>
-    <lastmod>2025-01-28T08:34:46.220Z</lastmod>
+    <lastmod>2025-08-15T18:38:27.479Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Kochbuch/Kochen/Schinken-K%C3%A4se-Toast</loc>
     <lastmod>2025-01-28T08:37:51.947Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Kochbuch/Kochen/Spaghetti-Carbonara</loc>
     <lastmod>2024-12-19T11:02:02.668Z</lastmod>
+  </url><url>
+    <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Kochbuch/Kochen/Sp%C3%A4tzle</loc>
+    <lastmod>2025-08-15T18:32:28.039Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Kochbuch/Kochen/Tortellini-in-Sahnesauce</loc>
     <lastmod>2024-12-19T11:02:03.703Z</lastmod>
@@ -159,10 +174,10 @@
     <lastmod>2024-11-10T21:00:26.026Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/DB/DB-Entwicklung/ER-Modell</loc>
-    <lastmod>2025-08-12T21:18:25.964Z</lastmod>
+    <lastmod>2025-09-04T21:13:59.149Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/DB/DB-Entwicklung/Kardinalit%C3%A4ten</loc>
-    <lastmod>2025-08-12T21:18:25.969Z</lastmod>
+    <lastmod>2025-09-04T21:13:59.156Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/DB/DB-Entwicklung/Normalisierung</loc>
     <lastmod>2024-12-27T12:32:36.906Z</lastmod>
@@ -309,7 +324,7 @@
     <lastmod>2024-11-19T09:54:01.794Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/KNT/Elektrotechnik/Br%C3%BCckenschaltung</loc>
-    <lastmod>2025-08-12T21:18:26.320Z</lastmod>
+    <lastmod>2025-09-04T21:13:59.887Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/KNT/Elektrotechnik/Der-elektrische-Widerstand</loc>
     <lastmod>2024-11-10T20:54:00.126Z</lastmod>
@@ -318,7 +333,7 @@
     <lastmod>2024-11-10T20:54:04.764Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/KNT/Elektrotechnik/Gemischte-Schaltung</loc>
-    <lastmod>2025-08-12T21:18:26.330Z</lastmod>
+    <lastmod>2025-09-04T21:13:59.912Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/KNT/Elektrotechnik/Parallelschaltung</loc>
     <lastmod>2024-11-15T16:26:42.414Z</lastmod>
@@ -327,10 +342,10 @@
     <lastmod>2024-11-10T20:54:20.764Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/KNT/Elektrotechnik/Sonderf%C3%A4lle</loc>
-    <lastmod>2025-08-12T21:18:26.351Z</lastmod>
+    <lastmod>2025-09-04T21:13:59.953Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/KNT/Elektrotechnik/Spannungsteiler</loc>
-    <lastmod>2025-08-12T21:18:26.372Z</lastmod>
+    <lastmod>2025-09-04T21:13:59.975Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/KNT/Elektrotechnik/Spezifischer-Widerstand</loc>
     <lastmod>2024-11-19T11:06:41.841Z</lastmod>
@@ -351,10 +366,10 @@
     <lastmod>2025-04-06T18:55:00.566Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/Mathe/Kurvendiskussion</loc>
-    <lastmod>2025-08-12T21:18:26.410Z</lastmod>
+    <lastmod>2025-09-04T21:14:00.065Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/Mathe/Mathe</loc>
-    <lastmod>2025-08-12T21:18:26.435Z</lastmod>
+    <lastmod>2025-09-04T21:14:00.386Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/Pizzateig</loc>
     <lastmod>2025-07-21T07:54:02.843Z</lastmod>
@@ -480,28 +495,28 @@
     <lastmod>2025-06-26T19:45:38.488Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/D-FlipFlop</loc>
-    <lastmod>2025-08-12T21:18:26.874Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.213Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/FlipFlops</loc>
-    <lastmod>2025-08-12T21:18:26.878Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.219Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/JK-FlipFlop</loc>
-    <lastmod>2025-08-12T21:18:26.882Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.291Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/Master-Slave-FlipFlop</loc>
-    <lastmod>2025-08-12T21:18:26.888Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.305Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/SR-FlipFlop</loc>
-    <lastmod>2025-08-12T21:18:26.894Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.320Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/T-FlipFlop</loc>
-    <lastmod>2025-08-12T21:18:26.898Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.337Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/Z%C3%A4hlerschaltungen</loc>
-    <lastmod>2025-08-12T21:18:26.912Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.349Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/Z%C3%A4hlerschaltungen/3-Bit-Synchronz%C3%A4hler</loc>
-    <lastmod>2025-08-12T21:18:26.931Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.366Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/FlipFlops/Z%C3%A4hlerschaltungen/BCD-Synchronz%C3%A4hler-(4-Bit)-mit-JK-FF</loc>
     <lastmod>2025-06-29T14:55:17.134Z</lastmod>
@@ -510,13 +525,13 @@
     <lastmod>2025-06-26T19:32:52.512Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/Funktionsgleichungen</loc>
-    <lastmod>2025-08-12T21:18:26.718Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.011Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/Gesetze</loc>
-    <lastmod>2025-08-12T21:18:26.736Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.031Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/KV---Diagramme</loc>
-    <lastmod>2025-08-12T21:18:26.740Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.051Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/Logikgatter-Symbole</loc>
     <lastmod>2025-06-26T19:32:17.899Z</lastmod>
@@ -525,10 +540,10 @@
     <lastmod>2025-06-26T19:32:13.996Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/Multiplexer-und-Demultiplexer</loc>
-    <lastmod>2025-08-12T21:18:26.779Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.100Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/NAND-und-NOR</loc>
-    <lastmod>2025-08-12T21:18:26.795Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.105Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/Schaltalgebra</loc>
     <lastmod>2025-06-26T19:31:55.708Z</lastmod>
@@ -537,28 +552,28 @@
     <lastmod>2025-06-26T19:31:51.344Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/Schaltsynthese</loc>
-    <lastmod>2025-08-12T21:18:26.817Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.136Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/Schaltungsanalyse</loc>
-    <lastmod>2025-08-12T21:18:26.818Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.151Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/Schritte-Schaltungsanalyse</loc>
     <lastmod>2025-06-29T16:05:22.403Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/Theoreme-der-Schaltalgebra</loc>
-    <lastmod>2025-08-12T21:18:26.838Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.168Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/Variablen-und-Konstanten</loc>
-    <lastmod>2025-08-12T21:18:26.843Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.185Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Logische-Schaltungen/Verkn%C3%BCpfungen</loc>
-    <lastmod>2025-08-12T21:18:26.858Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.200Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/TI-SA-Themen</loc>
     <lastmod>2025-06-26T19:22:33.175Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/TI-Spicker</loc>
-    <lastmod>2025-08-12T21:18:26.693Z</lastmod>
+    <lastmod>2025-09-04T21:14:00.983Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/TI</loc>
     <lastmod>2025-06-26T19:44:40.753Z</lastmod>
@@ -570,16 +585,16 @@
     <lastmod>2025-06-26T19:34:33.644Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/BCD-Code</loc>
-    <lastmod>2025-08-12T21:18:26.964Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.405Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/Cyclic-Redundancy-Check</loc>
     <lastmod>2025-06-26T19:34:45.395Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/Excess-3-Code</loc>
-    <lastmod>2025-08-12T21:18:26.982Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.413Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/Flags</loc>
-    <lastmod>2025-08-12T21:18:26.989Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.433Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/Gray-Code</loc>
     <lastmod>2025-06-26T19:34:56.298Z</lastmod>
@@ -591,7 +606,7 @@
     <lastmod>2025-06-26T19:35:06.512Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/Parity-Check</loc>
-    <lastmod>2025-08-12T21:18:27.034Z</lastmod>
+    <lastmod>2025-09-04T21:14:01.468Z</lastmod>
   </url><url>
     <loc>https://fshrmnsfrnd.github.io/Nico/Nico/Schule/TI/Zeichencodes/Rationale-Zahlen</loc>
     <lastmod>2025-06-26T19:35:17.966Z</lastmod>
