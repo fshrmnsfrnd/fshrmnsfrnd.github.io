@@ -72,8 +72,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 chooseCategories.style.display = "none";
                 game.style.display = "block";
                 const selectedCategories = Array.from(document.querySelectorAll("#categories input[type='checkbox']:checked")).map((checkbox) => checkbox.value);
-                getWordsFromCategories(selectedCategories);
-                nextWord();
+                getWordsFromCategories(selectedCategories).then(() => {
+                    nextWord();
+                });
             }
         });
     }
