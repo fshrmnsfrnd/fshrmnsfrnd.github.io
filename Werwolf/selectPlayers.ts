@@ -36,10 +36,24 @@ function writePlayers(playerNames:string[]):void {
     const playerList = document.getElementById("playerList")
     if (playerList) {
         playerList.innerHTML = ""
-        playerNames.forEach((player) => {
+        playerNames.forEach((player, index) => {
             const playerElement = document.createElement("div")
             playerElement.setAttribute("class", "player")
-            playerElement.innerText = player
+            
+            const playerNameEl = document.createElement("span");
+            playerNameEl.textContent = player;
+
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "X";
+            deleteButton.classList.add("delete-player-button");
+            deleteButton.addEventListener("click", () => {
+                playerNames.splice(index, 1);
+                localStorage.setItem("playerNames", JSON.stringify(playerNames));
+                writePlayers(playerNames);
+            });
+
+            playerElement.appendChild(playerNameEl);
+            playerElement.appendChild(deleteButton);
             playerList.appendChild(playerElement)
         })
     }

@@ -142,3 +142,7 @@ img[src*="cards/"] {
     margin-left: auto;
     margin-right: auto;
 }
+
+.delete-player-button{
+    margin-left: 4px;
+}
