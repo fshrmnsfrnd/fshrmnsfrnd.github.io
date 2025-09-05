@@ -1,4 +1,5 @@
 "use strict";
+//V2
 class role {
 }
 const roles = [
@@ -24,30 +25,39 @@ function assignRoles() {
 function startGame() {
     window.location.href = "game.html";
 }
+function writePlayers(playerNames) {
+    const playerList = document.getElementById("playerList");
+    if (playerList) {
+        playerList.innerHTML = "";
+        playerNames.forEach((player) => {
+            const playerElement = document.createElement("div");
+            playerElement.setAttribute("class", "player");
+            playerElement.innerText = player;
+            playerList.appendChild(playerElement);
+        });
+    }
+}
 document.addEventListener("DOMContentLoaded", () => {
     const addPlayerBtn = document.getElementById("addPlayer");
     const newPlayerNameInput = document.getElementById("playerName");
-    const playerList = document.getElementById("playerList");
     const startGameBtn = document.getElementById("startGame");
     const selectPlayersContainer = document.getElementById("selectPlayers");
+    const storedNames = localStorage.getItem("playerNames");
+    if (storedNames) {
+        playerNames = JSON.parse(storedNames);
+        writePlayers(playerNames);
+    }
     addPlayerBtn === null || addPlayerBtn === void 0 ? void 0 : addPlayerBtn.addEventListener("click", () => {
         if (newPlayerNameInput.value) {
             playerNames.push(newPlayerNameInput === null || newPlayerNameInput === void 0 ? void 0 : newPlayerNameInput.value);
         }
-        if (playerList) {
-            playerList.innerHTML = "";
-            playerNames.forEach((player) => {
-                const playerElement = document.createElement("div");
-                playerElement.setAttribute("class", "player");
-                playerElement.innerText = player;
-                playerList.appendChild(playerElement);
-            });
-        }
+        writePlayers(playerNames);
         if (newPlayerNameInput) {
             newPlayerNameInput.value = "";
         }
     });
     startGameBtn === null || startGameBtn === void 0 ? void 0 : startGameBtn.addEventListener("click", () => {
+        localStorage.setItem("playerNames", JSON.stringify(playerNames));
         if (playerNames.length >= 4) {
             assignRoles();
             localStorage.setItem("players", JSON.stringify(playersWithRoles));
