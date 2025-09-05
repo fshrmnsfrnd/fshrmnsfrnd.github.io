@@ -84,6 +84,17 @@ button:hover, input[type="button"]:hover {
     box-shadow: 0 1px 4px #0002;
 }
 
+.role {
+    background: #232b32;
+    color: #1feeee;
+    margin: 8px auto;
+    padding: 10px 16px;
+    border-radius: 8px;
+    width: fit-content;
+    font-size: 1.1em;
+    box-shadow: 0 1px 4px #0002;
+}
+
 /* Rollenanzeige */
 #displayRoles {
     margin: 32px auto 0 auto;
@@ -117,6 +128,14 @@ img[src*="cards/"] {
     text-align: center;
 }
 
+#selectRoles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
 /* Responsive Design */
 /*
 @media (max-width: 600px) {
@@ -141,4 +160,8 @@ img[src*="cards/"] {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.delete-player-button{
+    margin-left: 4px;
 }

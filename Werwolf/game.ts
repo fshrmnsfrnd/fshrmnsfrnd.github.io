@@ -1,3 +1,4 @@
+//V2
 let gamePhases: string[] = [
     "Die Nacht bricht über das Dorf herein, alle Dorfbewohner schlafen ein",
     "Die Seherin erwacht und bestimmt eine Person, deren wahre Identität sie erfahren will",
