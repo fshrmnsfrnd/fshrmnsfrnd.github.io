@@ -1,3 +1,4 @@
+//V2
 class role {
     name!: string
     picture!: string
