@@ -1,7 +1,7 @@
 {
 	"type": "excalidraw",
 	"version": 2,
-	"source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.12.4",
+	"source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.15.3",
 	"elements": [
 		{
 			"id": "5pIguATAUUVaFHqiWiFnl",
@@ -10826,17 +10826,85 @@
 			"originalText": "Eine reale Leitung (Netzwerkleitung) verhält sich, wie eine ideale Leitung mit den Komponenten R, L, G und C",
 			"autoResize": true,
 			"lineHeight": 1.25
+		},
+		{
+			"id": "y6KhrCTuub3aVB6zPWzKi",
+			"type": "freedraw",
+			"x": 568.0735410464738,
+			"y": 589.3623281001906,
+			"width": 0.0001,
+			"height": 0.0001,
+			"angle": 0,
+			"strokeColor": "#000000",
+			"backgroundColor": "transparent",
+			"fillStyle": "hachure",
+			"strokeWidth": 0.5,
+			"strokeStyle": "solid",
+			"roughness": 0,
+			"opacity": 100,
+			"groupIds": [],
+			"frameId": null,
+			"index": "b0t",
+			"roundness": null,
+			"seed": 2114469341,
+			"version": 3,
+			"versionNonce": 1435178003,
+			"isDeleted": false,
+			"boundElements": null,
+			"updated": 1758629792325,
+			"link": null,
+			"locked": false,
+			"customData": {
+				"strokeOptions": {
+					"highlighter": false,
+					"constantPressure": false,
+					"hasOutline": false,
+					"outlineWidth": 1,
+					"options": {
+						"thinning": 0.6,
+						"smoothing": 0.5,
+						"streamline": 0.5,
+						"easing": "easeOutSine",
+						"start": {
+							"cap": true,
+							"taper": 0,
+							"easing": "linear"
+						},
+						"end": {
+							"cap": true,
+							"taper": 0,
+							"easing": "linear"
+						}
+					}
+				}
+			},
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					0.0001,
+					0.0001
+				]
+			],
+			"pressures": [],
+			"simulatePressure": true,
+			"lastCommittedPoint": [
+				0.0001,
+				0.0001
+			]
 		}
 	],
 	"appState": {
 		"theme": "light",
 		"viewBackgroundColor": "#ffffff",
-		"currentItemStrokeColor": "#1e1e1e",
+		"currentItemStrokeColor": "#000000",
 		"currentItemBackgroundColor": "transparent",
-		"currentItemFillStyle": "solid",
+		"currentItemFillStyle": "hachure",
 		"currentItemStrokeWidth": 0.5,
 		"currentItemStrokeStyle": "solid",
-		"currentItemRoughness": 1,
+		"currentItemRoughness": 0,
 		"currentItemOpacity": 100,
 		"currentItemFontFamily": 5,
 		"currentItemFontSize": 20,
@@ -10844,6 +10912,7 @@
 		"currentItemStartArrowhead": null,
 		"currentItemEndArrowhead": "arrow",
 		"currentItemArrowType": "round",
+		"currentItemFrameRole": null,
 		"scrollX": 1044.5710761178254,
 		"scrollY": -57.47220616617466,
 		"zoom": {
@@ -10857,18 +10926,41 @@
 			"Bold": "rgba(217, 217, 217, 0.5)",
 			"Regular": "rgba(230, 230, 230, 0.5)"
 		},
-		"currentStrokeOptions": null,
+		"currentStrokeOptions": {
+			"highlighter": false,
+			"constantPressure": false,
+			"hasOutline": false,
+			"outlineWidth": 1,
+			"options": {
+				"thinning": 0.6,
+				"smoothing": 0.5,
+				"streamline": 0.5,
+				"easing": "easeOutSine",
+				"start": {
+					"cap": true,
+					"taper": 0,
+					"easing": "linear"
+				},
+				"end": {
+					"cap": true,
+					"taper": 0,
+					"easing": "linear"
+				}
+			}
+		},
 		"frameRendering": {
 			"enabled": true,
 			"clip": true,
 			"name": true,
-			"outline": true
+			"outline": true,
+			"markerName": true,
+			"markerEnabled": true
 		},
 		"objectsSnapModeEnabled": false,
 		"activeTool": {
-			"type": "selection",
+			"type": "freedraw",
 			"customType": null,
-			"locked": false,
+			"locked": true,
 			"fromSelection": false,
 			"lastActiveTool": null
 		}
