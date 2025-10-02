@@ -12979,7 +12979,7 @@
 			"version": 52,
 			"versionNonce": 533623270,
 			"isDeleted": false,
-			"boundElements": null,
+			"boundElements": [],
 			"updated": 1758633739589,
 			"link": null,
 			"locked": false,
@@ -13243,10 +13243,7 @@
 				0
 			],
 			"simulatePressure": false,
-			"lastCommittedPoint": [
-				1.0405192074566685,
-				19.24989112944411
-			]
+			"lastCommittedPoint": null
 		},
 		{
 			"id": "26P8m_6_zwW99-hBIsKh_",
@@ -13271,7 +13268,7 @@
 			"version": 46,
 			"versionNonce": 1399403302,
 			"isDeleted": false,
-			"boundElements": null,
+			"boundElements": [],
 			"updated": 1758633741852,
 			"link": null,
 			"locked": false,
@@ -13505,10 +13502,60 @@
 				0
 			],
 			"simulatePressure": false,
-			"lastCommittedPoint": [
-				-0.5202596037283058,
-				22.371496383730033
-			]
+			"lastCommittedPoint": null
+		},
+		{
+			"id": "Zxh9G2D0_krk9BiGKYKAO",
+			"type": "freedraw",
+			"x": 47.64067412448435,
+			"y": 107.73441057834049,
+			"width": 1.3201128432458518,
+			"height": 2.6402256864916467,
+			"angle": 0,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"fillStyle": "solid",
+			"strokeWidth": 0.5,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"groupIds": [],
+			"frameId": null,
+			"index": "b0k",
+			"roundness": null,
+			"seed": 826431808,
+			"version": 6,
+			"versionNonce": 687464768,
+			"isDeleted": false,
+			"boundElements": [],
+			"updated": 1758798431191,
+			"link": null,
+			"locked": false,
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					0.8801020865951159,
+					-0.44005104329755795
+				],
+				[
+					1.3201128432458518,
+					-0.880061799948237
+				],
+				[
+					1.3201128432458518,
+					-2.6402256864916467
+				],
+				[
+					1.3201128432458518,
+					-2.6402256864916467
+				]
+			],
+			"pressures": [],
+			"simulatePressure": true,
+			"lastCommittedPoint": null
 		}
 	],
 	"appState": {
@@ -13528,10 +13575,10 @@
 		"currentItemEndArrowhead": "arrow",
 		"currentItemArrowType": "round",
 		"currentItemFrameRole": null,
-		"scrollX": 283.64902678936846,
-		"scrollY": 225.07432886529335,
+		"scrollX": 302.84928575728634,
+		"scrollY": 184.51245911181496,
 		"zoom": {
-			"value": 1.281392
+			"value": 1.515022
 		},
 		"currentItemRoundness": "round",
 		"gridSize": 20,
