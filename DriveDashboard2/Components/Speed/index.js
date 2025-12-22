@@ -40,7 +40,7 @@ function speedGraphWidget() {
       <canvas class="chart" aria-label="Speed graph"></canvas>
     </div>`;
   const canvas = el.querySelector('canvas');
-  const chart = new LineChart({ color: '#38bdf8', maxSeconds: 180, lineWidth: 2 });
+  const chart = new LineChart({ color: '#22c55e', maxSeconds: 180, lineWidth: 2 });
   chart.attach(canvas);
   const unsub = geo.subscribe(({ kmh }) => chart.push(kmh || 0));
   return { node: el, unmount: () => { unsub(); chart.detach(); } };

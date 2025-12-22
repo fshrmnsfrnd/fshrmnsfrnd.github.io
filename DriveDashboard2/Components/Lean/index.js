@@ -60,7 +60,7 @@ function leanGraphWidget() {
       <button class="btn">Sensor aktivieren</button>
     </div>`;
   const canvas = el.querySelector('canvas');
-  const chart = new LineChart({ color: '#f59e0b', maxSeconds: 180, lineWidth: 2 });
+  const chart = new LineChart({ color: '#22c55e', maxSeconds: 180, lineWidth: 2 });
   chart.attach(canvas);
   const btn = el.querySelector('button');
   let unsub = null;

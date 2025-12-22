@@ -1,9 +1,28 @@
 // Minimal line chart on <canvas>, similar to GSensor style
 export class LineChart {
-  constructor({ color = '#38bdf8', maxSeconds = 180, lineWidth = 2 } = {}) {
+  constructor({
+    color = '#38bdf8',
+    maxSeconds = 180,
+    lineWidth = 2,
+    showYAxis = true,
+    yTickCount = 4,
+    yAxisWidth = 40,
+    gridColor = '#24242a',
+    axisColor = '#24242a',
+    tickColor = '#a6a6ad',
+    font = '10px system-ui',
+  } = {}) {
     this.color = color;
     this.maxSeconds = maxSeconds;
     this.lineWidth = lineWidth;
+    this.showYAxis = showYAxis;
+    this.yTickCount = yTickCount;
+    this.yAxisWidth = yAxisWidth; // left padding reserved for labels
+    this.gridColor = gridColor;
+    this.axisColor = axisColor;
+    this.tickColor = tickColor;
+    this.font = font;
+
     this.values = [];
     this.times = [];
     this.canvas = null;
@@ -57,28 +76,123 @@ export class LineChart {
   }
 
   draw() {
-    if (!this.ctx || this.values.length < 2) {
-      if (this.ctx) this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      return;
-    }
+    if (!this.ctx) return;
     const ctx = this.ctx;
     const w = this.canvas.clientWidth;
     const h = this.heightCss;
     ctx.clearRect(0, 0, w, h);
 
-    const minVal = Math.min(...this.values);
-    const maxVal = Math.max(...this.values);
-    const span = maxVal - minVal || 1;
+    // Compute scale bounds
+    const hasData = this.values.length >= 1;
+    const dataMin = hasData ? Math.min(...this.values) : 0;
+    const dataMax = hasData ? Math.max(...this.values) : 1;
+    const { minY, maxY, step, ticks } = this._computeScale(dataMin, dataMax);
 
-    ctx.beginPath();
-    ctx.strokeStyle = this.color;
-    ctx.lineWidth = this.lineWidth;
-    this.values.forEach((v, i) => {
-      const x = (i / (this.values.length - 1)) * w;
-      const y = h - ((v - minVal) / span) * h;
-      if (i === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
-    });
-    ctx.stroke();
+    // Plot area
+    const left = this.showYAxis ? this.yAxisWidth : 0;
+    const right = 4;
+    const top = 4;
+    const bottom = 4;
+    const pw = Math.max(1, w - left - right);
+    const ph = Math.max(1, h - top - bottom);
+
+    // Draw grid + axis + labels
+    if (this.showYAxis) {
+      ctx.save();
+      ctx.strokeStyle = this.gridColor;
+      ctx.lineWidth = 1;
+      ctx.setLineDash([3, 3]);
+      ticks.forEach((t) => {
+        const y = top + ph - ((t - minY) / (maxY - minY)) * ph;
+        ctx.beginPath();
+        ctx.moveTo(left, y);
+        ctx.lineTo(left + pw, y);
+        ctx.stroke();
+      });
+      ctx.setLineDash([]);
+
+      // Y axis line
+      ctx.strokeStyle = this.axisColor;
+      ctx.beginPath();
+      ctx.moveTo(left, top);
+      ctx.lineTo(left, top + ph);
+      ctx.stroke();
+
+      // Labels
+      ctx.fillStyle = this.tickColor;
+      ctx.font = this.font;
+      ctx.textAlign = 'right';
+      ctx.textBaseline = 'middle';
+      ticks.forEach((t) => {
+        const y = top + ph - ((t - minY) / (maxY - minY)) * ph;
+        ctx.fillText(this._formatTick(t, step), left - 6, y);
+      });
+      ctx.restore();
+    }
+
+    // Draw the line if we have at least 2 points
+    if (this.values.length >= 2) {
+      ctx.beginPath();
+      ctx.strokeStyle = this.color;
+      ctx.lineWidth = this.lineWidth;
+      const n = this.values.length;
+      this.values.forEach((v, i) => {
+        const x = left + (i / (n - 1)) * pw;
+        const y = top + ph - ((v - minY) / (maxY - minY)) * ph;
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      });
+      ctx.stroke();
+    }
+  }
+
+  _formatTick(v, step) {
+    const absStep = Math.abs(step);
+    let decimals = 0;
+    if (absStep < 1) {
+      if (absStep >= 0.1) decimals = 1;
+      else if (absStep >= 0.01) decimals = 2;
+      else decimals = 3;
+    }
+    return Number(v.toFixed(decimals)).toString();
+  }
+
+  _niceNumber(range, round) {
+    // Based on Graphics Gems nice number
+    const exponent = Math.floor(Math.log10(range));
+    const fraction = range / Math.pow(10, exponent);
+    let niceFraction;
+    if (round) {
+      if (fraction < 1.5) niceFraction = 1;
+      else if (fraction < 3) niceFraction = 2;
+      else if (fraction < 7) niceFraction = 5;
+      else niceFraction = 10;
+    } else {
+      if (fraction <= 1) niceFraction = 1;
+      else if (fraction <= 2) niceFraction = 2;
+      else if (fraction <= 5) niceFraction = 5;
+      else niceFraction = 10;
+    }
+    return niceFraction * Math.pow(10, exponent);
+  }
+
+  _computeScale(minVal, maxVal) {
+    let range = maxVal - minVal;
+    if (range === 0) {
+      // Expand symmetrical around the value
+      const pad = Math.max(1, Math.abs(maxVal || 1) * 0.1);
+      minVal -= pad;
+      maxVal += pad;
+      range = maxVal - minVal;
+    }
+    const niceRange = this._niceNumber(range, false);
+    const step = this._niceNumber(niceRange / this.yTickCount, true);
+    const minY = Math.floor(minVal / step) * step;
+    const maxY = Math.ceil(maxVal / step) * step;
+    const ticks = [];
+    for (let v = minY; v <= maxY + step * 0.5; v += step) {
+      ticks.push(Number(v.toFixed(6))); // avoid FP drift
+    }
+    return { minY, maxY, step, ticks };
   }
 }
