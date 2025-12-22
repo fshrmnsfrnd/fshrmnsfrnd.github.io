@@ -52,6 +52,20 @@
 	color: var(--card-text);
 }
 
+
+/* Graph card layout: canvas above button */
+.graph-card .card-body {
+	flex-direction: column;
+	gap: 8px;
+}
+.graph-card .sub {
+	/* Avoid covering the canvas; place unit at top-right of the card */
+	top: 14px;
+	transform: none;
+}
+.graph-card .btn {
+	align-self: center;
+}
 .card .sub {
 	font-size: 0.8rem;
 	color: var(--muted);
@@ -83,6 +97,20 @@
     width: 100%;
     height: 140px; /* JS will match device pixels */
     display: block;
+}
+
+/* Graph card layout: canvas above button */
+.graph-card .card-body {
+	flex-direction: column;
+	gap: 8px;
+}
+.graph-card .sub {
+	/* Avoid covering the canvas; place unit at top-right of the card */
+	top: 14px;
+	transform: none;
+}
+.graph-card .btn {
+	align-self: center;
 }
 
 @media (max-width: 520px) {

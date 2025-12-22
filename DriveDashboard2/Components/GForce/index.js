@@ -49,7 +49,7 @@ function maxGWidget() {
 
 function gGraphWidget() {
   const el = document.createElement('section');
-  el.className = 'card';
+  el.className = 'card graph-card';
   el.innerHTML = `
     <header class="card-title">
         <span class="card-title-text">G-Kraft Graph</span>

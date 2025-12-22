@@ -31,7 +31,7 @@ function maxSpeedWidget() {
 
 function speedGraphWidget() {
   const el = document.createElement('section');
-  el.className = 'card';
+  el.className = 'card graph-card';
   el.innerHTML = `
     <header class="card-title">
     <span class="card-title-text">Speed Graph</span>
