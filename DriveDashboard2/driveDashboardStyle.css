@@ -52,6 +52,11 @@
 	line-height: 1.1;
 	color: var(--card-text);
 }
+.card .placeholder {
+	font-size: 1.4rem;
+	line-height: 1.1;
+	color: var(--muted);
+}
 
 
 /* Graph card layout: canvas above button */
@@ -205,3 +210,26 @@
 }
 .settings-row input[type="range"] { grid-column: 1 / -1; width: 100%; }
 .settings-value { color: var(--muted); font-style: normal; }
+
+/* Generic app modal */
+.app-modal-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0,0,0,0.55);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1100;
+}
+.app-modal-content {
+	background: var(--card-bg);
+	border: 1px solid var(--card-border);
+	border-radius: 12px;
+	padding: 16px;
+	max-width: 520px;
+	width: calc(100vw - 32px);
+	box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+.app-modal-content h3 { margin: 0 0 8px; color: var(--card-title); }
+.app-modal-content p { margin: 0 0 12px; color: var(--muted); }
+.app-modal-actions { display: flex; gap: 8px; justify-content: flex-end; }
