@@ -81,3 +81,10 @@ export function getSnapshot() {
   const avg = samples.length ? samples.reduce((a, b) => a + b, 0) / samples.length : 0;
   return { kmh: lastKmh, avgKmh: avg, maxKmh };
 }
+
+export function reset() {
+  maxKmh = 0;
+  samples.length = 0;
+  lastPos = null;
+  lastTs = null;
+}

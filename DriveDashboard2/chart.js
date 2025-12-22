@@ -13,9 +13,11 @@ export class LineChart {
     font = '10px system-ui',
     enablePopupOnClick = true,
     popupHeightCss = 300,
+    historySeconds = 3600,
   } = {}) {
     this.color = color;
     this.maxSeconds = maxSeconds;
+    this.defaultMaxSeconds = maxSeconds;
     this.lineWidth = lineWidth;
     this.showYAxis = showYAxis;
     this.yTickCount = yTickCount;
@@ -28,6 +30,7 @@ export class LineChart {
     this.axisGap = 2; // minimal gap from canvas edge if labels are very short
     this.enablePopupOnClick = enablePopupOnClick;
     this.popupHeightCss = popupHeightCss;
+    this.historySeconds = historySeconds;
 
     this.values = [];
     this.times = [];
@@ -74,8 +77,8 @@ export class LineChart {
     const now = Date.now();
     this.values.push(Number(value) || 0);
     this.times.push(now);
-    // Trim by time window
-    const cutoff = now - this.maxSeconds * 1000;
+    // Trim by history window (retain independent of view window)
+    const cutoff = now - this.historySeconds * 1000;
     while (this.times.length && this.times[0] < cutoff) {
       this.times.shift();
       this.values.shift();
@@ -92,7 +95,9 @@ export class LineChart {
     if (!this.canvas) return;
     const dpr = Math.max(1, window.devicePixelRatio || 1);
     // Ensure CSS sizing
-    this.canvas.style.width = '100%';
+    if (!this.canvas.classList.contains('chart-modal-canvas')) {
+      this.canvas.style.width = '100%';
+    }
     this.canvas.style.height = this.heightCss + 'px';
     const rect = this.canvas.getBoundingClientRect();
     this.canvas.width = Math.max(1, Math.floor(rect.width * dpr));
@@ -103,14 +108,26 @@ export class LineChart {
   draw() {
     if (!this.ctx) return;
     const ctx = this.ctx;
-    const w = this.canvas.clientWidth;
+    const rectNow = this.canvas.getBoundingClientRect();
+    const w = Math.max(1, rectNow.width);
     const h = this.heightCss;
     ctx.clearRect(0, 0, w, h);
 
     // Compute scale bounds
     const hasData = this.values.length >= 1;
-    const dataMin = hasData ? Math.min(...this.values) : 0;
-    const dataMax = hasData ? Math.max(...this.values) : 1;
+
+    // Determine the visible window based on maxSeconds
+    let startIdx = 0;
+    if (hasData && this.maxSeconds != null) {
+      const cutoff = Date.now() - this.maxSeconds * 1000;
+      let i = 0;
+      const n = this.times.length;
+      while (i < n && this.times[i] < cutoff) i++;
+      startIdx = i;
+    }
+    const vis = hasData ? this.values.slice(startIdx) : [];
+    const dataMin = vis.length ? Math.min(...vis) : 0;
+    const dataMax = vis.length ? Math.max(...vis) : 1;
     const { minY, maxY, step, ticks } = this._computeScale(dataMin, dataMax);
 
     // Prepare labels and compute dynamic left space based on label width
@@ -164,12 +181,12 @@ export class LineChart {
     }
 
     // Draw the line if we have at least 2 points
-    if (this.values.length >= 2) {
+    if (vis.length >= 2) {
       ctx.beginPath();
       ctx.strokeStyle = this.color;
       ctx.lineWidth = this.lineWidth;
-      const n = this.values.length;
-      this.values.forEach((v, i) => {
+      const n = vis.length;
+      vis.forEach((v, i) => {
         const x = left + (i / (n - 1)) * pw;
         const y = top + ph - ((v - minY) / (maxY - minY)) * ph;
         if (i === 0) ctx.moveTo(x, y);
@@ -253,13 +270,22 @@ export class LineChart {
 
     // Reattach chart to big canvas with larger height; disable nested popup
     this.heightCss = this.popupHeightCss;
+    // Override view window in popup to default, and restore later
+    this._originalMaxSeconds = this.maxSeconds;
+    this.maxSeconds = this.defaultMaxSeconds;
     this._inPopup = true;
     this.attach(bigCanvas);
+    // Ensure layout computed before drawing
+    try { requestAnimationFrame(() => { this._fitCanvas(); this.draw(); }); } catch {}
 
     const cleanup = () => {
       // Restore to original canvas
       this.heightCss = this._originalHeightCss;
       this._inPopup = false;
+      if (typeof this._originalMaxSeconds === 'number') {
+        this.maxSeconds = this._originalMaxSeconds;
+        this._originalMaxSeconds = null;
+      }
       if (this._originalCanvas) this.attach(this._originalCanvas);
       this._originalCanvas = null;
       try { document.body.removeChild(overlay); } catch {}

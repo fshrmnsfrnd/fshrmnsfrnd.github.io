@@ -1,4 +1,4 @@
-import { createCard, formatNumber } from '../../componentsUtil.js';
+import { createCard, formatNumber, attachSettingsToExistingCard } from '../../componentsUtil.js';
 import * as geo from '../../Services/geo.js';
 import { LineChart } from '../../chart.js';
 
@@ -8,6 +8,9 @@ function currentSpeedWidget() {
   const unsub = geo.subscribe(({ kmh }) => {
     card.setValue(String(Math.round(kmh || 0)));
   });
+  card.setSettings([
+    { label: 'Zurücksetzen', onClick: () => geo.reset && geo.reset() },
+  ]);
   return { node: card.el, unmount: () => unsub() };
 }
 
@@ -17,6 +20,9 @@ function averageSpeedWidget() {
   const unsub = geo.subscribe(({ avgKmh }) => {
     card.setValue(formatNumber(avgKmh || 0));
   });
+  card.setSettings([
+    { label: 'Zurücksetzen', onClick: () => geo.reset && geo.reset() },
+  ]);
   return { node: card.el, unmount: () => unsub() };
 }
 
@@ -26,6 +32,9 @@ function maxSpeedWidget() {
   const unsub = geo.subscribe(({ maxKmh }) => {
     card.setValue(String(Math.round(maxKmh || 0)));
   });
+  card.setSettings([
+    { label: 'Zurücksetzen', onClick: () => geo.reset && geo.reset() },
+  ]);
   return { node: card.el, unmount: () => unsub() };
 }
 
@@ -43,6 +52,20 @@ function speedGraphWidget() {
   const chart = new LineChart({ color: '#22c55e', maxSeconds: 180, lineWidth: 2 });
   chart.attach(canvas);
   const unsub = geo.subscribe(({ kmh }) => chart.push(kmh || 0));
+  // Settings: time window for visible graph (seconds)
+  attachSettingsToExistingCard(el, [
+    {
+      type: 'range',
+      label: 'Zeitfenster (s)',
+      min: 10,
+      max: 600,
+      step: 10,
+      get: () => chart.maxSeconds,
+      onChange: (v) => { chart.maxSeconds = v; chart.draw(); },
+    },
+    { type: 'separator' },
+    { label: 'Zurücksetzen', onClick: () => geo.reset && geo.reset() },
+  ]);
   return { node: el, unmount: () => { unsub(); chart.detach(); } };
 }
 

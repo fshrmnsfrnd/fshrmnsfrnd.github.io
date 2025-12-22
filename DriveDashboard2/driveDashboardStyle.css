@@ -36,6 +36,7 @@
 	font-weight: 600;
 	color: var(--card-title);
 	margin-bottom: 8px;
+	position: relative;
 }
 .card-body {
 	display: flex;
@@ -155,3 +156,52 @@
 	height: 300px; /* JS sets device pixels */
 	display: block;
 }
+
+/* Card settings */
+.card-settings {
+	position: absolute;
+	top: 2px;
+	right: 6px;
+	background: transparent;
+	border: none;
+	color: var(--muted);
+	font-size: 16px;
+	cursor: pointer;
+	padding: 2px 4px;
+}
+.card-settings:hover { color: var(--card-title); }
+.card-settings-menu {
+	position: absolute;
+	top: 28px;
+	right: 6px;
+	background: var(--card-bg);
+	border: 1px solid var(--card-border);
+	border-radius: 8px;
+	padding: 6px;
+	min-width: 200px;
+	box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+	z-index: 10;
+}
+.settings-item {
+	width: 100%;
+	text-align: left;
+	background: transparent;
+	border: none;
+	color: var(--card-title);
+	padding: 6px 8px;
+	cursor: pointer;
+	border-radius: 6px;
+}
+.settings-item:hover { background: rgba(255,255,255,0.04); }
+.settings-item:disabled,
+.settings-item.disabled { color: var(--muted); cursor: default; }
+.settings-sep { height: 1px; background: var(--card-border); margin: 6px 0; }
+.settings-row {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	align-items: center;
+	gap: 6px;
+	padding: 6px 4px;
+}
+.settings-row input[type="range"] { grid-column: 1 / -1; width: 100%; }
+.settings-value { color: var(--muted); font-style: normal; }
