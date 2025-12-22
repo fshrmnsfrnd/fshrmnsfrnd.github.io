@@ -43,15 +43,22 @@
 	gap: 2px;
 	justify-content: center;
 	align-items: center;
+    position: relative;
+
 }
 .card .value {
 	font-size: 2rem;
 	line-height: 1.1;
 	color: var(--card-text);
 }
+
 .card .sub {
 	font-size: 0.8rem;
 	color: var(--muted);
+	position: absolute;
+	right: 8px;
+	top: 50%;
+	transform: translateY(-50%);
 }
 
 /* Sparkline bars */
@@ -74,4 +81,3 @@
 @media (max-width: 520px) {
 	.dashboard-grid { padding-top: 56px; }
 }
-

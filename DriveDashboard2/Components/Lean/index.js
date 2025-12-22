@@ -4,6 +4,7 @@ import { ensureOrientationPermission } from '../../Services/permissions.js';
 
 function currLeanWidget() {
   const card = createCard('Aktuelle Neigung');
+  card.setSub('°');
   const btn = document.createElement('button');
   btn.textContent = 'Sensor aktivieren';
   btn.className = 'btn';
@@ -12,7 +13,7 @@ function currLeanWidget() {
     if (await ensureOrientationPermission()) {
       btn.remove();
       unsub = orientation.subscribe(({ angle }) => {
-        card.setValue(`${formatNumber(angle, 1)}°`);
+        card.setValue(formatNumber(angle, 1));
       });
     } else {
       alert('Sensor-Zugriff verweigert');
@@ -24,6 +25,7 @@ function currLeanWidget() {
 
 function maxLeanWidget() {
   const card = createCard('Max Neigung');
+  card.setSub('°');
   let max = 0;
   const btn = document.createElement('button');
   btn.textContent = 'Sensor aktivieren';
@@ -35,7 +37,7 @@ function maxLeanWidget() {
       unsub = orientation.subscribe(({ angle }) => {
         const v = Math.abs(angle);
         if (v > max) max = v;
-        card.setValue(`${formatNumber(max, 1)}°`);
+        card.setValue(formatNumber(max, 1));
       });
     } else {
       alert('Sensor-Zugriff verweigert');

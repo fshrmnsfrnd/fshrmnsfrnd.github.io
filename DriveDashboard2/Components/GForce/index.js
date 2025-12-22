@@ -13,7 +13,7 @@ function currGWidget() {
     if (await ensureMotionPermission()) {
       btn.remove();
       unsub = motion.subscribe(({ g }) => {
-          card.setValue(`${formatNumber(g || 0, 2)}g`);
+          card.setValue(formatNumber(g || 0, 2));
       });
     } else {
       alert('Sensor-Zugriff verweigert');
@@ -25,7 +25,7 @@ function currGWidget() {
 
 function maxGWidget() {
   const card = createCard('Max G-Kraft');
-  card.setSub('g (Session)');
+  card.setSub('g');
   const btn = document.createElement('button');
   btn.textContent = 'Sensor aktivieren';
   btn.className = 'btn';
@@ -36,7 +36,7 @@ function maxGWidget() {
       btn.remove();
       unsub = motion.subscribe(({ g }) => {
         if ((g || 0) > max) max = g;
-          card.setValue(`${formatNumber(max || 0, 2)}g`);
+          card.setValue(formatNumber(max || 0, 2));
       });
     } else {
       alert('Sensor-Zugriff verweigert');
