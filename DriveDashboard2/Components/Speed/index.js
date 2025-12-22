@@ -32,7 +32,9 @@ function speedGraphWidget() {
   const el = document.createElement('section');
   el.className = 'card';
   el.innerHTML = `
-    <header class="card-title">Speed Graph</header>
+    <header class="card-title">
+    <span class="card-title-text">Speed Graph</span>
+    </header>
     <div class="card-body">
       <div class="sparkline" aria-label="Speed graph"></div>
     </div>`;

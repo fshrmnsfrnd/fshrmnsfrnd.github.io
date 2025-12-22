@@ -51,7 +51,9 @@ function leanGraphWidget() {
   const el = document.createElement('section');
   el.className = 'card';
   el.innerHTML = `
-    <header class="card-title">Neigung Graph</header>
+    <header class="card-title">
+    <span class="card-title-text">Neigung Graph</span>
+    </header>
     <div class="card-body">
       <div class="sparkline" aria-label="Lean graph"></div>
       <button class="btn">Sensor aktivieren</button>

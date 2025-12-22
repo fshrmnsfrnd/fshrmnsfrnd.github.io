@@ -2,7 +2,9 @@ export function createCard(title) {
   const el = document.createElement('section');
   el.className = 'card';
   el.innerHTML = `
-    <header class="card-title">${title}</header>
+    <header class="card-title">
+    <span class="card-title-text">${title}</span>
+    </header>
     <div class="card-body">
       <div class="value"></div>
       <div class="sub"></div>

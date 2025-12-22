@@ -50,7 +50,9 @@ function gGraphWidget() {
   const el = document.createElement('section');
   el.className = 'card';
   el.innerHTML = `
-    <header class="card-title">G-Kraft Graph</header>
+    <header class="card-title">
+        <span class="card-title-text">G-Kraft Graph</span>
+    </header>
     <div class="card-body">
       <div class="sparkline" aria-label="G graph"></div>
       <button class="btn">Sensor aktivieren</button>
