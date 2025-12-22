@@ -1,5 +1,6 @@
 import { createCard, formatNumber } from '../../componentsUtil.js';
 import * as geo from '../../Services/geo.js';
+import { LineChart } from '../../chart.js';
 
 function currentSpeedWidget() {
   const card = createCard('Current Speed');
@@ -36,20 +37,13 @@ function speedGraphWidget() {
     <span class="card-title-text">Speed Graph</span>
     </header>
     <div class="card-body">
-      <div class="sparkline" aria-label="Speed graph"></div>
+      <canvas class="chart" aria-label="Speed graph"></canvas>
     </div>`;
-  const spark = el.querySelector('.sparkline');
-  const bars = [];
-  function pushVal(kmh) {
-    const b = document.createElement('i');
-    const clamped = Math.max(0, Math.min(160, kmh || 0));
-    b.style.height = (clamped / 160) * 100 + '%';
-    spark.appendChild(b);
-    bars.push(b);
-    if (bars.length > 24) bars.shift().remove();
-  }
-  const unsub = geo.subscribe(({ kmh }) => pushVal(kmh));
-  return { node: el, unmount: () => unsub() };
+  const canvas = el.querySelector('canvas');
+  const chart = new LineChart({ color: '#38bdf8', maxSeconds: 180, lineWidth: 2 });
+  chart.attach(canvas);
+  const unsub = geo.subscribe(({ kmh }) => chart.push(kmh || 0));
+  return { node: el, unmount: () => { unsub(); chart.detach(); } };
 }
 
 export const widgets = {

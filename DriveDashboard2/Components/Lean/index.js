@@ -1,6 +1,7 @@
 import { createCard, formatNumber } from '../../componentsUtil.js';
 import * as orientation from '../../Services/orientation.js';
 import { ensureOrientationPermission } from '../../Services/permissions.js';
+import { LineChart } from '../../chart.js';
 
 function currLeanWidget() {
   const card = createCard('Aktuelle Neigung');
@@ -55,30 +56,23 @@ function leanGraphWidget() {
     <span class="card-title-text">Neigung Graph</span>
     </header>
     <div class="card-body">
-      <div class="sparkline" aria-label="Lean graph"></div>
+      <canvas class="chart" aria-label="Lean graph"></canvas>
       <button class="btn">Sensor aktivieren</button>
     </div>`;
-  const spark = el.querySelector('.sparkline');
+  const canvas = el.querySelector('canvas');
+  const chart = new LineChart({ color: '#f59e0b', maxSeconds: 180, lineWidth: 2 });
+  chart.attach(canvas);
   const btn = el.querySelector('button');
-  const bars = [];
   let unsub = null;
-  function pushVal(angle) {
-    const b = document.createElement('i');
-    const v = Math.min(90, Math.abs(angle));
-    b.style.height = (v / 90) * 100 + '%';
-    spark.appendChild(b);
-    bars.push(b);
-    if (bars.length > 24) bars.shift().remove();
-  }
   btn.onclick = async () => {
     if (await ensureOrientationPermission()) {
       btn.remove();
-      unsub = orientation.subscribe(({ angle }) => pushVal(angle));
+      unsub = orientation.subscribe(({ angle }) => chart.push(Math.abs(angle || 0)));
     } else {
       alert('Sensor-Zugriff verweigert');
     }
   };
-  return { node: el, unmount: () => unsub && unsub() };
+  return { node: el, unmount: () => { unsub && unsub(); chart.detach(); } };
 }
 
 export const widgets = {

@@ -1,6 +1,7 @@
 import { createCard, formatNumber } from '../../componentsUtil.js';
 import * as motion from '../../Services/motion.js';
 import { ensureMotionPermission } from '../../Services/permissions.js';
+import { LineChart } from '../../chart.js';
 
 function currGWidget() {
   const card = createCard('Aktuelle G-Kraft');
@@ -54,30 +55,23 @@ function gGraphWidget() {
         <span class="card-title-text">G-Kraft Graph</span>
     </header>
     <div class="card-body">
-      <div class="sparkline" aria-label="G graph"></div>
+      <canvas class="chart" aria-label="G graph"></canvas>
       <button class="btn">Sensor aktivieren</button>
     </div>`;
-  const spark = el.querySelector('.sparkline');
+  const canvas = el.querySelector('canvas');
+  const chart = new LineChart({ color: '#22c55e', maxSeconds: 180, lineWidth: 2 });
+  chart.attach(canvas);
   const btn = el.querySelector('button');
-  const bars = [];
   let unsub = null;
-  function pushVal(g) {
-    const v = Math.min(2.5, Math.max(0, g || 0));
-    const b = document.createElement('i');
-    b.style.height = (v / 2.5) * 100 + '%';
-    spark.appendChild(b);
-    bars.push(b);
-    if (bars.length > 24) bars.shift().remove();
-  }
   btn.onclick = async () => {
     if (await ensureMotionPermission()) {
       btn.remove();
-      unsub = motion.subscribe(({ g }) => pushVal(g));
+      unsub = motion.subscribe(({ g }) => chart.push(Math.max(0, g || 0)));
     } else {
       alert('Sensor-Zugriff verweigert');
     }
   };
-  return { node: el, unmount: () => unsub && unsub() };
+  return { node: el, unmount: () => { unsub && unsub(); chart.detach(); } };
 }
 
 export const widgets = {

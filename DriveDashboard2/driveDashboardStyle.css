@@ -78,6 +78,13 @@
 	opacity: 0.9;
 }
 
+/* Canvas chart sizing */
+.card .chart {
+    width: 100%;
+    height: 140px; /* JS will match device pixels */
+    display: block;
+}
+
 @media (max-width: 520px) {
 	.dashboard-grid { padding-top: 56px; }
 }
