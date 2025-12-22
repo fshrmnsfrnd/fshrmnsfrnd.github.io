@@ -12,7 +12,8 @@
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 	gap: 12px;
-	padding: 64px 12px 16px;
+	/* No reserved space for burger menu: start at very top-left */
+	padding: 12px 12px 16px;
 }
 
 .card-title>.card-title-text{
@@ -120,7 +121,7 @@
 }
 
 @media (max-width: 520px) {
-	.dashboard-grid { padding-top: 56px; }
+	.dashboard-grid { padding-top: 12px; }
 }
 
 /* Chart modal overlay */
