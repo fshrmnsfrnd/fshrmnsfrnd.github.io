@@ -8,8 +8,12 @@
 	--accent: #00c2ff;
 }
 
+html, body {
+	height: 100%;
+	overflow: hidden; /* No page scroll */
+}
 body{
-	margin: auto;
+	margin: 0;
 }
 
 .dashboard-grid {
@@ -19,6 +23,9 @@ body{
 	gap: 12px;
 	/* No reserved space for burger menu: start at very top-left */
 	padding: 12px 12px 16px;
+	height: 100vh; /* Constrain to viewport height */
+	box-sizing: border-box;
+	grid-auto-rows: 1fr; /* Rows share available height equally */
 }
 
 .card-title>.card-title-text{
@@ -34,7 +41,7 @@ body{
 	padding: 3px 3px;
 	display: flex;
 	flex-direction: column;
-	min-height: 110px;
+	min-height: 0; /* Allow shrinking to fit rows */
 }
 
 /* Make graph cards span two columns without changing column width */
@@ -56,6 +63,9 @@ body{
 	justify-content: center;
 	align-items: center;
     position: relative;
+	flex: 1 1 auto; /* Fill card height */
+	min-height: 0; /* Allow content to shrink */
+	overflow: hidden; /* Avoid overflow when space is tight */
 
 }
 .card .value {
@@ -111,9 +121,9 @@ body{
 
 /* Canvas chart sizing */
 .card .chart {
-    width: 100%;
-    height: 140px; /* JS will match device pixels */
-    display: block;
+	width: 100%;
+	height: 100%; /* Fill available body height */
+	display: block;
 }
 
 /* Graph card layout: canvas above button */

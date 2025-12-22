@@ -14,6 +14,7 @@ export class LineChart {
     enablePopupOnClick = true,
     popupHeightCss = 300,
     historySeconds = 3600,
+    useCssHeight = true,
   } = {}) {
     this.color = color;
     this.maxSeconds = maxSeconds;
@@ -31,6 +32,7 @@ export class LineChart {
     this.enablePopupOnClick = enablePopupOnClick;
     this.popupHeightCss = popupHeightCss;
     this.historySeconds = historySeconds;
+    this.useCssHeight = useCssHeight;
 
     this.values = [];
     this.times = [];
@@ -98,10 +100,13 @@ export class LineChart {
     if (!this.canvas.classList.contains('chart-modal-canvas')) {
       this.canvas.style.width = '100%';
     }
-    this.canvas.style.height = this.heightCss + 'px';
+    if (!this.useCssHeight) {
+      this.canvas.style.height = this.heightCss + 'px';
+    }
     const rect = this.canvas.getBoundingClientRect();
     this.canvas.width = Math.max(1, Math.floor(rect.width * dpr));
-    this.canvas.height = Math.max(1, Math.floor(this.heightCss * dpr));
+    const cssH = this.useCssHeight ? rect.height : this.heightCss;
+    this.canvas.height = Math.max(1, Math.floor(cssH * dpr));
     if (this.ctx) this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
 
@@ -110,7 +115,7 @@ export class LineChart {
     const ctx = this.ctx;
     const rectNow = this.canvas.getBoundingClientRect();
     const w = Math.max(1, rectNow.width);
-    const h = this.heightCss;
+    const h = Math.max(1, this.useCssHeight ? rectNow.height : this.heightCss);
     ctx.clearRect(0, 0, w, h);
 
     // Compute scale bounds

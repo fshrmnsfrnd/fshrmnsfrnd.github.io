@@ -49,7 +49,7 @@ function averageSpeedWidget() {
 
 function maxSpeedWidget() {
   const card = createCard('Max Speed');
-  card.setSub('km/h (Session)');
+  card.setSub('km/h');
   card.setValue('---');
   let unsub = () => {};
   ensureGeoPermissionWithModal().then((ok) => {
