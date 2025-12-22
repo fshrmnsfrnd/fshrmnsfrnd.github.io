@@ -1,0 +1,68 @@
+/* Dashboard grid and card styling */
+:root {
+	--card-bg: #121215;
+	--card-border: #24242a;
+	--card-title: #e6e6e8;
+	--card-text: #ffffff;
+	--muted: #a6a6ad;
+	--accent: #00c2ff;
+}
+
+.dashboard-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 12px;
+	padding: 64px 12px 16px;
+}
+
+.card {
+	background: var(--card-bg);
+	border: 1px solid var(--card-border);
+	border-radius: 12px;
+	padding: 12px 14px;
+	display: flex;
+	flex-direction: column;
+	min-height: 110px;
+}
+.card-title {
+	font-size: 0.95rem;
+	font-weight: 600;
+	color: var(--card-title);
+	margin-bottom: 8px;
+}
+.card-body {
+	display: grid;
+	align-content: start;
+	gap: 6px;
+}
+.card .value {
+	font-size: 2rem;
+	line-height: 1.1;
+	color: var(--card-text);
+}
+.card .sub {
+	font-size: 0.8rem;
+	color: var(--muted);
+}
+
+/* Sparkline bars */
+.sparkline {
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: 6px;
+	align-items: end;
+	gap: 4px;
+	height: 60px;
+}
+.sparkline i {
+	display: block;
+	width: 100%;
+	background: linear-gradient(180deg, var(--accent), #3aa6ff 70%);
+	border-radius: 3px 3px 0 0;
+	opacity: 0.9;
+}
+
+@media (max-width: 520px) {
+	.dashboard-grid { padding-top: 56px; }
+}
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard with Speed and inclined position für motorcycle and bike.">
+    <link rel="stylesheet" href="../src/defaultstyle.css">
+    <title>Drive Dashboard</title>
+    <link rel="shortcut icon" href="../src/ff_favicon.png" type="image/x-icon">
+    <link rel="manifest" href="../src/manifest.json">
+    <link rel="stylesheet" href="./driveDashboardStyle.css">
+    <link rel="stylesheet" href="./menu.css">
+</head>
+
+<body>
+    <!-- Left Menu -->
+    <button class="burger-btn" aria-controls="side-menu" aria-expanded="false" aria-label="Menü öffnen" title="Menü">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+
+    <aside id="side-menu" class="drawer" aria-hidden="true" role="dialog" aria-modal="true">
+        <header class="drawer-header">
+            <h2>Optionen</h2>
+        </header>
+        <div class="drawer-content">
+            <form class="menu-list">
+                <label><input type="checkbox" id="optCurrSpeed" checked>Current Speed</label>
+                <label><input type="checkbox" id="optAverageSpeed" checked>Average Speed</label>
+                <label><input type="checkbox" id="optMaxSpeed" checked>Max Speed</label>
+                <label><input type="checkbox" id="optGraphSpeed" checked>Speed Graph</label>
+                <label><input type="checkbox" id="optCurrLean" checked>Aktuelle Neigung</label>
+                <label><input type="checkbox" id="optMaxLean" checked>Max Neigung</label>
+                <label><input type="checkbox" id="optGraphLean" checked>Neigung Graph</label>
+                <label><input type="checkbox" id="optCurrGForce" checked>Aktuelle G-Kraft</label>
+                <label><input type="checkbox" id="optMaxGForce" checked>Max G-Kraft</label>
+                <label><input type="checkbox" id="optGraphGForce" checked>G-Kraft Graph</label>
+                <label><input type="checkbox" id="opt-clock">Uhr</label>
+            </form>
+        </div>
+    </aside>
+
+    <div class="overlay" hidden></div>
+
+    <!-- Dashboard content root -->
+    <main id="dashboard-root" class="dashboard-grid" aria-live="polite"></main>
+
+    <script src="./menu.js"></script>
+    <script type="module" src="./app.js"></script>
+    
+</body>
+
+</html>
