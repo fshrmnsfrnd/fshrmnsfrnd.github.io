@@ -13,7 +13,7 @@ function currGWidget() {
     if (await ensureMotionPermission()) {
       btn.remove();
       unsub = motion.subscribe(({ g }) => {
-        card.setValue(formatNumber(g || 0, 2));
+          card.setValue(`${formatNumber(g || 0, 2)}g`);
       });
     } else {
       alert('Sensor-Zugriff verweigert');
@@ -36,7 +36,7 @@ function maxGWidget() {
       btn.remove();
       unsub = motion.subscribe(({ g }) => {
         if ((g || 0) > max) max = g;
-        card.setValue(formatNumber(max || 0, 2));
+          card.setValue(`${formatNumber(max || 0, 2)}g`);
       });
     } else {
       alert('Sensor-Zugriff verweigert');

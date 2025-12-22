@@ -12,7 +12,7 @@ function currentSpeedWidget() {
 
 function averageSpeedWidget() {
   const card = createCard('Average Speed');
-  card.setSub('km/h (Session)');
+  card.setSub('km/h');
   const unsub = geo.subscribe(({ avgKmh }) => {
     card.setValue(formatNumber(avgKmh || 0));
   });

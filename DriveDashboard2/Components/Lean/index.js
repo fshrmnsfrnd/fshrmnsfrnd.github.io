@@ -4,7 +4,6 @@ import { ensureOrientationPermission } from '../../Services/permissions.js';
 
 function currLeanWidget() {
   const card = createCard('Aktuelle Neigung');
-  card.setSub('°');
   const btn = document.createElement('button');
   btn.textContent = 'Sensor aktivieren';
   btn.className = 'btn';
@@ -25,7 +24,6 @@ function currLeanWidget() {
 
 function maxLeanWidget() {
   const card = createCard('Max Neigung');
-  card.setSub('° (Session)');
   let max = 0;
   const btn = document.createElement('button');
   btn.textContent = 'Sensor aktivieren';
