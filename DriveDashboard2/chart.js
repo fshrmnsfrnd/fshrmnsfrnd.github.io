@@ -6,7 +6,7 @@ export class LineChart {
     lineWidth = 2,
     showYAxis = true,
     yTickCount = 4,
-    yAxisWidth = 40,
+    yAxisWidth = 28,
     gridColor = '#24242a',
     axisColor = '#24242a',
     tickColor = '#a6a6ad',
@@ -17,11 +17,13 @@ export class LineChart {
     this.lineWidth = lineWidth;
     this.showYAxis = showYAxis;
     this.yTickCount = yTickCount;
-    this.yAxisWidth = yAxisWidth; // left padding reserved for labels
+    this.yAxisWidth = yAxisWidth; // minimum left area reserved for labels
     this.gridColor = gridColor;
     this.axisColor = axisColor;
     this.tickColor = tickColor;
     this.font = font;
+    this.labelPadding = 4; // gap between labels and axis line
+    this.axisGap = 2; // minimal gap from canvas edge if labels are very short
 
     this.values = [];
     this.times = [];
@@ -88,8 +90,17 @@ export class LineChart {
     const dataMax = hasData ? Math.max(...this.values) : 1;
     const { minY, maxY, step, ticks } = this._computeScale(dataMin, dataMax);
 
+    // Prepare labels and compute dynamic left space based on label width
+    ctx.font = this.font;
+    const labels = ticks.map((t) => this._formatTick(t, step));
+    const maxLabelWidth = this.showYAxis && labels.length
+      ? Math.max(...labels.map((s) => ctx.measureText(s).width))
+      : 0;
+
     // Plot area
-    const left = this.showYAxis ? this.yAxisWidth : 0;
+    const left = this.showYAxis
+      ? Math.ceil(Math.max(this.yAxisWidth, maxLabelWidth + this.axisGap + this.labelPadding))
+      : 0;
     const right = 4;
     const top = 4;
     const bottom = 4;
@@ -120,12 +131,11 @@ export class LineChart {
 
       // Labels
       ctx.fillStyle = this.tickColor;
-      ctx.font = this.font;
       ctx.textAlign = 'right';
       ctx.textBaseline = 'middle';
-      ticks.forEach((t) => {
+      ticks.forEach((t, i) => {
         const y = top + ph - ((t - minY) / (maxY - minY)) * ph;
-        ctx.fillText(this._formatTick(t, step), left - 6, y);
+        ctx.fillText(labels[i], left - this.labelPadding, y);
       });
       ctx.restore();
     }
