@@ -11,6 +11,8 @@ export class LineChart {
     axisColor = '#24242a',
     tickColor = '#a6a6ad',
     font = '10px system-ui',
+    enablePopupOnClick = true,
+    popupHeightCss = 300,
   } = {}) {
     this.color = color;
     this.maxSeconds = maxSeconds;
@@ -24,6 +26,8 @@ export class LineChart {
     this.font = font;
     this.labelPadding = 4; // gap between labels and axis line
     this.axisGap = 2; // minimal gap from canvas edge if labels are very short
+    this.enablePopupOnClick = enablePopupOnClick;
+    this.popupHeightCss = popupHeightCss;
 
     this.values = [];
     this.times = [];
@@ -31,18 +35,37 @@ export class LineChart {
     this.ctx = null;
     this.heightCss = 140; // px
     this._onResize = this._onResize.bind(this);
+    this._onClick = null;
+    this._originalCanvas = null;
+    this._originalHeightCss = this.heightCss;
   }
 
   attach(canvas) {
+    // Clean up previous bindings if reattaching
+    if (this.canvas) {
+      window.removeEventListener('resize', this._onResize);
+      if (this._onClick) {
+        try { this.canvas.removeEventListener('click', this._onClick); } catch {}
+      }
+    }
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
     this._fitCanvas();
     window.addEventListener('resize', this._onResize);
+    // Enable popup click if configured and not inside popup
+    if (this.enablePopupOnClick && !this._inPopup) {
+      if (!this._onClick) this._onClick = () => this._openPopup();
+      try { this.canvas.style.cursor = 'zoom-in'; } catch {}
+      this.canvas.addEventListener('click', this._onClick);
+    }
     this.draw();
   }
 
   detach() {
     window.removeEventListener('resize', this._onResize);
+    if (this.canvas && this._onClick) {
+      this.canvas.removeEventListener('click', this._onClick);
+    }
     this.canvas = null;
     this.ctx = null;
   }
@@ -204,5 +227,51 @@ export class LineChart {
       ticks.push(Number(v.toFixed(6))); // avoid FP drift
     }
     return { minY, maxY, step, ticks };
+  }
+
+  _openPopup() {
+    // If already in popup (no original recorded), record original first
+    if (!this._originalCanvas) {
+      this._originalCanvas = this.canvas;
+      this._originalHeightCss = this.heightCss;
+    }
+
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'chart-modal-overlay';
+    const modal = document.createElement('div');
+    modal.className = 'chart-modal-content';
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'chart-modal-close';
+    closeBtn.textContent = '×';
+    const bigCanvas = document.createElement('canvas');
+    bigCanvas.className = 'chart-modal-canvas';
+    modal.appendChild(closeBtn);
+    modal.appendChild(bigCanvas);
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+
+    // Reattach chart to big canvas with larger height; disable nested popup
+    this.heightCss = this.popupHeightCss;
+    this._inPopup = true;
+    this.attach(bigCanvas);
+
+    const cleanup = () => {
+      // Restore to original canvas
+      this.heightCss = this._originalHeightCss;
+      this._inPopup = false;
+      if (this._originalCanvas) this.attach(this._originalCanvas);
+      this._originalCanvas = null;
+      try { document.body.removeChild(overlay); } catch {}
+    };
+
+    const onOverlayClick = (e) => {
+      if (e.target === overlay) cleanup();
+    };
+    overlay.addEventListener('click', onOverlayClick);
+    closeBtn.addEventListener('click', cleanup);
+    // Escape key to close
+    const onKey = (e) => { if (e.key === 'Escape') { cleanup(); window.removeEventListener('keydown', onKey); } };
+    window.addEventListener('keydown', onKey);
   }
 }

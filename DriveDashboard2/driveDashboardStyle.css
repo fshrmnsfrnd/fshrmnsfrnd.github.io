@@ -116,3 +116,42 @@
 @media (max-width: 520px) {
 	.dashboard-grid { padding-top: 56px; }
 }
+
+/* Chart modal overlay */
+.chart-modal-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.6);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+}
+.chart-modal-content {
+	background: var(--card-bg);
+	border: 1px solid var(--card-border);
+	border-radius: 12px;
+	padding: 8px 8px 12px;
+	max-width: 95vw;
+	max-height: 85vh;
+	box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+.chart-modal-close {
+	position: absolute;
+	top: 4px;
+	right: 8px;
+	border: none;
+	background: transparent;
+	color: var(--card-title);
+	font-size: 24px;
+	cursor: pointer;
+}
+.chart-modal-canvas {
+	width: min(92vw, 1000px);
+	height: 300px; /* JS sets device pixels */
+	display: block;
+}
