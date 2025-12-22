@@ -26,6 +26,7 @@ export async function ensureOrientationPermission() {
 const state = {
   motion: { asked: false, pending: null },
   orientation: { asked: false, pending: null },
+  geo: { asked: false, pending: null },
 };
 
 function showPermissionModal({ title, message, onAllow }) {
@@ -94,4 +95,43 @@ export async function ensureOrientationPermissionWithModal() {
     onAllow: ensureOrientationPermission,
   }).finally(() => { state.orientation.pending = null; });
   return state.orientation.pending;
+}
+
+async function getGeoPermissionState() {
+  try {
+    if (navigator.permissions && navigator.permissions.query) {
+      const res = await navigator.permissions.query({ name: 'geolocation' });
+      return res.state; // 'granted' | 'prompt' | 'denied'
+    }
+  } catch {}
+  return 'prompt';
+}
+
+async function requestGeoViaBrowser() {
+  if (!('geolocation' in navigator)) return false;
+  return new Promise((resolve) => {
+    try {
+      navigator.geolocation.getCurrentPosition(
+        () => resolve(true),
+        () => resolve(false),
+        { enableHighAccuracy: true, timeout: 10000 }
+      );
+    } catch {
+      resolve(false);
+    }
+  });
+}
+
+export async function ensureGeoPermissionWithModal() {
+  const stateNow = await getGeoPermissionState();
+  if (stateNow === 'granted') return true;
+  if (state.geo.pending) return state.geo.pending;
+  if (state.geo.asked && stateNow !== 'granted') return false;
+  state.geo.asked = true;
+  state.geo.pending = showPermissionModal({
+    title: 'Standortzugriff erlauben',
+    message: 'Damit Geschwindigkeit und Durchschnittswerte angezeigt werden können, erlaube Zugriff auf den Standort (GPS).',
+    onAllow: requestGeoViaBrowser,
+  }).finally(() => { state.geo.pending = null; });
+  return state.geo.pending;
 }
