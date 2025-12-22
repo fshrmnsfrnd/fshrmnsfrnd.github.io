@@ -1,32 +1,22 @@
 import { createCard, formatNumber, attachSettingsToExistingCard } from '../../componentsUtil.js';
-import { ensureMotionPermissionWithModal, ensureMotionPermission } from '../../Services/permissions.js';
+import { ensureMotionPermissionWithModal } from '../../Services/permissions.js';
 import * as motion from '../../Services/motion.js';
 import { LineChart } from '../../chart.js';
 
 function currGWidget() {
   const card = createCard('Aktuelle G-Kraft');
   let unsub = null;
-
-  const btn = document.createElement('button');
-  btn.className = 'btn';
-  btn.textContent = 'Sensor aktivieren';
-
   card.setValue('---');
 
-  btn.onclick = async () => {
-    const ok = await ensureMotionPermissionWithModal();
-    if (!ok) {
+  ensureMotionPermissionWithModal().then((ok) => {
+    if (ok) {
+      unsub = motion.subscribe(({ g }) => {
+        card.setValue(formatNumber(g || 0, 2));
+      });
+    } else {
       card.setValue('---');
-      return;
     }
-    btn.remove();
-    unsub = motion.subscribe(({ g }) => {
-      card.setValue(formatNumber(g || 0, 2));
-    });
-  };
-
-  const body = card.el.querySelector('.card-body') || card.el;
-  body.appendChild(btn);
+  });
   card.setSettings([]); // Keine speziellen Einstellungen
 
   return { node: card.el, unmount: () => unsub && unsub() };
@@ -36,29 +26,19 @@ function maxGWidget() {
   const card = createCard('Maximale G-Kraft');
   let unsub = null;
   let max = 0;
-
-  const btn = document.createElement('button');
-  btn.className = 'btn';
-  btn.textContent = 'Sensor aktivieren';
-
   card.setValue('---');
 
-  btn.onclick = async () => {
-    const ok = await ensureMotionPermissionWithModal();
-    if (!ok) {
+  ensureMotionPermissionWithModal().then((ok) => {
+    if (ok) {
+      unsub = motion.subscribe(({ g }) => {
+        const val = g || 0;
+        if (val > max) max = val;
+        card.setValue(formatNumber(max, 2));
+      });
+    } else {
       card.setValue('---');
-      return;
     }
-    btn.remove();
-    unsub = motion.subscribe(({ g }) => {
-      const val = g || 0;
-      if (val > max) max = val;
-      card.setValue(formatNumber(max, 2));
-    });
-  };
-
-  const body = card.el.querySelector('.card-body') || card.el;
-  body.appendChild(btn);
+  });
 
   card.setSettings([
     { label: 'Zurücksetzen', onClick: () => { max = 0; card.setValue(formatNumber(0, 2)); } },
@@ -76,11 +56,9 @@ function gGraphWidget() {
     </header>
     <div class="card-body">
       <canvas class="chart" aria-label="G graph"></canvas>
-      <button class="btn">Sensor aktivieren</button>
     </div>`;
 
   const canvas = el.querySelector('canvas');
-  const btn = el.querySelector('button');
   const body = el.querySelector('.card-body');
 
   const chart = new LineChart({ color: '#22c55e', maxSeconds: 180, lineWidth: 2 });
@@ -105,15 +83,12 @@ function gGraphWidget() {
     },
   ]);
 
-  btn.onclick = async () => {
-    if (await ensureMotionPermission()) {
-      btn.remove();
-      placeholder.remove();
+  ensureMotionPermissionWithModal().then((ok) => {
+    if (ok) {
+      try { placeholder.remove(); } catch {}
       unsub = motion.subscribe(({ g }) => chart.push(Math.max(0, g || 0)));
-    } else {
-      alert('Sensor-Zugriff verweigert');
     }
-  };
+  });
 
   return { node: el, unmount: () => { unsub && unsub(); if (typeof chart.detach === 'function') chart.detach(); } };
 }
