@@ -8,9 +8,14 @@
 	--accent: #00c2ff;
 }
 
+body{
+	margin: auto;
+}
+
 .dashboard-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	/* Always two columns for cards; graphs will span both */
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 12px;
 	/* No reserved space for burger menu: start at very top-left */
 	padding: 12px 12px 16px;
@@ -30,6 +35,11 @@
 	display: flex;
 	flex-direction: column;
 	min-height: 110px;
+}
+
+/* Make graph cards span two columns without changing column width */
+.dashboard-grid > .graph-card {
+	grid-column: span 2;
 }
 .card-title {
     padding: 3px;
