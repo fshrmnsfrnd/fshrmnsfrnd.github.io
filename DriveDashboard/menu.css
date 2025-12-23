@@ -74,6 +74,19 @@ body.menu-open {
   font-size: 1rem;
   margin: 0;
 }
+.edit-btn {
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid #2a2a2e;
+  color: var(--text);
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.edit-btn[aria-pressed="true"] {
+  background: rgba(0,0,0,0.2);
+  border-color: var(--accent);
+}
 
 .drawer-content {
   padding: 12px 16px 18px;

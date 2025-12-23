@@ -291,3 +291,37 @@ body{
 .app-modal-content h3 { margin: 0 0 8px; color: var(--card-title); }
 .app-modal-content p { margin: 0 0 12px; color: var(--muted); }
 .app-modal-actions { display: flex; gap: 8px; justify-content: flex-end; }
+
+/* Edit mode: absolute layout + grid overlay */
+.dashboard-grid.edit-mode {
+	position: relative;
+	display: block; /* disable CSS grid flow while editing */
+}
+.dashboard-grid.edit-mode .card {
+	position: absolute;
+	will-change: left, top, width, height;
+	user-select: none;
+}
+
+/* Visual grid helper cells */
+[grid-cell] {
+	position: absolute;
+	border: 1px solid #444;
+	box-sizing: border-box;
+	pointer-events: none;
+}
+
+/* Resize handle bottom-right */
+.card .resize-handle {
+	position: absolute;
+	right: 4px;
+	bottom: 4px;
+	width: 16px;
+	height: 16px;
+	border-radius: 4px;
+	background: rgba(255,255,255,0.1);
+	border: 1px solid var(--card-border);
+	cursor: nwse-resize;
+}
+.card.dragging { outline: 1px dashed var(--accent); }
+.card.invalid { outline: 2px solid #e74c3c; }
