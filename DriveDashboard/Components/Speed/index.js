@@ -1,6 +1,5 @@
 import { createCard, formatNumber, attachSettingsToExistingCard } from '../../componentsUtil.js';
 import * as geo from '../../Services/geo.js';
-import { ensureGeoPermissionWithModal } from '../../Services/permissions.js';
 import { LineChart } from '../../chart.js';
 
 function currentSpeedWidget() {
@@ -8,15 +7,12 @@ function currentSpeedWidget() {
   card.setSub('km/h');
   card.setValue('---');
   let unsub = () => {};
-  ensureGeoPermissionWithModal().then((ok) => {
-    if (ok) {
-      unsub = geo.subscribe((data) => {
-        if (data && typeof data.kmh === 'number' && !Number.isNaN(data.kmh)) {
-          card.setValue(String(Math.round(data.kmh)));
-        } else {
-          card.setValue('---');
-        }
-      });
+  // Subscribe immediately; browser will prompt for permission if needed
+  unsub = geo.subscribe((data) => {
+    if (data && typeof data.kmh === 'number' && !Number.isNaN(data.kmh)) {
+      card.setValue(String(Math.round(data.kmh)));
+    } else {
+      card.setValue('---');
     }
   });
   card.setSettings([
@@ -30,15 +26,11 @@ function averageSpeedWidget() {
   card.setSub('km/h');
   card.setValue('---');
   let unsub = () => {};
-  ensureGeoPermissionWithModal().then((ok) => {
-    if (ok) {
-      unsub = geo.subscribe((data) => {
-        if (data && typeof data.avgKmh === 'number' && !Number.isNaN(data.avgKmh)) {
-          card.setValue(formatNumber(data.avgKmh));
-        } else {
-          card.setValue('---');
-        }
-      });
+  unsub = geo.subscribe((data) => {
+    if (data && typeof data.avgKmh === 'number' && !Number.isNaN(data.avgKmh)) {
+      card.setValue(formatNumber(data.avgKmh));
+    } else {
+      card.setValue('---');
     }
   });
   card.setSettings([
@@ -52,15 +44,11 @@ function maxSpeedWidget() {
   card.setSub('km/h');
   card.setValue('---');
   let unsub = () => {};
-  ensureGeoPermissionWithModal().then((ok) => {
-    if (ok) {
-      unsub = geo.subscribe((data) => {
-        if (data && typeof data.maxKmh === 'number' && !Number.isNaN(data.maxKmh)) {
-          card.setValue(String(Math.round(data.maxKmh)));
-        } else {
-          card.setValue('---');
-        }
-      });
+  unsub = geo.subscribe((data) => {
+    if (data && typeof data.maxKmh === 'number' && !Number.isNaN(data.maxKmh)) {
+      card.setValue(String(Math.round(data.maxKmh)));
+    } else {
+      card.setValue('---');
     }
   });
   card.setSettings([
@@ -88,14 +76,12 @@ function speedGraphWidget() {
   placeholder.textContent = '---';
   body.appendChild(placeholder);
   let unsub = () => {};
-  ensureGeoPermissionWithModal().then((ok) => {
-    if (ok) {
-      unsub = geo.subscribe((data) => {
-        if (data && typeof data.kmh === 'number' && !Number.isNaN(data.kmh)) {
-          try { placeholder.remove(); } catch {}
-          chart.push(data.kmh);
-        }
-      });
+  // Remove placeholder on first emission (data or error), then render updates
+  let removed = false;
+  unsub = geo.subscribe((data) => {
+    if (!removed) { try { placeholder.remove(); } catch {}; removed = true; }
+    if (data && typeof data.kmh === 'number' && !Number.isNaN(data.kmh)) {
+      chart.push(data.kmh);
     }
   });
   // Settings: time window for visible graph (seconds)

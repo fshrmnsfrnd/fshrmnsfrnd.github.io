@@ -70,6 +70,32 @@ body{
 	color: var(--muted);
 }
 
+/* Lean gauge */
+.lean-gauge {
+	width: 100%;
+	height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.lean-gauge-svg {
+	width: 100%;
+	height: 90px;
+}
+.lean-gauge .needle {
+	stroke: var(--accent);
+	stroke-width: 4;
+	stroke-linecap: round;
+}
+.lean-gauge .pivot {
+	fill: var(--card-title);
+	opacity: 0.9;
+}
+.lean-gauge .zero-mark {
+	stroke: var(--card-border);
+	stroke-width: 3;
+}
+
 
 /* Graph card layout: canvas above button */
 .graph-card .card-body {
@@ -83,6 +109,26 @@ body{
 }
 .graph-card .btn {
 	align-self: center;
+}
+.lean-combined .lean-values {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 8px 12px;
+	width: 100%;
+	padding: 4px 8px 8px;
+}
+.lean-combined .value-row {
+	display: flex;
+	align-items: baseline;
+	gap: 8px;
+	justify-content: center;
+}
+.lean-combined .label {
+	color: var(--muted);
+}
+.lean-combined .val-number {
+	color: var(--card-text);
+	font-size: 1.6rem;
 }
 .card .sub {
 	font-size: 0.8rem;

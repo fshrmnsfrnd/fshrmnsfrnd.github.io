@@ -62,6 +62,9 @@ export class LineChart {
       this.canvas.addEventListener('click', this._onClick);
     }
     this.draw();
+    // If attached before element is in the DOM, width may be 0.
+    // Schedule a re-fit and redraw on the next frame to ensure proper sizing.
+    try { requestAnimationFrame(() => { this._fitCanvas(); this.draw(); }); } catch {}
   }
 
   detach() {

@@ -57,10 +57,16 @@ function renderSelection() {
     }
     const factory = REGISTRY[id];
     if (!factory) continue;
-    const { node, unmount } = factory();
-    node.dataset.widget = id;
-    root.appendChild(node);
-    mounted.set(id, { node, unmount });
+    try {
+      const { node, unmount } = factory();
+      if (!node) {
+        continue;
+      }
+      node.dataset.widget = id;
+      root.appendChild(node);
+      mounted.set(id, { node, unmount });
+    } catch (e) {
+    }
   }
 }
 

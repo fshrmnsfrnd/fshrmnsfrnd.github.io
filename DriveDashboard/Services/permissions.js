@@ -24,9 +24,9 @@ export async function ensureOrientationPermission() {
 
 // One-time permission modal management per sensor type
 const state = {
-  motion: { asked: false, pending: null },
-  orientation: { asked: false, pending: null },
-  geo: { asked: false, pending: null },
+  motion: { asked: false, pending: null, granted: null },
+  orientation: { asked: false, pending: null, granted: null },
+  geo: { asked: false, pending: null, granted: null },
 };
 
 function showPermissionModal({ title, message, onAllow }) {
@@ -72,28 +72,32 @@ export async function ensureMotionPermissionWithModal() {
   // If no user-gesture gating, just return true and let service subscribe
   const needsPrompt = (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function');
   if (!needsPrompt) return true;
+  if (state.motion.granted === true) return true;
   if (state.motion.pending) return state.motion.pending;
-  if (state.motion.asked) return false;
+  if (state.motion.asked && state.motion.granted === false) return false;
   state.motion.asked = true;
   state.motion.pending = showPermissionModal({
     title: 'Bewegungssensor erlauben',
     message: 'Damit G‑Kraft angezeigt werden kann, erlaube Zugriff auf den Bewegungssensor.',
     onAllow: ensureMotionPermission,
-  }).finally(() => { state.motion.pending = null; });
+  }).then((ok) => { state.motion.granted = ok === true; return state.motion.granted; })
+    .finally(() => { state.motion.pending = null; });
   return state.motion.pending;
 }
 
 export async function ensureOrientationPermissionWithModal() {
   const needsPrompt = (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function');
   if (!needsPrompt) return true;
+  if (state.orientation.granted === true) return true;
   if (state.orientation.pending) return state.orientation.pending;
-  if (state.orientation.asked) return false;
+  if (state.orientation.asked && state.orientation.granted === false) return false;
   state.orientation.asked = true;
   state.orientation.pending = showPermissionModal({
     title: 'Neigungssensor erlauben',
     message: 'Damit die Neigung angezeigt werden kann, erlaube Zugriff auf den Orientierungssensor.',
     onAllow: ensureOrientationPermission,
-  }).finally(() => { state.orientation.pending = null; });
+  }).then((ok) => { state.orientation.granted = ok === true; return state.orientation.granted; })
+    .finally(() => { state.orientation.pending = null; });
   return state.orientation.pending;
 }
 

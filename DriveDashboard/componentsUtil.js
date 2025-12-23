@@ -9,13 +9,17 @@ export function createCard(title) {
     </header>
     <div class="card-body">
       <div class="value"></div>
-      <div class="sub"></div>
     </div>`;
   const value = el.querySelector('.value');
-  const sub = el.querySelector('.sub');
   const header = el.querySelector('.card-title');
   const btn = el.querySelector('.card-settings');
   const menu = el.querySelector('.card-settings-menu');
+  const body = el.querySelector('.card-body');
+  // Optional unit/subtext element
+  const sub = document.createElement('div');
+  sub.className = 'sub';
+  sub.textContent = '';
+  body.appendChild(sub);
   let outsideHandler = null;
 
   function closeMenu() {
@@ -103,7 +107,7 @@ export function createCard(title) {
   return {
     el,
     setValue: (v) => (value.textContent = v),
-    setSub: (s) => (sub.textContent = s || ''),
+    setSub: (txt) => { sub.textContent = txt || ''; },
     setSettings: setMenuItems,
     closeSettings: closeMenu,
   };
