@@ -1,5 +1,6 @@
 import { createCard, formatNumber, attachSettingsToExistingCard } from '../../componentsUtil.js';
 import * as motion from '../../Services/motion.js';
+import { ensureMotionPermissionWithModal } from '../../Services/permissions.js';
 import { LineChart } from '../../chart.js';
 
 function currGWidget() {
@@ -7,9 +8,14 @@ function currGWidget() {
   let unsub = null;
   card.setValue('---');
 
-  // Subscribe immediately; if the platform requires a gesture for sensors, browser behavior will apply
-  unsub = motion.subscribe(({ g }) => {
-    card.setValue(formatNumber(g || 0, 2));
+  ensureMotionPermissionWithModal().then((ok) => {
+    if (ok) {
+      unsub = motion.subscribe(({ g }) => {
+        card.setValue(formatNumber(g || 0, 2));
+      });
+    } else {
+      card.setValue('---');
+    }
   });
   card.setSettings([]); // Keine speziellen Einstellungen
 
@@ -22,10 +28,16 @@ function maxGWidget() {
   let max = 0;
   card.setValue('---');
 
-  unsub = motion.subscribe(({ g }) => {
-    const val = g || 0;
-    if (val > max) max = val;
-    card.setValue(formatNumber(max, 2));
+  ensureMotionPermissionWithModal().then((ok) => {
+    if (ok) {
+      unsub = motion.subscribe(({ g }) => {
+        const val = g || 0;
+        if (val > max) max = val;
+        card.setValue(formatNumber(max, 2));
+      });
+    } else {
+      card.setValue('---');
+    }
   });
 
   card.setSettings([
@@ -71,8 +83,12 @@ function gGraphWidget() {
     },
   ]);
 
-  try { placeholder.remove(); } catch {}
-  unsub = motion.subscribe(({ g }) => chart.push(Math.max(0, g || 0)));
+  ensureMotionPermissionWithModal().then((ok) => {
+    if (ok) {
+      try { placeholder.remove(); } catch {}
+      unsub = motion.subscribe(({ g }) => chart.push(Math.max(0, g || 0)));
+    }
+  });
 
   return { node: el, unmount: () => { unsub && unsub(); if (typeof chart.detach === 'function') chart.detach(); } };
 }

@@ -1,5 +1,6 @@
 import { createCard, formatNumber, attachSettingsToExistingCard } from '../../componentsUtil.js';
 import * as orientation from '../../Services/orientation.js';
+import { ensureOrientationPermissionWithModal } from '../../Services/permissions.js';
 import { LineChart } from '../../chart.js';
 
 function currLeanWidget() {
@@ -13,12 +14,17 @@ function currLeanWidget() {
   const body = card.el.querySelector('.card-body');
   const valueEl = card.el.querySelector('.value');
 
-  unsub = orientation.subscribe(({ angle }) => {
-    const a = Number(angle) || 0;
-    const rot = Math.max(-90, Math.min(90, a));
-    if (needleGroup) needleGroup.setAttribute('transform', `rotate(${rot} 60 40)`);
-    // Show absolute tilt value below the gauge, degrees symbol included
-    card.setValue(`${formatNumber(Math.abs(a), 1)}°`);
+  ensureOrientationPermissionWithModal().then((ok) => {
+    if (ok) {
+      unsub = orientation.subscribe(({ angle }) => {
+        const a = Number(angle) || 0;
+        const rot = Math.max(-90, Math.min(90, a));
+        if (needleGroup) needleGroup.setAttribute('transform', `rotate(${rot} 60 40)`);
+        card.setValue(`${formatNumber(Math.abs(a), 1)}°`);
+      });
+    } else {
+      card.setValue('---');
+    }
   });
   card.setSettings([]); // Zeige 'Keine Einstellungen'
   return { node: card.el, unmount: () => unsub && unsub() };
@@ -30,10 +36,16 @@ function maxLeanWidget() {
   let max = 0;
   let unsub = null;
   card.setValue('---');
-  unsub = orientation.subscribe(({ angle }) => {
-    const v = Math.abs(angle);
-    if (v > max) max = v;
-    card.setValue(formatNumber(max, 1));
+  ensureOrientationPermissionWithModal().then((ok) => {
+    if (ok) {
+      unsub = orientation.subscribe(({ angle }) => {
+        const v = Math.abs(angle);
+        if (v > max) max = v;
+        card.setValue(formatNumber(max, 1));
+      });
+    } else {
+      card.setValue('---');
+    }
   });
   card.setSettings([
     { label: 'Zurücksetzen', onClick: () => { max = 0; card.setValue(formatNumber(0, 1)); } },
@@ -47,9 +59,15 @@ function leanValueWidget() {
   card.setSub('°');
   card.setValue('---');
   let unsub = null;
-  unsub = orientation.subscribe(({ angle }) => {
-    const abs = Math.abs(Number(angle) || 0);
-    card.setValue(`${formatNumber(abs, 1)}`);
+  ensureOrientationPermissionWithModal().then((ok) => {
+    if (ok) {
+      unsub = orientation.subscribe(({ angle }) => {
+        const abs = Math.abs(Number(angle) || 0);
+        card.setValue(`${formatNumber(abs, 1)}`);
+      });
+    } else {
+      card.setValue('---');
+    }
   });
   card.setSettings([]);
   return { node: card.el, unmount: () => unsub && unsub() };
@@ -86,8 +104,12 @@ function leanGraphWidget() {
   placeholder.className = 'placeholder';
   placeholder.textContent = '---';
   body.appendChild(placeholder);
-  placeholder.remove();
-  unsub = orientation.subscribe(({ angle }) => chart.push(Math.abs(angle || 0)));
+  ensureOrientationPermissionWithModal().then((ok) => {
+    if (ok) {
+      try { placeholder.remove(); } catch {}
+      unsub = orientation.subscribe(({ angle }) => chart.push(Math.abs(angle || 0)));
+    }
+  });
   return { node: el, unmount: () => { unsub && unsub(); chart.detach(); } };
   
   
@@ -130,16 +152,19 @@ function combinedLeanWidget() {
   let max = 0;
 
   // Permission and subscription
-  unsub = orientation.subscribe(({ angle }) => {
-    const a = Number(angle) || 0;
-    const rot = Math.max(-90, Math.min(90, a));
-    if (needleGroup) needleGroup.setAttribute('transform', `rotate(${rot} 60 40)`);
-    const abs = Math.abs(a);
-    if (currEl) currEl.textContent = `${formatNumber(abs, 1)}°`;
-    if (abs > max) {
-      max = abs;
-      if (maxEl) maxEl.textContent = `${formatNumber(max, 1)}°`;
-    }
+  ensureOrientationPermissionWithModal().then((ok) => {
+    if (!ok) return;
+    unsub = orientation.subscribe(({ angle }) => {
+      const a = Number(angle) || 0;
+      const rot = Math.max(-90, Math.min(90, a));
+      if (needleGroup) needleGroup.setAttribute('transform', `rotate(${rot} 60 40)`);
+      const abs = Math.abs(a);
+      if (currEl) currEl.textContent = `${formatNumber(abs, 1)}°`;
+      if (abs > max) {
+        max = abs;
+        if (maxEl) maxEl.textContent = `${formatNumber(max, 1)}°`;
+      }
+    });
   });
 
   return { node: el, unmount: () => unsub && unsub() };
@@ -166,10 +191,13 @@ function leanNeedleWidget() {
     </div>`;
   const needleGroup = el.querySelector('.needle-group');
   let unsub = null;
-  unsub = orientation.subscribe(({ angle }) => {
-    const a = Number(angle) || 0;
-    const rot = Math.max(-90, Math.min(90, a));
-    if (needleGroup) needleGroup.setAttribute('transform', `rotate(${rot} 60 40)`);
+  ensureOrientationPermissionWithModal().then((ok) => {
+    if (!ok) return;
+    unsub = orientation.subscribe(({ angle }) => {
+      const a = Number(angle) || 0;
+      const rot = Math.max(-90, Math.min(90, a));
+      if (needleGroup) needleGroup.setAttribute('transform', `rotate(${rot} 60 40)`);
+    });
   });
   return { node: el, unmount: () => unsub && unsub() };
 }
