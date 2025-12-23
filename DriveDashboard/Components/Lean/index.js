@@ -125,11 +125,11 @@ function combinedLeanWidget() {
     </header>
     <div class="card-body">
       <div class="lean-gauge">
-        <svg class="lean-gauge-svg" viewBox="0 0 120 80" aria-label="Lean gauge">
-          <g class="needle-group" transform="rotate(0 60 40)">
-            <line class="needle" x1="60" y1="40" x2="60" y2="10" />
+        <svg class="lean-gauge-svg" viewBox="0 0 120 50" aria-label="Lean gauge">
+          <g class="needle-group" transform="rotate(0 60 45)">
+            <line class="needle" x1="60" y1="45" x2="60" y2="10" />
           </g>
-          <circle class="pivot" cx="60" cy="40" r="3" />
+          <circle class="pivot" cx="60" cy="45" r="3" />
           <line class="zero-mark" x1="60" y1="10" x2="60" y2="16" />
         </svg>
       </div>
@@ -157,7 +157,7 @@ function combinedLeanWidget() {
     unsub = orientation.subscribe(({ angle }) => {
       const a = Number(angle) || 0;
       const rot = Math.max(-90, Math.min(90, a));
-      if (needleGroup) needleGroup.setAttribute('transform', `rotate(${rot} 60 40)`);
+      if (needleGroup) needleGroup.setAttribute('transform', `rotate(${rot} 60 45)`);
       const abs = Math.abs(a);
       if (currEl) currEl.textContent = `${formatNumber(abs, 1)}°`;
       if (abs > max) {
@@ -180,11 +180,11 @@ function leanNeedleWidget() {
     </header>
     <div class="card-body">
       <div class="lean-gauge">
-        <svg class="lean-gauge-svg" viewBox="0 0 120 80" aria-label="Lean gauge">
-          <g class="needle-group" transform="rotate(0 60 40)">
-            <line class="needle" x1="60" y1="40" x2="60" y2="10" />
+        <svg class="lean-gauge-svg" viewBox="0 0 120 50" aria-label="Lean gauge">
+          <g class="needle-group" transform="rotate(0 60 45)">
+            <line class="needle" x1="60" y1="45" x2="60" y2="10" />
           </g>
-          <circle class="pivot" cx="60" cy="40" r="3" />
+          <circle class="pivot" cx="60" cy="45" r="3" />
           <line class="zero-mark" x1="60" y1="10" x2="60" y2="16" />
         </svg>
       </div>
@@ -196,7 +196,7 @@ function leanNeedleWidget() {
     unsub = orientation.subscribe(({ angle }) => {
       const a = Number(angle) || 0;
       const rot = Math.max(-90, Math.min(90, a));
-      if (needleGroup) needleGroup.setAttribute('transform', `rotate(${rot} 60 40)`);
+      if (needleGroup) needleGroup.setAttribute('transform', `rotate(${rot} 60 45)`);
     });
   });
   return { node: el, unmount: () => unsub && unsub() };

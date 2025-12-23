@@ -12,12 +12,13 @@ body{
 	margin: auto;
 }
 
+/* Ensure the dashboard root can be 100% tall */
+html, body { height: 100%; }
+#dashboard-root { height: 100%; position: relative; }
+
 .dashboard-grid {
-	display: grid;
-	/* Always two equal-width columns, even on narrow screens */
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 12px;
-	/* No reserved space for burger menu: start at very top-left */
+	position: relative;
+	display: block; /* absolute-positioned cards manage layout */
 	padding: 12px 12px 16px;
 }
 
@@ -39,9 +40,8 @@ body{
 }
 
 /* Make graph cards span two columns without changing column width */
-.dashboard-grid > .graph-card {
-	grid-column: span 2;
-}
+/* No grid-column spanning when using absolute layout */
+/* .dashboard-grid > .graph-card { } */
 .card-title {
     padding: 3px;
 	font-size: 0.95rem;
@@ -57,6 +57,8 @@ body{
 	justify-content: center;
 	align-items: center;
     position: relative;
+    flex: 1 1 auto;
+    width: 100%;
 
 }
 .card .value {
@@ -73,14 +75,14 @@ body{
 /* Lean gauge */
 .lean-gauge {
 	width: 100%;
-	height: 80px;
+	height: var(--lean-height, 100px);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 .lean-gauge-svg {
 	width: 100%;
-	height: 90px;
+	height: 100%;
 }
 .lean-gauge .needle {
 	stroke: var(--accent);
@@ -99,6 +101,8 @@ body{
 
 /* Graph card layout: canvas above button */
 .graph-card .card-body {
+	flex: 1 1 auto;
+	display: flex;
 	flex-direction: column;
 	gap: 8px;
 }
@@ -115,7 +119,7 @@ body{
 	grid-template-columns: 1fr 1fr;
 	gap: 8px 12px;
 	width: 100%;
-	padding: 4px 8px 8px;
+	padding: 0 8px 8px; /* start directly under the gauge pivot */
 }
 .lean-combined .value-row {
 	display: flex;
@@ -146,7 +150,7 @@ body{
 	grid-auto-columns: 6px;
 	align-items: end;
 	gap: 4px;
-	height: 60px;
+	height: 50%;
 }
 .sparkline i {
 	display: block;
@@ -158,13 +162,15 @@ body{
 
 /* Canvas chart sizing */
 .card .chart {
-    width: 100%;
-    height: 140px; /* JS will match device pixels */
-    display: block;
+	width: 100%;
+	height: 100%; /* Fill card-body to adapt with card size */
+	display: block;
 }
 
 /* Graph card layout: canvas above button */
 .graph-card .card-body {
+	flex: 1 1 auto;
+	display: flex;
 	flex-direction: column;
 	gap: 8px;
 }
@@ -293,14 +299,9 @@ body{
 .app-modal-actions { display: flex; gap: 8px; justify-content: flex-end; }
 
 /* Edit mode: absolute layout + grid overlay */
-.dashboard-grid.edit-mode {
-	position: relative;
-	display: block; /* disable CSS grid flow while editing */
-}
-.dashboard-grid.edit-mode .card {
+.dashboard-grid .card {
 	position: absolute;
 	will-change: left, top, width, height;
-	user-select: none;
 }
 
 /* Visual grid helper cells */
@@ -325,3 +326,29 @@ body{
 }
 .card.dragging { outline: 1px dashed var(--accent); }
 .card.invalid { outline: 2px solid #e74c3c; }
+
+/* Single grid overlay element (no per-cell divs) */
+.grid-overlay {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	/* Draw grid via repeating gradients; cell size driven by --cell-size */
+	background-image:
+		repeating-linear-gradient(
+			0deg,
+			transparent,
+			transparent calc(var(--cell-size) - 1px),
+			#444 calc(var(--cell-size) - 1px),
+			#444 var(--cell-size)
+		),
+		repeating-linear-gradient(
+			90deg,
+			transparent,
+			transparent calc(var(--cell-size) - 1px),
+			#444 calc(var(--cell-size) - 1px),
+			#444 var(--cell-size)
+		);
+}

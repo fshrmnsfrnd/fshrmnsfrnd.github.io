@@ -12,7 +12,7 @@ console.log('[DriveDashboard] app.js geladen', { hasRoot: !!root, hasForm: !!for
 
 // Edit mode state
 let editMode = false;
-let gridCells = []; // grid cell elements for visual aid
+let gridOverlay = null; // single overlay element for visual grid
 let cellSize = 10; // ~10px, can adapt on resize
 const layout = new Map(); // widgetId -> {left, top, width, height}
 const handlerStore = new WeakMap(); // card -> {dragDown, resizeDown}
@@ -39,6 +39,18 @@ function saveState(state) {
 
 // Track mounted widgets
 const mounted = new Map(); // id -> { node, unmount }
+
+// Persisted layout
+const LAYOUT_KEY = 'dd2:layout';
+function loadLayout() {
+  try { return JSON.parse(localStorage.getItem(LAYOUT_KEY)) || {}; } catch { return {}; }
+}
+function saveLayout() {
+  const obj = {};
+  for (const [id, rect] of layout.entries()) obj[id] = rect;
+  localStorage.setItem(LAYOUT_KEY, JSON.stringify(obj));
+}
+const initialLayout = loadLayout();
 
 function renderSelection() {
   if (!form || !root) return;
@@ -74,8 +86,9 @@ function renderSelection() {
       node.dataset.widget = id;
       root.appendChild(node);
       mounted.set(id, { node, unmount });
-      // If in edit mode, attach handles and make absolute
-      if (editMode) prepareCardForEdit(node);
+      // Always enforce absolute layout; apply saved layout if present
+      ensureAbsoluteLayout(node);
+      if (editMode) prepareCardForEdit(node); else removeEditInteractions(node);
     } catch (e) {
     }
   }
@@ -117,27 +130,28 @@ function computeCellSize() {
 
 function buildGridOverlay() {
   if (!root) return;
-  // Remove existing
-  for (const el of gridCells) el.remove();
-  gridCells = [];
-
   computeCellSize();
   const rect = root.getBoundingClientRect();
-  const cols = Math.floor(rect.width / cellSize);
-  const rows = Math.floor(rect.height / cellSize);
-  console.log('[Bearbeiten] Grid Overlay', { cellSize, cols, rows, rect });
-  for (let r = 0; r < rows; r++) {
-    for (let c = 0; c < cols; c++) {
-      const cell = document.createElement('div');
-      cell.setAttribute('grid-cell', '');
-      cell.style.width = `${cellSize - 1}px`;
-      cell.style.height = `${cellSize - 1}px`;
-      cell.style.left = `${c * cellSize}px`;
-      cell.style.top = `${r * cellSize}px`;
-      root.prepend(cell);
-      gridCells.push(cell);
-    }
+  // Ensure overlay height covers all absolute cards
+  let maxBottom = 0;
+  for (const { node } of mounted.values()) {
+    const top = parseFloat(node.style.top || '0');
+    maxBottom = Math.max(maxBottom, top + node.offsetHeight);
   }
+  const overlayHeight = Math.max(rect.height, maxBottom);
+  // Create or update single overlay
+  if (!gridOverlay) {
+    gridOverlay = document.createElement('div');
+    gridOverlay.className = 'grid-overlay';
+    // Keep overlay behind cards visually or on top with pointer-events none
+    root.prepend(gridOverlay);
+  }
+  //gridOverlay.style.width = `${Math.ceil(rect.width)}px`;
+  //gridOverlay.style.height = `${Math.ceil(overlayHeight)}px`;
+  gridOverlay.style.width = `100%`;
+  gridOverlay.style.height = `100%`;
+  gridOverlay.style.setProperty('--cell-size', `${cellSize}px`);
+  console.log('[Bearbeiten] Grid Overlay', { cellSize, rect, overlayHeight });
 }
 
 function snap(v) { return Math.max(0, Math.round(v / cellSize) * cellSize); }
@@ -162,7 +176,7 @@ function anyOverlap(target, ignoreId) {
   return false;
 }
 
-function prepareCardForEdit(card) {
+function ensureAbsoluteLayout(card) {
   const id = card.dataset.widget;
   // Preserve current visual position
   const rootRect = root.getBoundingClientRect();
@@ -171,13 +185,25 @@ function prepareCardForEdit(card) {
   const top = r.top - rootRect.top;
   const width = r.width;
   const height = r.height;
+  const saved = initialLayout[id];
+  const rectToUse = saved || { left, top, width, height };
   Object.assign(card.style, {
-    left: `${left}px`,
-    top: `${top}px`,
-    width: `${width}px`,
-    height: `${height}px`,
+    left: `${rectToUse.left}px`,
+    top: `${rectToUse.top}px`,
+    width: `${rectToUse.width}px`,
+    height: `${rectToUse.height}px`,
   });
-  console.log('[Bearbeiten] Karte vorbereiten', { id, left, top, width, height });
+}
+
+function prepareCardForEdit(card) {
+  const id = card.dataset.widget;
+  console.log('[Bearbeiten] Karte vorbereiten', {
+    id,
+    left: parseFloat(card.style.left || '0'),
+    top: parseFloat(card.style.top || '0'),
+    width: parseFloat(card.style.width || `${card.offsetWidth}`),
+    height: parseFloat(card.style.height || `${card.offsetHeight}`),
+  });
 
   // Add resize handle
   let handle = card.querySelector('.resize-handle');
@@ -230,7 +256,7 @@ function prepareCardForEdit(card) {
         width: card.offsetWidth,
         height: card.offsetHeight,
       });
-      updateRootHeight();
+      saveLayout();
       window.removeEventListener('pointermove', onMove);
       window.removeEventListener('pointerup', onUp);
     };
@@ -283,7 +309,7 @@ function prepareCardForEdit(card) {
         width: card.offsetWidth,
         height: card.offsetHeight,
       });
-      updateRootHeight();
+      saveLayout();
       window.removeEventListener('pointermove', onMove);
       window.removeEventListener('pointerup', onUp);
     };
@@ -295,19 +321,26 @@ function prepareCardForEdit(card) {
   handlerStore.set(card, { dragDown: onPointerDown, resizeDown: onResizeDown });
 }
 
+function removeEditInteractions(card) {
+  const handlers = handlerStore.get(card);
+  const handle = card.querySelector('.resize-handle');
+  if (handlers) {
+    card.removeEventListener('pointerdown', handlers.dragDown);
+    if (handle) handle.removeEventListener('pointerdown', handlers.resizeDown);
+    handlerStore.delete(card);
+  }
+  if (handle) handle.remove();
+}
+
 function enterEditMode() {
   if (!root) return;
   editMode = true;
   root.classList.add('edit-mode');
-  // Fix current height so absolute children stay visible
-  const h = root.getBoundingClientRect().height;
-  root.style.height = h ? `${Math.ceil(h)}px` : 'auto';
   console.log('[Bearbeiten] EIN', { cellSize });
   // Prepare all mounted cards
   for (const { node } of mounted.values()) {
     prepareCardForEdit(node);
   }
-  updateRootHeight();
   buildGridOverlay();
 }
 
@@ -315,24 +348,12 @@ function exitEditMode() {
   if (!root) return;
   editMode = false;
   root.classList.remove('edit-mode');
-  root.style.height = '';
   console.log('[Bearbeiten] AUS');
   // Remove grid overlay
-  for (const el of gridCells) el.remove();
-  gridCells = [];
-  // Remove absolute styles and handles
+  if (gridOverlay) { try { gridOverlay.remove(); } catch {}; gridOverlay = null; }
+  // Remove edit interactions, keep styles so appearance is identical
   for (const { node } of mounted.values()) {
-    node.style.left = '';
-    node.style.top = '';
-    node.style.width = '';
-    node.style.height = '';
-    const handle = node.querySelector('.resize-handle');
-    if (handle) handle.remove();
-    const handlers = handlerStore.get(node);
-    if (handlers) {
-      node.removeEventListener('pointerdown', handlers.dragDown);
-      // handle may be removed already
-    }
+    removeEditInteractions(node);
   }
 }
 
@@ -365,12 +386,7 @@ else {
 
 function updateRootHeight() {
   if (!root) return;
-  let maxBottom = 0;
-  for (const { node } of mounted.values()) {
-    const top = parseFloat(node.style.top || '0');
-    maxBottom = Math.max(maxBottom, top + node.offsetHeight);
-  }
-  if (maxBottom > 0) root.style.height = `${Math.ceil(maxBottom) + 10}px`;
+  if (editMode) buildGridOverlay();
 }
 
 window.addEventListener('resize', () => {
