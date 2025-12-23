@@ -186,13 +186,26 @@ function ensureAbsoluteLayout(card) {
   const width = r.width;
   const height = r.height;
   const saved = initialLayout[id];
-  const rectToUse = saved || { left, top, width, height };
+  // Default smaller size if no saved layout
+  computeCellSize();
+  const defaultW = Math.max(cellSize * 12, 120); // ~ smaller than current
+  const defaultH = Math.max(cellSize * 10, 100);
+  const rectToUse = saved || {
+    left: snap(left),
+    top: snap(top),
+    width: defaultW,
+    height: defaultH,
+  };
   Object.assign(card.style, {
     left: `${rectToUse.left}px`,
     top: `${rectToUse.top}px`,
     width: `${rectToUse.width}px`,
     height: `${rectToUse.height}px`,
   });
+  if (!saved) {
+    layout.set(id, rectToUse);
+    try { saveLayout(); } catch {}
+  }
 }
 
 function prepareCardForEdit(card) {
