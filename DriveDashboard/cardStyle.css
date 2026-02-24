@@ -9,6 +9,15 @@
 	display: flex;
 	flex-direction: column;
 	min-height: 160px;
+	cursor: grab;
+	touch-action: pan-y;
+}
+
+.card.dragging {
+	opacity: 0.6;
+	border-style: dashed;
+	box-shadow: none;
+	cursor: grabbing;
 }
 
 /* Title row */
@@ -118,7 +127,6 @@
 	justify-content: center;
 	gap: 8px;
 	text-align: center;
-	padding: 8px 10px 12px;
 }
 
 .value {
@@ -147,7 +155,6 @@
 .graph-card .card-body {
 	align-items: stretch;
 	justify-content: stretch;
-	padding: 8px;
 }
 
 .graph-card canvas.chart {
@@ -159,7 +166,6 @@
 @media (max-width: 1100px) and (orientation: landscape) {
 	.card {
 		min-height: 140px;
-		padding-bottom: 12px;
 	}
 
 	.card-title {
@@ -175,10 +181,11 @@
 	}
 
 	.sub {
-		font-size: clamp(1.2rem, 2.9vw, 1.7rem);
+		font-size: clamp(1.2rem, 1vw, 1.7rem);
 	}
 
 	.graph-card {
-		min-height: 220px;
+        grid-column: span 2;
+		min-height: 140px;
 	}
 }
