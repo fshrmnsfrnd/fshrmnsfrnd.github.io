@@ -162,9 +162,4 @@ body{
 		padding: 12px;
 		width: 100%;
 	}
-
-	.dashboard-grid .graph-card {
-		grid-column: span 2;
-		min-height: 220px;
-	}
 }
