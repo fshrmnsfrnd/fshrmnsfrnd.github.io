@@ -25,17 +25,6 @@ function showTimer(){
     const timerElement = document.createElement("div")
     timerElement.setAttribute("id", "timer")
 
-    /*
-    const chooseTimeInput = document.createElement("input")
-    chooseTimeInput.setAttribute("type", "number")
-    chooseTimeInput.setAttribute("value", "2")
-    timerElement.appendChild(chooseTimeInput)
-    
-    let timeInputDescription = document.createElement("p")
-    timeInputDescription.innerText = "Dauer der Runde: "
-    timerElement.appendChild(timeInputDescription)
-    */
-
     const startTimerBtn = document.createElement("input")
     startTimerBtn.setAttribute("type", "button")
     startTimerBtn.setAttribute("value", "Timer starten")
@@ -49,9 +38,8 @@ function showTimer(){
     document.body.appendChild(timerElement)
 
     startTimerBtn.addEventListener("click", () => {
-        //chooseTimeInput.remove()
-        //timeInputDescription.remove()
         startTimerBtn.remove()
+        timerElement.appendChild(resetBtn)
 
         let timeLeft = 120
         const countdown = setInterval(() => {
