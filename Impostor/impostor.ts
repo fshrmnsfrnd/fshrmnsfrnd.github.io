@@ -1,4 +1,5 @@
 let playersRolesWord: { player: string, playerRole: string, word: string}[] = []
+let imposterGetsAWord:boolean = false;
 
 const resetBtn = document.createElement("input")
 resetBtn.setAttribute("type", "button")
@@ -58,6 +59,10 @@ function showTimer(){
 
 function initializeRoles(numberOfImpostors: number, numberOfPlayers: number){
     const word = getWord()
+    let imposterWord:string = "Versuche das Wort herauszufinden"
+    if(imposterGetsAWord){
+        imposterWord = getWord()
+    }
 
     //Make Players
     for (let i = 1; i <= numberOfPlayers; i++) {
@@ -77,7 +82,7 @@ function initializeRoles(numberOfImpostors: number, numberOfPlayers: number){
     //Replace Roles in Players Array
     impostorIDs.forEach((playerID) => {
         playersRolesWord[playerID].playerRole = "Impostor"
-        playersRolesWord[playerID].word = "Versuche das Wort herauszufinden"
+        playersRolesWord[playerID].word = imposterWord
     })
 
 }
@@ -108,7 +113,9 @@ function showRoles(){
                 passAlong = false
             } else if (passAlong == false) {
                 displayElement.innerHTML = `<p>${playersRolesWord[showRolesIndex].player}</p>`
-                displayElement.innerHTML += `<p>Du bist ${playersRolesWord[showRolesIndex].playerRole}</p>`
+                if(!imposterGetsAWord){
+                    displayElement.innerHTML += `<p>Du bist ${playersRolesWord[showRolesIndex].playerRole}</p>`
+                }
                 displayElement.innerHTML += `<p>Das Wort ist:</p>`
                 displayElement.innerHTML += `<p>${playersRolesWord[showRolesIndex].word} </p>`
                 displayElement.appendChild(nextButton)
@@ -124,12 +131,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectPlayersDiv = document.getElementById("selectPlayers")
     const numberOfPlayersInput = document.getElementById("numberOfPlayers") as HTMLInputElement
     const numberOfImpostorsInput = document.getElementById("numberOfImpostors") as HTMLInputElement
+    const imposterGetsAWortCheckbox = document.getElementById("imposterGetsAWord") as HTMLInputElement
     const startGameBtn = document.getElementById("startGameButton")
 
     startGameBtn?.addEventListener("click", () => {
         if(numberOfImpostorsInput && numberOfPlayersInput){
             let numberOfPlayers:number = Number(numberOfPlayersInput.value)
             let numberOfImpostors:number = Number(numberOfImpostorsInput.value)
+            imposterGetsAWord = Boolean(imposterGetsAWortCheckbox.checked)
+            console.log(imposterGetsAWord)
         
             selectPlayersDiv?.remove()
             initializeRoles(numberOfImpostors, numberOfPlayers)
