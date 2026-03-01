@@ -1,0 +1,191 @@
+/* Card shell */
+.card {
+	position: relative;
+	background: var(--card-bg);
+	border: 1px solid var(--card-border);
+	border-radius: 16px;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	min-height: 160px;
+	cursor: grab;
+	touch-action: pan-y;
+}
+
+.card.dragging {
+	opacity: 0.6;
+	border-style: dashed;
+	box-shadow: none;
+	cursor: grabbing;
+}
+
+/* Title row */
+.card-title {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	padding: 6px 12px 8px;
+	text-align: center;
+}
+
+.card-title-text {
+	color: var(--card-title);
+	font-weight: 600;
+	font-size: 0.98rem;
+	letter-spacing: 0.02em;
+}
+
+.card-settings {
+	position: absolute;
+	right: 6px;
+	top: 4px;
+	background: transparent;
+	border: 1px solid transparent;
+	color: var(--muted);
+	padding: 4px 6px;
+	border-radius: 10px;
+	cursor: pointer;
+	line-height: 1;
+}
+
+.card-settings:hover,
+.card-title.settings-open .card-settings {
+	color: var(--card-text);
+}
+
+.card-settings-menu {
+	position: absolute;
+	inset: 0;
+	background: rgba(5, 5, 7, 0.92);
+	backdrop-filter: blur(4px);
+	border: 1px solid var(--card-border);
+	border-radius: inherit;
+	padding: 14px 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	z-index: 6;
+}
+
+.card-settings-menu[hidden] {
+	display: none;
+}
+
+/* Settings content */
+.settings-item {
+	background: rgba(255, 255, 255, 0.12);
+	color: #f4f4f6;
+	border: 1px solid rgba(255, 255, 255, 0.24);
+	border-radius: 10px;
+	padding: 8px 10px;
+	cursor: pointer;
+	text-align: left;
+}
+
+.settings-item:hover,
+.settings-item:focus-visible {
+	background: rgba(0, 194, 255, 0.2);
+	color: var(--card-text);
+	border-color: var(--accent);
+	outline: none;
+}
+
+.settings-item.disabled {
+	opacity: 0.65;
+	background: rgba(255, 255, 255, 0.07);
+	color: var(--muted);
+	border-color: var(--card-border);
+	cursor: default;
+}
+
+.settings-row {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	align-items: center;
+	gap: 8px;
+	color: var(--card-text);
+}
+
+.settings-row input[type="range"] {
+	grid-column: 1 / span 2;
+}
+
+.settings-sep {
+	height: 1px;
+	background: var(--card-border);
+}
+
+/* Card body */
+.card-body {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	text-align: center;
+}
+
+.value {
+	font-size: clamp(2.6rem, 5.8vw, 4.8rem);
+	font-weight: 700;
+	color: var(--card-text);
+	line-height: 1.05;
+}
+
+.sub {
+	font-size: clamp(1.1rem, 2.6vw, 1.6rem);
+	color: var(--muted);
+	line-height: 1.2;
+}
+
+.placeholder {
+	color: var(--muted);
+	text-align: center;
+}
+
+/* Graph cards keep more space for visuals */
+.graph-card {
+	min-height: 240px;
+}
+
+.graph-card .card-body {
+	align-items: stretch;
+	justify-content: stretch;
+}
+
+.graph-card canvas.chart {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+@media (max-width: 1100px) and (orientation: landscape) {
+	.card {
+		min-height: 140px;
+	}
+
+	.card-title {
+		padding: 6px 12px 4px;
+	}
+
+	.card-title-text {
+		font-size: 1.02rem;
+	}
+
+	.value {
+		font-size: clamp(3rem, 7vw, 5.2rem);
+	}
+
+	.sub {
+		font-size: clamp(1.2rem, 1vw, 1.7rem);
+	}
+
+	.graph-card {
+        grid-column: span 2;
+		min-height: 140px;
+	}
+}
