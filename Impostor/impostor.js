@@ -115,12 +115,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const numberOfImpostorsInput = document.getElementById("numberOfImpostors");
     const imposterGetsAWortCheckbox = document.getElementById("imposterGetsAWord");
     const startGameBtn = document.getElementById("startGameButton");
+    //Load Values from cookie
+    let numberOfPlayers = Number(localStorage.getItem("numberOfPlayers")) || 4;
+    let numberOfImpostors = Number(localStorage.getItem("numberOfImpostors")) || 1;
+    let imposterGetsAWord = Boolean(localStorage.getItem("imposterGetsAWort")) || false;
+    //If no Values from Localstorage exist
+    typeof (numberOfPlayers) !== "number" ? numberOfPlayers = 4 : () => { null; };
+    typeof (numberOfImpostors) !== "number" ? numberOfImpostors = 1 : () => { null; };
+    typeof (imposterGetsAWord) !== "boolean" ? imposterGetsAWord = false : () => { null; };
+    //Write Values to Document
+    numberOfPlayersInput.setAttribute("value", numberOfPlayers.toString());
+    numberOfImpostorsInput.setAttribute("value", numberOfImpostors.toString());
+    imposterGetsAWortCheckbox.setAttribute("value", imposterGetsAWord.toString());
     startGameBtn === null || startGameBtn === void 0 ? void 0 : startGameBtn.addEventListener("click", () => {
         if (numberOfImpostorsInput && numberOfPlayersInput) {
-            let numberOfPlayers = Number(numberOfPlayersInput.value);
-            let numberOfImpostors = Number(numberOfImpostorsInput.value);
+            numberOfPlayers = Number(numberOfPlayersInput.value);
+            numberOfImpostors = Number(numberOfImpostorsInput.value);
             imposterGetsAWord = Boolean(imposterGetsAWortCheckbox.checked);
-            console.log(imposterGetsAWord);
+            //Save values to localstorage
+            localStorage.setItem("numberOfPlayers", String(numberOfPlayers));
+            localStorage.setItem("numberOfImpostors", String(numberOfImpostors));
+            localStorage.setItem("imposterGetsAWort", String(imposterGetsAWord));
             selectPlayersDiv === null || selectPlayersDiv === void 0 ? void 0 : selectPlayersDiv.remove();
             initializeRoles(numberOfImpostors, numberOfPlayers);
             showRoles();

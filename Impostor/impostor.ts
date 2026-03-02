@@ -134,12 +134,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const imposterGetsAWortCheckbox = document.getElementById("imposterGetsAWord") as HTMLInputElement
     const startGameBtn = document.getElementById("startGameButton")
 
+    //Load Values from cookie
+    let numberOfPlayers:number = Number(localStorage.getItem("numberOfPlayers")) || 4
+    let numberOfImpostors:number = Number(localStorage.getItem("numberOfImpostors")) || 1
+    let imposterGetsAWord:boolean = Boolean(localStorage.getItem("imposterGetsAWort")) || false
+
+    //If no Values from Localstorage exist
+    typeof(numberOfPlayers) !== "number" ? numberOfPlayers = 4 : ()=>{null};
+    typeof(numberOfImpostors) !== "number" ? numberOfImpostors = 1 : ()=>{null};
+    typeof(imposterGetsAWord) !== "boolean" ? imposterGetsAWord = false : ()=>{null};
+
+    //Write Values to Document
+    numberOfPlayersInput.setAttribute("value", numberOfPlayers.toString())
+    numberOfImpostorsInput.setAttribute("value", numberOfImpostors.toString())
+    imposterGetsAWortCheckbox.setAttribute("value", imposterGetsAWord.toString())
+
     startGameBtn?.addEventListener("click", () => {
         if(numberOfImpostorsInput && numberOfPlayersInput){
-            let numberOfPlayers:number = Number(numberOfPlayersInput.value)
-            let numberOfImpostors:number = Number(numberOfImpostorsInput.value)
+            numberOfPlayers = Number(numberOfPlayersInput.value)
+            numberOfImpostors = Number(numberOfImpostorsInput.value)
             imposterGetsAWord = Boolean(imposterGetsAWortCheckbox.checked)
-            console.log(imposterGetsAWord)
+
+            //Save values to localstorage
+            localStorage.setItem("numberOfPlayers", String(numberOfPlayers))
+            localStorage.setItem("numberOfImpostors", String(numberOfImpostors))
+            localStorage.setItem("imposterGetsAWort", String(imposterGetsAWord))
         
             selectPlayersDiv?.remove()
             initializeRoles(numberOfImpostors, numberOfPlayers)
