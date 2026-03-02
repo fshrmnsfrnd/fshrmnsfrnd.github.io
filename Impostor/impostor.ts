@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //Load Values from cookie or take default value
     let numberOfPlayers:number = Number(localStorage.getItem("numberOfPlayers")) !== 0 ? Number(localStorage.getItem("numberOfPlayers")) : 4
     let numberOfImpostors:number = Number(localStorage.getItem("numberOfImpostors")) !== 0 ? Number(localStorage.getItem("numberOfImpostors")) : 4
-    let imposterGetsAWord:boolean = localStorage.getItem("imposterGetsAWort") === "true" ? true : false
+    imposterGetsAWord = localStorage.getItem("imposterGetsAWort") === "true" ? true : false
 
     //Write Values to Document
     numberOfPlayersInput.setAttribute("value", numberOfPlayers.toString())
