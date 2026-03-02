@@ -127,27 +127,21 @@ function showRoles(){
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const body = document.getElementsByName("body")
     const selectPlayersDiv = document.getElementById("selectPlayers")
     const numberOfPlayersInput = document.getElementById("numberOfPlayers") as HTMLInputElement
     const numberOfImpostorsInput = document.getElementById("numberOfImpostors") as HTMLInputElement
     const imposterGetsAWortCheckbox = document.getElementById("imposterGetsAWord") as HTMLInputElement
     const startGameBtn = document.getElementById("startGameButton")
 
-    //Load Values from cookie
-    let numberOfPlayers:number = Number(localStorage.getItem("numberOfPlayers")) || 4
-    let numberOfImpostors:number = Number(localStorage.getItem("numberOfImpostors")) || 1
-    let imposterGetsAWord:boolean = Boolean(localStorage.getItem("imposterGetsAWort")) || false
-
-    //If no Values from Localstorage exist
-    typeof(numberOfPlayers) !== "number" ? numberOfPlayers = 4 : ()=>{null};
-    typeof(numberOfImpostors) !== "number" ? numberOfImpostors = 1 : ()=>{null};
-    typeof(imposterGetsAWord) !== "boolean" ? imposterGetsAWord = false : ()=>{null};
+    //Load Values from cookie or take default value
+    let numberOfPlayers:number = Number(localStorage.getItem("numberOfPlayers")) !== 0 ? Number(localStorage.getItem("numberOfPlayers")) : 4
+    let numberOfImpostors:number = Number(localStorage.getItem("numberOfImpostors")) !== 0 ? Number(localStorage.getItem("numberOfImpostors")) : 4
+    let imposterGetsAWord:boolean = localStorage.getItem("imposterGetsAWort") === "true" ? true : false
 
     //Write Values to Document
     numberOfPlayersInput.setAttribute("value", numberOfPlayers.toString())
     numberOfImpostorsInput.setAttribute("value", numberOfImpostors.toString())
-    imposterGetsAWortCheckbox.setAttribute("value", imposterGetsAWord.toString())
+    imposterGetsAWortCheckbox.setAttribute("checked", imposterGetsAWord.toString())
 
     startGameBtn?.addEventListener("click", () => {
         if(numberOfImpostorsInput && numberOfPlayersInput){
