@@ -8,10 +8,6 @@ function currLeanWidget() {
 	const card = new ValueCard('Aktuelle Neigung', '---');
 	let unsub = null;
 
-	// Build a simple center-zero needle gauge (SVG)
-	const body = card.body;
-	const valueEl = card.cardElement.querySelector('.value');
-
 	ensureOrientationPermissionWithModal().then((ok) => {
 		if (ok) {
 			unsub = orientation.subscribe(({ angle }) => {
@@ -95,7 +91,7 @@ function leanGraphWidget() {
 function combinedLeanWidget() {
 	const card = new CustomCard('Neigung', `
       <div class="lean-gauge">
-        <svg class="lean-gauge-svg" viewBox="0 0 120 80" aria-label="Lean gauge">
+        <svg class="lean-gauge-svg" viewBox="0 -20 120 80" aria-label="Lean gauge">
           <g class="needle-group" transform="rotate(0 60 40)">
             <line class="needle" x1="60" y1="40" x2="60" y2="10" />
           </g>
@@ -146,7 +142,7 @@ function combinedLeanWidget() {
 function leanNeedleWidget() {
 	const card = new CustomCard('Neigung Nadel', `
       <div class="lean-gauge">
-        <svg class="lean-gauge-svg" viewBox="0 0 120 80" aria-label="Lean gauge">
+        <svg class="lean-gauge-svg" viewBox="0 -10 120 80" aria-label="Lean gauge">
           <g class="needle-group" transform="rotate(0 60 40)">
             <line class="needle" x1="60" y1="40" x2="60" y2="10" />
           </g>
