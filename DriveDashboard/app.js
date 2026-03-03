@@ -125,7 +125,7 @@ if (form) {
 // Initial render
 renderSelection();
 
-// Drag and drop reordering
+// Drag and drop reordering ------------------------------------------------
 let dragId = null;
 let touchDrag = {
   active: false,

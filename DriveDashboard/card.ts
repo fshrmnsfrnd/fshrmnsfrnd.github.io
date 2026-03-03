@@ -2,7 +2,7 @@
  * Abstrakte Basisklasse für alle Dashboard-Cards.
  * Stellt das gemeinsame Card-Shell-HTML, Settings-Menü und Click-Handler bereit.
  */
-abstract class Card {
+export abstract class Card {
     cardElement: HTMLElement = document.createElement('section');
     header: Element | null;
     settingsBtn: Element | null;
@@ -128,7 +128,7 @@ abstract class Card {
 /**
  * Card die einen einzelnen Wert (Zahl) und optional eine Einheit anzeigt.
  */
-class ValueCard extends Card {
+export class ValueCard extends Card {
     valueEl: Element | null = null;
     unitEl: Element | null = null;
 
@@ -174,7 +174,7 @@ class ValueCard extends Card {
 /**
  * Card die einen LineChart-Graphen auf einem Canvas darstellt.
  */
-class GraphCard extends Card {
+export class GraphCard extends Card {
     canvas: HTMLCanvasElement;
     chart: any;
     placeholder: HTMLElement;
@@ -218,7 +218,7 @@ class GraphCard extends Card {
  * Generische Card für spezielle Inhalte (z.B. Neigung kombiniert, Nadel-Gauge).
  * Der Body-Inhalt wird per bodyHTML übergeben.
  */
-class CustomCard extends Card {
+export class CustomCard extends Card {
     public constructor(title: string, bodyHTML: string = '', cssClass: string = 'card', menuItems: Array<any> = []) {
         super(title, cssClass, menuItems);
         if (bodyHTML && this.body) {

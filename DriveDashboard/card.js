@@ -1,9 +1,8 @@
-"use strict";
 /**
  * Abstrakte Basisklasse für alle Dashboard-Cards.
  * Stellt das gemeinsame Card-Shell-HTML, Settings-Menü und Click-Handler bereit.
  */
-class Card {
+export class Card {
     constructor(title, cssClass = 'card', menuItems = []) {
         var _a;
         this.cardElement = document.createElement('section');
@@ -136,7 +135,7 @@ class Card {
 /**
  * Card die einen einzelnen Wert (Zahl) und optional eine Einheit anzeigt.
  */
-class ValueCard extends Card {
+export class ValueCard extends Card {
     constructor(title, value = "", unit = "", menuItems = []) {
         var _a, _b;
         super(title, 'card', menuItems);
@@ -181,7 +180,7 @@ class ValueCard extends Card {
 /**
  * Card die einen LineChart-Graphen auf einem Canvas darstellt.
  */
-class GraphCard extends Card {
+export class GraphCard extends Card {
     constructor(title, chart, menuItems = []) {
         var _a, _b;
         super(title, 'card graph-card', menuItems);
@@ -219,7 +218,7 @@ class GraphCard extends Card {
  * Generische Card für spezielle Inhalte (z.B. Neigung kombiniert, Nadel-Gauge).
  * Der Body-Inhalt wird per bodyHTML übergeben.
  */
-class CustomCard extends Card {
+export class CustomCard extends Card {
     constructor(title, bodyHTML = '', cssClass = 'card', menuItems = []) {
         super(title, cssClass, menuItems);
         if (bodyHTML && this.body) {
