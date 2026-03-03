@@ -20,11 +20,11 @@ export class Card {
         this.menu = this.cardElement.querySelector('.card-settings-menu');
         this.body = this.cardElement.querySelector('.card-body');
         (_a = this.settingsBtn) === null || _a === void 0 ? void 0 : _a.addEventListener('click', (e) => {
-            var _a, _b, _c;
+            var _a, _b;
             e.stopPropagation();
             if ((_a = this.menu) === null || _a === void 0 ? void 0 : _a.hidden) {
-                (_b = this.menu) === null || _b === void 0 ? void 0 : _b.setAttribute('hidden', 'false');
-                (_c = this.header) === null || _c === void 0 ? void 0 : _c.classList.add('settings-open');
+                this.menu.removeAttribute('hidden');
+                (_b = this.header) === null || _b === void 0 ? void 0 : _b.classList.add('settings-open');
                 if (!this.outsideHandler) {
                     this.outsideHandler = (ev) => {
                         var _a;
@@ -56,7 +56,7 @@ export class Card {
         var _a, _b;
         if (!this.menu)
             return;
-        (_a = this.menu) === null || _a === void 0 ? void 0 : _a.setAttribute('hidden', 'true');
+        (_a = this.menu) === null || _a === void 0 ? void 0 : _a.setAttribute('hidden', '');
         (_b = this.header) === null || _b === void 0 ? void 0 : _b.classList.remove('settings-open');
         if (this.outsideHandler) {
             document.removeEventListener('click', this.outsideHandler, true);

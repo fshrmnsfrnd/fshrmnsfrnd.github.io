@@ -28,7 +28,7 @@ export abstract class Card {
         this.settingsBtn?.addEventListener('click', (e) => {
             e.stopPropagation();
             if (this.menu?.hidden) {
-                this.menu?.setAttribute('hidden', 'false');
+                this.menu.removeAttribute('hidden')
                 this.header?.classList.add('settings-open');
                 if (!this.outsideHandler) {
                     this.outsideHandler = (ev: any) => {
@@ -55,7 +55,7 @@ export abstract class Card {
 
     private closeMenu() {
         if (!this.menu) return;
-        this.menu?.setAttribute('hidden', 'true');
+        this.menu?.setAttribute('hidden', '');
         this.header?.classList.remove('settings-open');
         if (this.outsideHandler) {
             document.removeEventListener('click', this.outsideHandler, true);
