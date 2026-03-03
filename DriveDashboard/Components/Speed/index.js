@@ -1,13 +1,11 @@
-import { createCard, formatNumber, attachSettingsToExistingCard } from '../../componentsUtil.js';
+import { formatNumber } from '../../componentsUtil.js';
+import { ValueCard, GraphCard } from '../../card.js';
 import * as geo from '../../Services/geo.js';
 import { LineChart } from '../../chart.js';
 
 function currentSpeedWidget() {
-  const card = createCard('Current Speed');
-  card.setSub('km/h');
-  card.setValue('---');
+  const card = new ValueCard('Current Speed', '---', 'km/h');
   let unsub = () => {};
-  // Subscribe immediately; browser will prompt for permission if needed
   unsub = geo.subscribe((data) => {
     if (data && typeof data.kmh === 'number' && !Number.isNaN(data.kmh)) {
       card.setValue(String(Math.round(data.kmh)));
@@ -15,16 +13,14 @@ function currentSpeedWidget() {
       card.setValue('---');
     }
   });
-  card.setSettings([
+  card.setMenuItems([
     { label: 'Zurücksetzen', onClick: () => geo.reset && geo.reset() },
   ]);
-  return { node: card.el, unmount: () => unsub && unsub() };
+  return { node: card.cardElement, unmount: () => unsub && unsub() };
 }
 
 function averageSpeedWidget() {
-  const card = createCard('Average Speed');
-  card.setSub('km/h');
-  card.setValue('---');
+  const card = new ValueCard('Average Speed', '---', 'km/h');
   let unsub = () => {};
   unsub = geo.subscribe((data) => {
     if (data && typeof data.avgKmh === 'number' && !Number.isNaN(data.avgKmh)) {
@@ -33,17 +29,15 @@ function averageSpeedWidget() {
       card.setValue('---');
     }
   });
-  card.setSettings([
+  card.setMenuItems([
     { label: 'Zurücksetzen', onClick: () => geo.reset && geo.reset() },
   ]);
-  card.onCardClick(()=>{card.setValue('0'); geo.reset()})
-  return { node: card.el, unmount: () => unsub && unsub() };
+  card.addCardClickHandler(() => { card.setValue('0'); geo.reset(); });
+  return { node: card.cardElement, unmount: () => unsub && unsub() };
 }
 
 function maxSpeedWidget() {
-  const card = createCard('Max Speed');
-  card.setSub('km/h');
-  card.setValue('---');
+  const card = new ValueCard('Max Speed', '---', 'km/h');
   let unsub = () => {};
   unsub = geo.subscribe((data) => {
     if (data && typeof data.maxKmh === 'number' && !Number.isNaN(data.maxKmh)) {
@@ -52,42 +46,16 @@ function maxSpeedWidget() {
       card.setValue('---');
     }
   });
-  card.setSettings([
+  card.setMenuItems([
     { label: 'Zurücksetzen', onClick: () => geo.reset && geo.reset() },
   ]);
-  card.onCardClick(()=>{card.setValue('0'); geo.reset()})
-  return { node: card.el, unmount: () => unsub && unsub() };
+  card.addCardClickHandler(() => { card.setValue('0'); geo.reset(); });
+  return { node: card.cardElement, unmount: () => unsub && unsub() };
 }
 
 function speedGraphWidget() {
-  const el = document.createElement('section');
-  el.className = 'card graph-card';
-  el.innerHTML = `
-    <header class="card-title">
-    <span class="card-title-text">Speed Graph</span>
-    </header>
-    <div class="card-body">
-      <canvas class="chart" aria-label="Speed graph"></canvas>
-    </div>`;
-  const canvas = el.querySelector('canvas');
   const chart = new LineChart({ color: '#22c55e', maxSeconds: 180, lineWidth: 2 });
-  chart.attach(canvas);
-  const body = el.querySelector('.card-body');
-  const placeholder = document.createElement('div');
-  placeholder.className = 'placeholder';
-  placeholder.textContent = '---';
-  body.appendChild(placeholder);
-  let unsub = () => {};
-  // Remove placeholder on first emission (data or error), then render updates
-  let removed = false;
-  unsub = geo.subscribe((data) => {
-    if (!removed) { try { placeholder.remove(); } catch {}; removed = true; }
-    if (data && typeof data.kmh === 'number' && !Number.isNaN(data.kmh)) {
-      chart.push(data.kmh);
-    }
-  });
-  // Settings: time window for visible graph (seconds)
-  attachSettingsToExistingCard(el, [
+  const card = new GraphCard('Speed Graph', chart, [
     {
       type: 'range',
       label: 'Zeitfenster (s)',
@@ -100,7 +68,15 @@ function speedGraphWidget() {
     { type: 'separator' },
     { label: 'Zurücksetzen', onClick: () => geo.reset && geo.reset() },
   ]);
-  return { node: el, unmount: () => { unsub(); chart.detach(); } };
+  let unsub = () => {};
+  let removed = false;
+  unsub = geo.subscribe((data) => {
+    if (!removed) { card.removePlaceholder(); removed = true; }
+    if (data && typeof data.kmh === 'number' && !Number.isNaN(data.kmh)) {
+      card.push(data.kmh);
+    }
+  });
+  return { node: card.cardElement, unmount: () => { unsub(); card.detachChart(); } };
 }
 
 export const widgets = {
