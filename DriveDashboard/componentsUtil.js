@@ -21,6 +21,7 @@ export function createCard(title) {
   sub.textContent = '';
   body.appendChild(sub);
   let outsideHandler = null;
+  const clickHandlers = [];
 
   function closeMenu() {
     if (!menu) return;
@@ -47,6 +48,19 @@ export function createCard(title) {
     } else {
       closeMenu();
     }
+  });
+
+  // Click listener für die gesamte Card
+  el.addEventListener('click', (e) => {
+    // Nicht auslösen, wenn auf Settings-Button geklickt wird
+    if (e.target === btn || btn.contains(e.target) || e.target === menu || menu.contains(e.target)) {
+      return;
+    }
+    clickHandlers.forEach(handler => {
+      if (typeof handler === 'function') {
+        handler(e);
+      }
+    });
   });
 
   function setMenuItems(items = []) {
@@ -110,6 +124,11 @@ export function createCard(title) {
     setSub: (txt) => { sub.textContent = txt || ''; },
     setSettings: setMenuItems,
     closeSettings: closeMenu,
+    onCardClick: (handler) => {
+      if (typeof handler === 'function') {
+        clickHandlers.push(handler);
+      }
+    },
   };
 }
 

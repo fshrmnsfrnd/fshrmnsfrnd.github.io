@@ -36,6 +36,7 @@ function averageSpeedWidget() {
   card.setSettings([
     { label: 'Zurücksetzen', onClick: () => geo.reset && geo.reset() },
   ]);
+  card.onCardClick(()=>{card.setValue('0'); geo.reset()})
   return { node: card.el, unmount: () => unsub && unsub() };
 }
 
@@ -54,6 +55,7 @@ function maxSpeedWidget() {
   card.setSettings([
     { label: 'Zurücksetzen', onClick: () => geo.reset && geo.reset() },
   ]);
+  card.onCardClick(()=>{card.setValue('0'); geo.reset()})
   return { node: card.el, unmount: () => unsub && unsub() };
 }
 
