@@ -1,12 +1,12 @@
-import { createCard, formatNumber, attachSettingsToExistingCard } from '../../componentsUtil.js';
+import { formatNumber } from '../../componentsUtil.js';
+import { ValueCard, GraphCard } from '../../card.js';
 import * as motion from '../../Services/motion.js';
 import { ensureMotionPermissionWithModal } from '../../Services/permissions.js';
 import { LineChart } from '../../chart.js';
 
 function currGWidget() {
-  const card = createCard('Aktuelle G-Kraft');
+  const card = new ValueCard('Aktuelle G-Kraft', '---');
   let unsub = null;
-  card.setValue('---');
 
   ensureMotionPermissionWithModal().then((ok) => {
     if (ok) {
@@ -17,16 +17,15 @@ function currGWidget() {
       card.setValue('---');
     }
   });
-  card.setSettings([]); // Keine speziellen Einstellungen
+  card.setMenuItems([]); // Keine speziellen Einstellungen
 
-  return { node: card.el, unmount: () => unsub && unsub() };
+  return { node: card.cardElement, unmount: () => unsub && unsub() };
 }
 
 function maxGWidget() {
-  const card = createCard('Maximale G-Kraft');
+  const card = new ValueCard('Maximale G-Kraft', '---');
   let unsub = null;
   let max = 0;
-  card.setValue('---');
 
   ensureMotionPermissionWithModal().then((ok) => {
     if (ok) {
@@ -40,40 +39,18 @@ function maxGWidget() {
     }
   });
 
-  card.setSettings([
+  card.setMenuItems([
     { label: 'Zurücksetzen', onClick: () => { max = 0; card.setValue(formatNumber(0, 2)); } },
   ]);
 
-  card.onCardClick(() => { max = 0; card.setValue(formatNumber(0, 2)); })
+  card.addCardClickHandler(() => { max = 0; card.setValue(formatNumber(0, 2)); });
 
-  return { node: card.el, unmount: () => unsub && unsub() };
+  return { node: card.cardElement, unmount: () => unsub && unsub() };
 }
 
 function gGraphWidget() {
-  const el = document.createElement('section');
-  el.className = 'card graph-card';
-  el.innerHTML = `
-    <header class="card-title">
-      <span class="card-title-text">G-Kraft Graph</span>
-    </header>
-    <div class="card-body">
-      <canvas class="chart" aria-label="G graph"></canvas>
-    </div>`;
-
-  const canvas = el.querySelector('canvas');
-  const body = el.querySelector('.card-body');
-
   const chart = new LineChart({ color: '#22c55e', maxSeconds: 180, lineWidth: 2 });
-  if (typeof chart.attach === 'function') chart.attach(canvas);
-
-  const placeholder = document.createElement('div');
-  placeholder.className = 'placeholder';
-  placeholder.textContent = '---';
-  body.insertBefore(placeholder, canvas);
-
-  let unsub = null;
-
-  attachSettingsToExistingCard(el, [
+  const card = new GraphCard('G-Kraft Graph', chart, [
     {
       type: 'range',
       label: 'Zeitfenster (s)',
@@ -85,14 +62,16 @@ function gGraphWidget() {
     },
   ]);
 
+  let unsub = null;
+
   ensureMotionPermissionWithModal().then((ok) => {
     if (ok) {
-      try { placeholder.remove(); } catch {}
-      unsub = motion.subscribe(({ g }) => chart.push(Math.max(0, g || 0)));
+      card.removePlaceholder();
+      unsub = motion.subscribe(({ g }) => card.push(Math.max(0, g || 0)));
     }
   });
 
-  return { node: el, unmount: () => { unsub && unsub(); if (typeof chart.detach === 'function') chart.detach(); } };
+  return { node: card.cardElement, unmount: () => { unsub && unsub(); card.detachChart(); } };
 }
 
 export const widgets = {
