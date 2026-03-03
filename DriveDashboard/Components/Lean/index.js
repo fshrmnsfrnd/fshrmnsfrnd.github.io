@@ -50,6 +50,7 @@ function maxLeanWidget() {
   card.setSettings([
     { label: 'Zurücksetzen', onClick: () => { max = 0; card.setValue(formatNumber(0, 1)); } },
   ]);
+  card.onCardClick(() => { max = 0; card.setValue(formatNumber(0, 1)); })
   return { node: card.el, unmount: () => unsub && unsub() };
 }
 
@@ -150,6 +151,8 @@ function combinedLeanWidget() {
   const maxEl = el.querySelector('.val-number[data-role="max"]');
   let unsub = null;
   let max = 0;
+
+  el.addEventListener('click', ()=>{max = 0})
 
   // Permission and subscription
   ensureOrientationPermissionWithModal().then((ok) => {

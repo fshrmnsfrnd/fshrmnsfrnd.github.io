@@ -44,6 +44,8 @@ function maxGWidget() {
     { label: 'Zurücksetzen', onClick: () => { max = 0; card.setValue(formatNumber(0, 2)); } },
   ]);
 
+  card.onCardClick(() => { max = 0; card.setValue(formatNumber(0, 2)); })
+
   return { node: card.el, unmount: () => unsub && unsub() };
 }
 
