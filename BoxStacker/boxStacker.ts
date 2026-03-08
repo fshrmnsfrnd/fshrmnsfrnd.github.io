@@ -148,6 +148,34 @@ function landBox(b: Box) {
 	if (score > highScore) { highScore = score; hsEl.textContent = highScore.toString(); try { localStorage.setItem(HS_KEY, highScore.toString()); } catch { /* ignore */ } }
 	// Schwierigkeit steigern
 	spawnInterval = Math.max(MIN_SPAWN_INTERVAL, spawnInterval * SPAWN_ACCELERATION);
+	clearFullRows();
+}
+
+// Entfernt volle Reihen (wie Tetris). Aktuell prüfen wir alle Reihen, wichtigste ist die unterste.
+function clearFullRows() {
+	let y = ROWS - 1;
+	while (y >= 0) {
+		const full = grid[y].every(cell => cell !== null);
+		if (!full) { y--; continue; }
+
+		// Entferne Box-Referenzen dieser Reihe aus boxes
+		boxes = boxes.filter(b => !(b && !b.falling && Math.round(b.y) === y));
+
+		// Schiebe alle Reihen darüber eine Zeile nach unten
+		for (let srcY = y - 1; srcY >= 0; srcY--) {
+			for (let x = 0; x < COLS; x++) {
+				const cell = grid[srcY][x];
+				grid[srcY + 1][x] = cell;
+				if (cell) cell.y = srcY + 1;
+			}
+		}
+
+		// Leere oberste Reihe
+		for (let x = 0; x < COLS; x++) grid[0][x] = null;
+
+		// Nach dem Verschieben gleiche y erneut prüfen (kaskadierend möglich)
+		continue;
+	}
 }
 
 function spawnBox() {
