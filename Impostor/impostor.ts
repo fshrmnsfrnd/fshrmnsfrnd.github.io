@@ -37,10 +37,10 @@ function showTimer(){
     timerElement.appendChild(timer)
 
     document.body.appendChild(timerElement)
+    timerElement.appendChild(resetBtn)
 
     startTimerBtn.addEventListener("click", () => {
         startTimerBtn.remove()
-        timerElement.appendChild(resetBtn)
 
         let timeLeft = 120
         const countdown = setInterval(() => {
@@ -51,7 +51,6 @@ function showTimer(){
             if (timeLeft <= 0) {
                 clearInterval(countdown)
                 timer.innerHTML = "Timer abgelaufen"
-                timerElement.appendChild(resetBtn)
             }
         }, 1000)
     })
@@ -141,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //Write Values to Document
     numberOfPlayersInput.setAttribute("value", numberOfPlayers.toString())
     numberOfImpostorsInput.setAttribute("value", numberOfImpostors.toString())
-    imposterGetsAWortCheckbox.setAttribute("checked", imposterGetsAWord.toString())
+    imposterGetsAWortCheckbox.setAttribute(imposterGetsAWord ? "checked" : "unchecked", imposterGetsAWord.toString())
 
     startGameBtn?.addEventListener("click", () => {
         if(numberOfImpostorsInput && numberOfPlayersInput){
